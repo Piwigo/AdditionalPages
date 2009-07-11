@@ -10,7 +10,7 @@ $lang['ap_modify'] = 'Modificare la pagina addizionale';
 $lang['ap_all_lang'] = 'Tutte';
 $lang['ap_all_group'] = 'Tutti';
 
-$lang['ap_conf_saved'] = 'Configurazione salvata.';
+$lang['ap_conf_saved'] = 'Configurazione registrata.';
 
 $lang['ap_page_name'] = 'Nome della pagina';
 $lang['ap_page_lang'] = 'Lingue';
