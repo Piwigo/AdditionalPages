@@ -35,7 +35,7 @@ $lang['ap_show_edit'] = 'Mostrar el lazo de edición de las páginas additionell
 $lang['ap_perm'] = 'Acelerar la gestión de los derechos de acceso a las páginas additionelles :';
 $lang['ap_group_perm'] = 'Por grupos';
 $lang['ap_user_perm'] = 'Por tipo de utilizadores';
-$lang['ap_parse_bbcode'] = 'Convertir les pages déjà écrites avec le BBCode';
-$lang['ap_convert_bbcode_ok'] = 'Conversion effectuée.';
+$lang['ap_parse_bbcode'] = 'Convertir las páginas ya escritas con BBCode';
+$lang['ap_convert_bbcode_ok'] = 'Conversión efectuada.';
 
 ?>
