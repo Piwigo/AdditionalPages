@@ -34,7 +34,7 @@ $lang['ap_show_home'] = 'Mostrare il pulsante di ritorno verso la home page sull
 $lang['ap_show_edit'] = 'Mostrare il link di modifica delle pagine addizionali nel blocco menù';
 $lang['ap_perm'] = 'Attivare la gestione dei diritti d\'accesso alle pagine addizionali :';
 $lang['ap_group_perm'] = 'per gruppo';
-$lang['ap_user_perm'] = 'per typo d\'utente';
+$lang['ap_user_perm'] = 'per tipo d\'utente';
 $lang['ap_parse_bbcode'] = 'Convertire le pagini già scritte con BBCode';
 $lang['ap_convert_bbcode_ok'] = 'Conversione effettuata.';
 ?>
