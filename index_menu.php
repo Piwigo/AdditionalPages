@@ -23,10 +23,7 @@ function ap_apply($menu_ref_arr)
   
   if ( ($block = $menu->get_block( 'mbAdditionalPages' ) ) != null )
   {
-    if (!file_exists(AP_PATH . 'template/' . $user['template'] . '.tpl'))
-    {
-      $user['template'] = 'yoga';
-    }
+    $template->set_template_dir(AP_PATH.'template/');
 
     load_language('plugin.lang', AP_PATH);
     
@@ -106,7 +103,7 @@ ORDER BY pos ASC;';
     if (!empty($data))
     {
       $block->set_title(isset($menu_langs[$user['language']]) ? $menu_langs[$user['language']] : $menu_langs['default']);
-      $block->template = dirname(__FILE__) . '/template/' . $user['template'] . '.tpl';
+      $block->template = 'AdditionalPages_menu.tpl';
       $block->data = $data;
     }
   }

@@ -8,7 +8,7 @@
 	<table>
 		<tr>
 			<td><br>{'ap_menu_name'|@translate} : &nbsp;&nbsp;</td>
-			<td><br>{'default_sort'|@translate}&nbsp;&nbsp;</td>
+			<td><br>{'Default'|@translate}&nbsp;&nbsp;</td>
 			<td><br><input type="text" size="50" maxlength="255" value="{$LANG_DEFAULT_VALUE}" name="menu_lang[default]"/></td>
 		</tr>
 		{foreach from=$language item=lang}
