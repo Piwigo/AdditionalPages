@@ -51,9 +51,13 @@ WHERE user_id = ' . $user['id'] . ' AND group_id IN (' . $authorized_groups . ')
 }
 
 // Envoi de la page
+// Extended description
+if (function_exists('get_extended_desc'))
+  add_event_handler('AP_render_content', 'get_extended_desc');
+
 $template->assign(array(
-  'TITLE' => $result['title'],
-  'PLUGIN_INDEX_CONTENT_BEGIN' => $result['text']));
+  'TITLE' => trigger_event('AP_render_content', $result['title']),
+  'PLUGIN_INDEX_CONTENT_BEGIN' => trigger_event('AP_render_content', $result['text'])));
 if (isset($ap_conf[2]) and $ap_conf[2] == 'on')
 {
   $template->assign('PLUGIN_INDEX_ACTIONS' , '
