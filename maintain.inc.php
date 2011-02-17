@@ -17,6 +17,7 @@ content LONGTEXT NOT NULL ,
 users VARCHAR( 255 ) NULL DEFAULT NULL ,
 groups VARCHAR( 255 ) NULL DEFAULT NULL ,
 permalink VARCHAR( 64 ) NULL DEFAULT NULL ,
+standalone ENUM( "true", "false" ) NOT NULL DEFAULT "false"
 PRIMARY KEY (id) ,
 INDEX (pos) ,
 INDEX (lang))

@@ -40,5 +40,8 @@ $lang['ap_convert_bbcode_ok'] = 'Konvertálás kész.';
 
 /*TODO*/$lang['ap_edit_page'] = 'Edit a page';
 /*TODO*/$lang['ap_set_as_homepage'] = 'Set as Homepage';
+/*TODO*/$lang['ap_standalone_page'] = 'Standalone Page';
+/*TODO*/$lang['ap_homepage_tip'] = 'Replace your gallery\'s homepage';
+/*TODO*/$lang['ap_standalone_tip'] = 'Page require full HTML structure';
 
 ?>

@@ -11,7 +11,8 @@ CHANGE `lang` `lang` VARCHAR( 255 ) NULL DEFAULT NULL ,
 CHANGE `text` `content` LONGTEXT NOT NULL ,
 ADD `users` VARCHAR( 255 ) NULL DEFAULT NULL ,
 ADD `groups` VARCHAR( 255 ) NULL DEFAULT NULL ,
-ADD `permalink` VARCHAR( 64 ) NULL DEFAULT NULL;';
+ADD `permalink` VARCHAR( 64 ) NULL DEFAULT NULL ,
+ADD `standalone` ENUM( "true", "false" ) NOT NULL DEFAULT "false";';
 pwg_query($query);
 
 $query = '

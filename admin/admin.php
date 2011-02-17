@@ -34,7 +34,7 @@ $tabsheet->add('add_page', l10n('ap_add_page'), $my_base_url.'&amp;tab=add_page'
 $tabsheet->add('config', l10n('Configuration'), $my_base_url.'&amp;tab=config');
 if ($page['tab'] == 'edit_page')
 {
-  $tabsheet->add('edit_page', l10n('ap_edit_page'), $my_base_url.'&amp;tab=edit_page');
+  $tabsheet->add('edit_page', l10n('ap_edit_page'), $my_base_url.'&amp;tab=edit_page&amp;edit='.$_GET['edit']);
 }
 $tabsheet->select($page['tab']);
 $tabsheet->assign();

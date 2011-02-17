@@ -34,9 +34,16 @@ var Chckbox = document.getElementById(conteneur).firstChild;
         {html_options name=lang options=$lang.OPTIONS selected=$lang.SELECTED}
 			</td>
 		</tr>
+    <tr><td>&nbsp;</td></tr>
 		<tr>
 			<td align="right">{'ap_set_as_homepage'|@translate} &nbsp;&nbsp;</td>
-			<td><input type="checkbox" name="homepage" {if isset($HOMEPAGE) and $HOMEPAGE}checked="checked"{/if}"/></td>
+			<td><input type="checkbox" name="homepage" {if isset($HOMEPAGE) and $HOMEPAGE}checked="checked"{/if}"/>
+      &nbsp; <i>{'ap_homepage_tip'|@translate}</i></td>
+		</tr>
+		<tr>
+			<td align="right">{'ap_standalone_page'|@translate} &nbsp;&nbsp;</td>
+			<td><input type="checkbox" name="standalone" {if isset($STANDALONE) and $STANDALONE}checked="checked"{/if}"/>
+      &nbsp; <i>{'ap_standalone_tip'|@translate}</i></td>
 		</tr>
 
 		{if isset($user_perm)}

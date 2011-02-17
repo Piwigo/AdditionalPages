@@ -13,7 +13,7 @@ if (function_exists('get_extended_desc'))
   add_event_handler('AP_render_content', 'get_extended_desc');
 
 // Récupération des données de la page
-$query = 'SELECT id, title , content, users, groups, permalink
+$query = 'SELECT id, title , content, users, groups, permalink, standalone
 FROM ' . ADD_PAGES_TABLE . '
 ';
 $query .= is_numeric($identifier) ?
@@ -38,6 +38,7 @@ $page['additional_page'] = array(
   'permalink' => @$row['permalink'],
   'title' => trigger_event('AP_render_content', $row['title']),
   'content' => trigger_event('AP_render_content', $row['content']),
+  'standalone' => ($row['standalone'] == 'true')
 );
 
 // Utilisateurs autorisés
@@ -63,6 +64,12 @@ WHERE user_id = ' . $user['id'] . ' AND group_id IN (' . $row['groups'] . ');';
     if ($page['is_homepage']) return;
   	page_forbidden(l10n('You are not authorized to access the requested page'));
   }
+}
+
+if ($page['additional_page']['standalone'])
+{
+  echo $page['additional_page']['content'];
+  exit;
 }
 
 add_event_handler('loc_end_index', 'ap_set_index');

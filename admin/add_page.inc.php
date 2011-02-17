@@ -47,6 +47,7 @@ WHERE permalink = "'.$permalink.'"
   $language = $_POST['lang'] != 'ALL' ? '"'.$_POST['lang'].'"' : 'NULL';
   $group_access = !empty($_POST['groups']) ? '"'.implode(',', $_POST['groups']).'"' : 'NULL';
   $user_access = !empty($_POST['users']) ? '"'.implode(',', $_POST['users']).'"' : 'NULL';
+  $standalone = isset($_POST['standalone']) ? '"true"' : '"false"';
 
   if (empty($page['errors']))
   {
@@ -59,7 +60,8 @@ SET lang = '.$language.',
   content = "'.$_POST['ap_content'].'",
   users = '.$user_access.',
   groups = '.$group_access.',
-  permalink = '.$permalink.'
+  permalink = '.$permalink.',
+  standalone = '.$standalone.'
 WHERE id = '.$edited_page['id'] .'
 ;';
       pwg_query($query);
@@ -70,8 +72,8 @@ WHERE id = '.$edited_page['id'] .'
       list($position) = array_from_query($query, 'pos');
       
       $query = '
-INSERT INTO ' . ADD_PAGES_TABLE . ' ( pos , lang , title , content , users , groups , permalink)
-VALUES ('.($position+1).' , '.$language.' , "'.$_POST['title'].'" , "'.$_POST['ap_content'].'" , '.$user_access.' , '.$group_access.' , '.$permalink.');';
+INSERT INTO ' . ADD_PAGES_TABLE . ' ( pos , lang , title , content , users , groups , permalink, standalone)
+VALUES ('.($position+1).' , '.$language.' , "'.$_POST['title'].'" , "'.$_POST['ap_content'].'" , '.$user_access.' , '.$group_access.' , '.$permalink.' , '.$standalone.');';
       pwg_query($query);
       $edited_page['id'] = mysql_insert_id();
     }
@@ -107,6 +109,7 @@ Language: ".$_POST['lang']."
   $edited_page['groups'] = !empty($_POST['groups']) ? trim($group_access, '"') : '';
   $edited_page['users'] = !empty($_POST['users']) ? trim($user_access, '"') :  '';
   $edited_page['homepage'] = isset($_POST['homepage']);
+  $edited_page['standalone'] = isset($_POST['standalone']);
 }
 
 // Selection des langues
@@ -153,6 +156,7 @@ if ($page['tab'] == 'edit_page')
     'NAME' => $edited_page['title'],
     'PERMALINK' => $edited_page['permalink'],
     'HOMEPAGE' => $edited_page['homepage'],
+    'STANDALONE' => $edited_page['standalone'],
     'CONTENT' => $edited_page['content']));
 }
 

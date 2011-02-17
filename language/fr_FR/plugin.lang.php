@@ -40,5 +40,8 @@ $lang['ap_convert_bbcode_ok'] = 'Conversion effectuée.';
 
 $lang['ap_edit_page'] = 'Editer une page';
 $lang['ap_set_as_homepage'] = 'Définir comme page d\'accueil';
+$lang['ap_standalone_page'] = 'Page autonome';
+$lang['ap_homepage_tip'] = 'Remplace la page d\'accueil de votre galerie';
+$lang['ap_standalone_tip'] = 'La page requiert une structure HTML complète';
 
 ?>
