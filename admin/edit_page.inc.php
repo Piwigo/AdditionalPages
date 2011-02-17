@@ -31,6 +31,6 @@ $edited_page['homepage'] = $conf['additional_pages']['homepage'] == $edited_page
 // Lien de suppression
 $template->assign('delete', true);
 
-include(AP_PATH.'admin/page_form.inc.php');
+include(AP_PATH.'admin/add_page.inc.php');
 
 ?>
