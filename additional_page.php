@@ -80,7 +80,7 @@ function ap_set_index()
   if ($conf['additional_pages']['show_home'])
   {
     $template->assign('PLUGIN_INDEX_ACTIONS' , '
-      <li><a href="'.make_index_url().'" title="' . l10n('return to homepage') . '">
+      <li><a href="'.make_index_url().'/categories" title="' . l10n('return to homepage') . '">
         <img src="' . $template->get_themeconf('icon_dir') . '/home.png" class="button" alt="' . l10n('home') . '"/></a>
       </li>');
   }

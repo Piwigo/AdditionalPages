@@ -58,9 +58,12 @@ WHERE id = '.$edited_page['id'] .'
     }
     else
     {
+      $query = 'SELECT MAX(ABS(pos)) AS pos FROM ' . ADD_PAGES_TABLE . ';';
+      list($position) = array_from_query($query, 'pos');
+      
       $query = '
-INSERT INTO ' . ADD_PAGES_TABLE . ' ( lang , title , content , users , groups , permalink)
-VALUES ('.$language.' , "'.$_POST['title'].'" , "'.$_POST['ap_content'].'" , '.$user_access.' , '.$group_access.' , '.$permalink.');';
+INSERT INTO ' . ADD_PAGES_TABLE . ' ( pos , lang , title , content , users , groups , permalink)
+VALUES ('.($position+1).' , '.$language.' , "'.$_POST['title'].'" , "'.$_POST['ap_content'].'" , '.$user_access.' , '.$group_access.' , '.$permalink.');';
       pwg_query($query);
       $edited_page['id'] = mysql_insert_id();
     }

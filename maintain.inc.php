@@ -9,11 +9,13 @@ function plugin_install()
   if (!mysql_fetch_row($result))
   {
     $query = 'CREATE TABLE ' . $prefixeTable . 'additionalpages (
-id SMALLINT( 5 ) UNSIGNED NOT NULL ,
+id SMALLINT( 5 ) UNSIGNED NOT NULL AUTO_INCREMENT,
 pos SMALLINT( 5 ) NULL default NULL ,
 lang VARCHAR( 255 ) NULL default NULL ,
 title VARCHAR( 255 ) NOT NULL ,
 content LONGTEXT NOT NULL ,
+users VARCHAR( 255 ) NULL DEFAULT NULL ,
+groups VARCHAR( 255 ) NULL DEFAULT NULL ,
 permalink VARCHAR( 64 ) NULL DEFAULT NULL ,
 PRIMARY KEY (id) ,
 INDEX (pos) ,
