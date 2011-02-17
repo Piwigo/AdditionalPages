@@ -7,28 +7,7 @@
 	<legend>{'ap_config'|@translate}</legend>
 	<table>
 		<tr>
-			<td><br>{'ap_menu_name'|@translate} : &nbsp;&nbsp;</td>
-			<td><br>{'Default'|@translate}&nbsp;&nbsp;</td>
-			<td><br><input type="text" size="50" maxlength="255" value="{$LANG_DEFAULT_VALUE}" name="menu_lang[default]"/></td>
-		</tr>
-		{foreach from=$language item=lang}
-		<tr>
-			<td></td>
-			<td>{$lang.LANGUAGE_NAME}&nbsp;&nbsp;</td>
-			<td><input type="text" size="50" maxlength="255" value="{$lang.VALUE}" name="menu_lang[{$lang.LANGUAGE_CODE}]"/></td>
-		</tr>
-		{/foreach}
-		<tr>
-			<td colspan="3"><br><hr><br></td>
-		</tr>
-		<tr>
-			<td colspan="3"><input type="checkbox" name="show_menu" value="on" {if $ap_conf.show_menu}checked="checked"{/if}/> {'ap_show_menu'|@translate}</td>
-		</tr>
-		<tr>
 			<td colspan="3"><input type="checkbox" name="show_home" value="on" {if $ap_conf.show_home}checked="checked"{/if}/> {'ap_show_home'|@translate}</td>
-		</tr>
-		<tr>
-			<td colspan="3"><input type="checkbox" name="redirect" value="on" {if $ap_conf.redirect}checked="checked"{/if}/> {'ap_redirect'|@translate}</td>
 		</tr>
 		<tr>
 			<td colspan="3"><br><hr><br></td>
@@ -42,7 +21,21 @@
 		<tr>
 			<td colspan="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="group_perm" value="on" {if $ap_conf.group_perm}checked="checked"{/if}/> <i>{'ap_group_perm'|@translate}</i></td>
 		</tr>
-
+    <tr>
+			<td colspan="3"><br><hr><br></td>
+		</tr>
+		<tr>
+			<td><br>{'ap_menu_name'|@translate} : &nbsp;&nbsp;</td>
+			<td><br>{'Default'|@translate}&nbsp;&nbsp;</td>
+			<td><br><input type="text" size="50" maxlength="255" value="{$LANG_DEFAULT_VALUE}" name="menu_lang[default]"/></td>
+		</tr>
+		{foreach from=$language item=lang}
+		<tr>
+			<td></td>
+			<td>{$lang.LANGUAGE_NAME}&nbsp;&nbsp;</td>
+			<td><input type="text" size="50" maxlength="255" value="{$lang.VALUE}" name="menu_lang[{$lang.LANGUAGE_CODE}]"/></td>
+		</tr>
+		{/foreach}
 	</table>
 
 <br>

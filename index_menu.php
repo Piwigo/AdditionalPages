@@ -40,7 +40,7 @@ function ap_apply($menu_ref_arr)
     $q = 'SELECT id, pos, title, users, groups, permalink
 FROM ' . ADD_PAGES_TABLE . '
 WHERE (lang = "' . $user['language'] . '" OR lang IS NULL)
-  AND pos > 0
+  AND pos >= 0
 ORDER BY pos ASC, id ASC
 ;';
     $result = pwg_query($q);

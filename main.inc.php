@@ -16,7 +16,10 @@ define('AP_DIR' , basename(dirname(__FILE__)));
 define('AP_PATH' , PHPWG_PLUGINS_PATH . AP_DIR . '/');
 define('ADD_PAGES_TABLE' , $prefixeTable . 'additionalpages');
 
-$conf['additional_pages'] = unserialize($conf['additional_pages']);
+$conf['additional_pages'] = @unserialize($conf['additional_pages']);
+
+if ($conf['additional_pages'] === false)
+  include(AP_PATH.'admin/upgrade_from_21.php');
 
 function additional_pages_admin_menu($menu)
 {
