@@ -1,5 +1,5 @@
 <div class="titrePage">
-	<h2>Additional Pages</h2>
+	<h2>Additional Pages - {'Configuration'|@translate}</h2>
 </div>
 
 <form name="apform" method="post" action="" class="properties"  ENCTYPE="multipart/form-data">
@@ -22,16 +22,13 @@
 			<td colspan="3"><br><hr><br></td>
 		</tr>
 		<tr>
-			<td colspan="3"><input type="checkbox" name="show_menu" value="on" {$SHOW_MENU}/> {'ap_show_menu'|@translate}</td>
+			<td colspan="3"><input type="checkbox" name="show_menu" value="on" {if $ap_conf.show_menu}checked="checked"{/if}/> {'ap_show_menu'|@translate}</td>
 		</tr>
 		<tr>
-			<td colspan="3"><input type="checkbox" name="show_home" value="on" {$SHOW_HOME}/> {'ap_show_home'|@translate}</td>
+			<td colspan="3"><input type="checkbox" name="show_home" value="on" {if $ap_conf.show_home}checked="checked"{/if}/> {'ap_show_home'|@translate}</td>
 		</tr>
 		<tr>
-			<td colspan="3"><input type="checkbox" name="show_edit" value="on" {$SHOW_EDIT}/> {'ap_show_edit'|@translate}</td>
-		</tr>
-		<tr>
-			<td colspan="3"><input type="checkbox" name="redirect" value="on" {$REDIRECT}/> {'ap_redirect'|@translate}</td>
+			<td colspan="3"><input type="checkbox" name="redirect" value="on" {if $ap_conf.redirect}checked="checked"{/if}/> {'ap_redirect'|@translate}</td>
 		</tr>
 		<tr>
 			<td colspan="3"><br><hr><br></td>
@@ -40,17 +37,17 @@
 			<td colspan="3">{'ap_perm'|@translate}</td>
 		</tr>
 		<tr>
-			<td colspan="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="user_perm" value="on" {$USER_PERM}/> <i>{'ap_user_perm'|@translate}</i></td>
+			<td colspan="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="user_perm" value="on" {if $ap_conf.user_perm}checked="checked"{/if}/> <i>{'ap_user_perm'|@translate}</i></td>
 		</tr>
 		<tr>
-			<td colspan="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="group_perm" value="on" {$GROUP_PERM}/> <i>{'ap_group_perm'|@translate}</i></td>
+			<td colspan="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="group_perm" value="on" {if $ap_conf.group_perm}checked="checked"{/if}/> <i>{'ap_group_perm'|@translate}</i></td>
 		</tr>
 
 	</table>
 
 <br>
 </fieldset>
-	<p><input class="submit" type="submit" value="{'Submit'|@translate}" name="submit" {$TAG_INPUT_ENABLED}/></p>
+	<p><input class="submit" type="submit" value="{'Submit'|@translate}" name="submit"/></p>
 </form>
 
 {if isset($convert_bbcode)}

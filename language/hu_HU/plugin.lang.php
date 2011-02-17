@@ -3,9 +3,9 @@
 $lang['ap_add_page'] = 'Oldal hozzáadása';
 
 $lang['ap_create'] = 'További új oldal létrehozása';
-$lang['ap_deleted_page'] = 'Oldal törlése (<a href="' .PHPWG_ROOT_PATH . '">vissza a főoldalra</a>)';
+$lang['ap_deleted_page'] = 'Oldal törlése';
 $lang['ap_no_name'] = 'Nem létező mező.';
-$lang['ap_saved_page'] = 'Oldal mentve (<a href="' .PHPWG_ROOT_PATH . 'index.php?/additional_page/%s">oldal megtekintése</a>)';
+$lang['ap_saved_page'] = 'Oldal mentve';
 $lang['ap_modify'] = 'Új oldal módosítása';
 $lang['ap_all_lang'] = 'Összes nyelv';
 $lang['ap_all_group'] = 'Összes csoport';
@@ -37,5 +37,8 @@ $lang['ap_group_perm'] = 'csoportok';
 $lang['ap_user_perm'] = 'felhasználók';
 $lang['ap_parse_bbcode'] = 'BBCode konvertálása';
 $lang['ap_convert_bbcode_ok'] = 'Konvertálás kész.';
+
+/*TODO*/$lang['ap_edit_page'] = 'Edit a page';
+/*TODO*/$lang['ap_set_as_homepage'] = 'Set as Homepage';
 
 ?>

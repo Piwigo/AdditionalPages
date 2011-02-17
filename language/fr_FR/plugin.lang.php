@@ -3,9 +3,9 @@
 $lang['ap_add_page'] = 'Ajouter une page';
 
 $lang['ap_create'] = 'Créer une nouvelle page additionelle';
-$lang['ap_deleted_page'] = 'Page supprimée (<a href="' .PHPWG_ROOT_PATH . '">retour à l\'accueil</a>)';
+$lang['ap_deleted_page'] = 'Page supprimée';
 $lang['ap_no_name'] = 'Vous n\'avez pas indiqué le nom.';
-$lang['ap_saved_page'] = 'Page enregistrée (<a href="' .PHPWG_ROOT_PATH . 'index.php?/additional_page/%s">voir la page</a>)';
+$lang['ap_saved_page'] = 'Page enregistrée';
 $lang['ap_modify'] = 'Modifier la page additionelle';
 $lang['ap_all_lang'] = 'Toutes';
 $lang['ap_all_group'] = 'Tous';
@@ -37,4 +37,8 @@ $lang['ap_group_perm'] = 'par groupes';
 $lang['ap_user_perm'] = 'par type d\'utilisateurs';
 $lang['ap_parse_bbcode'] = 'Convertir les pages déjà écrites avec le BBCode';
 $lang['ap_convert_bbcode_ok'] = 'Conversion effectuée.';
+
+$lang['ap_edit_page'] = 'Editer une page';
+$lang['ap_set_as_homepage'] = 'Définir comme page d\'accueil';
+
 ?>

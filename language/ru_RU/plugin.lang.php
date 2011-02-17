@@ -3,9 +3,9 @@
 $lang['ap_add_page'] = 'Добавить страницу';
 
 $lang['ap_create'] = 'Создать новую дополнительную сраницу';
-$lang['ap_deleted_page'] = 'Страница удалена (<a href="' .PHPWG_ROOT_PATH . '">на главную</a>)';
+$lang['ap_deleted_page'] = 'Страница удалена';
 $lang['ap_no_name'] = 'Введите название страницы';
-$lang['ap_saved_page'] = 'Cтраница сохранена (<a href="' .PHPWG_ROOT_PATH . 'index.php?/additional_page/%s">просмотреть страницу</a>)';
+$lang['ap_saved_page'] = 'Cтраница сохранена';
 $lang['ap_modify'] = 'Изменить дополнительную страницу';
 $lang['ap_all_lang'] = 'Все';
 $lang['ap_all_group'] = 'Все';
@@ -37,5 +37,8 @@ $lang['ap_group_perm'] = 'для групп пользователей';
 $lang['ap_user_perm'] = 'для типов пользователей';
 $lang['ap_parse_bbcode'] = 'Конвертировать страницы с BBCode';
 $lang['ap_convert_bbcode_ok'] = 'Конвертирование выполнено';
+
+/*TODO*/$lang['ap_edit_page'] = 'Edit a page';
+/*TODO*/$lang['ap_set_as_homepage'] = 'Set as Homepage';
 
 ?>

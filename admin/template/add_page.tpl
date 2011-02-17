@@ -14,7 +14,6 @@ var Chckbox = document.getElementById(conteneur).firstChild;
 }
 </script>
 {/literal}
-{$TINYMCE_SCRIPT}
 
 <div class="titrePage">
 	<h2>{$AP_TITLE}</h2>
@@ -23,17 +22,21 @@ var Chckbox = document.getElementById(conteneur).firstChild;
 	<table>
 		<tr>
 			<td align="right">{'ap_page_name'|@translate} &nbsp;&nbsp;</td>
-			<td><input type="text" size="80" maxlength="255" value="{$NAME}" name="name"/></td>
+			<td><input type="text" size="60" maxlength="255" value="{if isset($NAME)}{$NAME}{/if}" name="title"/></td>
 		</tr>
 		<tr>
-			<td align="right">{'ap_page_pos'|@translate} &nbsp;&nbsp;</td>
-			<td><input type="text" size="3" maxlength="3" value="{$POS}" name="pos"/>&nbsp; ({'ap_pos0'|@translate})</td>
+			<td align="right">{'Permalink'|@translate} &nbsp;&nbsp;</td>
+			<td><input type="text" size="60" value="{if isset($PERMALINK)}{$PERMALINK}{/if}" name="permalink"/></td>
 		</tr>
 		<tr>
 			<td align="right">{'ap_page_lang'|@translate} &nbsp;&nbsp;</td>
 			<td>
         {html_options name=lang options=$lang.OPTIONS selected=$lang.SELECTED}
 			</td>
+		</tr>
+		<tr>
+			<td align="right">{'ap_set_as_homepage'|@translate} &nbsp;&nbsp;</td>
+			<td><input type="checkbox" name="homepage" {if isset($HOMEPAGE) and $HOMEPAGE}checked="checked"{/if}"/></td>
 		</tr>
 
 		{if isset($user_perm)}
@@ -72,15 +75,15 @@ var Chckbox = document.getElementById(conteneur).firstChild;
 		<tr>
 			<td colspan="2" align="center"><br>
 				<b>{'ap_page_content'|@translate}</b><br>
-				<textarea name="ap_content" id="ap_content" rows="30" cols="50" style="width:100%;">{$CONTENT}</textarea>
+				<textarea name="ap_content" id="ap_content" rows="30" cols="50" style="width:100%;">{if isset($CONTENT)}{$CONTENT}{/if}</textarea>
       </td>
 		</tr>
 
 		<tr>
 		<td colspan="2" align="center"><br>
-		<input class="submit" type="submit" value="{'ap_save'|@translate}" name="save" {$TAG_INPUT_ENABLED}>
+		<input class="submit" type="submit" value="{'ap_save'|@translate}" name="save">
 		{if isset($delete)}
-		<input class="submit" type="submit" value="{'ap_delete'|@translate}" name="delete" onclick="return confirm('Are you sure?'|@translate);" {$TAG_INPUT_ENABLED}/>
+		<input class="submit" type="submit" value="{'ap_delete'|@translate}" name="delete" onclick="return confirm('Are you sure?'|@translate);"/>
 		{/if}
 		</tr>
 </table>

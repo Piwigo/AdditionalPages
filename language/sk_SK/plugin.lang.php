@@ -3,9 +3,9 @@
 $lang['ap_add_page'] = 'Pridať stránku';
 
 $lang['ap_create'] = 'Vytvoriť novú prídavnú stránku';
-$lang['ap_deleted_page'] = 'Stránka vymazaná (<a href="' .PHPWG_ROOT_PATH . '">späť na úvodnú stránku</a>)';
+$lang['ap_deleted_page'] = 'Stránka vymazaná';
 $lang['ap_no_name'] = 'Nevyplnili ste názov.';
-$lang['ap_saved_page'] = 'Stránka uložená (<a href="' .PHPWG_ROOT_PATH . 'index.php?/additional_page/%s">pozrieť stránku</a>)';
+$lang['ap_saved_page'] = 'Stránka uložená';
 $lang['ap_modify'] = 'Upraviť prídavnú stránku';
 $lang['ap_all_lang'] = 'Všetky';
 $lang['ap_all_group'] = 'Všetky';
@@ -37,4 +37,8 @@ $lang['ap_group_perm'] = 'skupinami';
 $lang['ap_user_perm'] = 'typmi používateľov';
 $lang['ap_parse_bbcode'] = 'Konvertovať stránky napísané v BBCode';
 $lang['ap_convert_bbcode_ok'] = 'Konverzia úspešná.';
+
+/*TODO*/$lang['ap_edit_page'] = 'Edit a page';
+/*TODO*/$lang['ap_set_as_homepage'] = 'Set as Homepage';
+
 ?>

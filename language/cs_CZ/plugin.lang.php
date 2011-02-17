@@ -3,9 +3,9 @@
  $lang['ap_add_page'] = 'Přidat stránku';
 
 $lang['ap_create'] = 'Přidat novou stránku';
-$lang['ap_deleted_page'] = 'Stránka byla smazána. (<a href="' .PHPWG_ROOT_PATH . '">zpět domů</a>)';
+$lang['ap_deleted_page'] = 'Stránka byla smazána.';
 $lang['ap_no_name'] = 'Je nutné vyplnit jméno.';
-$lang['ap_saved_page'] = 'Stránka byla uložena (<a href="' .PHPWG_ROOT_PATH . 'index.php?/additional_page/%s">zobrazit stránku</a>)';
+$lang['ap_saved_page'] = 'Stránka byla uložena';
 $lang['ap_modify'] = 'Upravit stránku';
 $lang['ap_all_lang'] = 'Všechny';
 $lang['ap_all_group'] = 'Všechny';
@@ -37,5 +37,8 @@ $lang['ap_group_perm'] = 'podle skupin';
 $lang['ap_user_perm'] = 'podle typů uživatelů';
 $lang['ap_parse_bbcode'] = 'Převést stránky psané pomocí BBCode';
 $lang['ap_convert_bbcode_ok'] = 'Převod proběhl v pořádku.';
+
+/*TODO*/$lang['ap_edit_page'] = 'Edit a page';
+/*TODO*/$lang['ap_set_as_homepage'] = 'Set as Homepage';
 
 ?>
