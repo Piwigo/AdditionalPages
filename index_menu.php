@@ -47,34 +47,29 @@ ORDER BY pos ASC, id ASC
 
     while ($row = mysql_fetch_assoc($result))
     {
-      if ($row['pos'] != '0' or is_admin())
+      $authorized_users = array();
+      $authorized_groups = array();
+      if (!empty($row['users']))
       {
-        $authorized_users = array();
-        $authorized_groups = array();
-        if (!empty($row['users']))
+        $authorized_users = explode(',', $row['users']);
+      }
+      if (!empty($row['groups']))
+      {
+        $auth = explode(',', $row['groups']);
+        $authorized_groups = array_intersect($groups, $auth);
+      }
+      if (is_admin() or (
+        (!$conf['additional_pages']['group_perm'] or empty($row['groups']) or !empty($authorized_groups)) and
+        (!$conf['additional_pages']['user_perm'] or empty($row['users']) or in_array($user['status'], $authorized_users))))
+      {
+        $url = make_index_url();
+        if ($row['id'] != $conf['additional_pages']['homepage'])
         {
-          $authorized_users = explode(',', $row['users']);
+          $url .= '/page/'.(isset($row['permalink']) ? $row['permalink'] : $row['id']);
         }
-        if (!empty($row['groups']))
-        {
-          $auth = explode(',', $row['groups']);
-          $authorized_groups = array_intersect($groups, $auth);
-        }
-        if (is_admin() or (
-          (!$conf['additional_pages']['group_perm'] or empty($row['groups']) or !empty($authorized_groups)) and
-          (!$conf['additional_pages']['user_perm'] or empty($row['users']) or in_array($user['status'], $authorized_users))))
-        {
-          $url = make_index_url();
-          if ($row['id'] != $conf['additional_pages']['homepage'])
-          {
-            $url .= '/page/'.(isset($row['permalink']) ? $row['permalink'] : $row['id']);
-          }
-          array_push($data, array(
-            'URL' => $url,
-            'LABEL' => $row['title']));
-        }
-        unset($authorized_groups);
-        unset($authorized_users);
+        array_push($data, array(
+          'URL' => $url,
+          'LABEL' => $row['title']));
       }
     }
 

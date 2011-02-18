@@ -19,14 +19,9 @@ if (isset($_POST['save']))
   }
   if (!empty($_POST['permalink']))
   {
-    $permalink = $_POST['permalink'];
-    $sanitized_permalink = preg_replace( '#[^a-zA-Z0-9_/-]#', '' ,$permalink);
-    $sanitized_permalink = trim($sanitized_permalink, '/');
-    $sanitized_permalink = str_replace('//', '/', $sanitized_permalink);
-    if ( $sanitized_permalink != $permalink or preg_match( '#^(\d)+(-.*)?$#', $permalink) )
-    {
-      array_push($page['errors'], l10n('The permalink name must be composed of a-z, A-Z, 0-9, "-", "_" or "/". It must not be numeric or start with number followed by "-"'));
-    }
+    $permalink = trim($_POST['permalink'], ' /');
+    $permalink = str_replace(array(' ', '/'), '_',$permalink);
+
     $query ='
 SELECT id FROM '.ADD_PAGES_TABLE.'
 WHERE permalink = "'.$permalink.'"
@@ -46,8 +41,13 @@ WHERE permalink = "'.$permalink.'"
 
   $language = $_POST['lang'] != 'ALL' ? '"'.$_POST['lang'].'"' : 'NULL';
   $group_access = !empty($_POST['groups']) ? '"'.implode(',', $_POST['groups']).'"' : 'NULL';
-  $user_access = !empty($_POST['users']) ? '"'.implode(',', $_POST['users']).'"' : 'NULL';
   $standalone = isset($_POST['standalone']) ? '"true"' : '"false"';
+
+  $user_access = 'NULL';
+  if ($conf['additional_pages']['user_perm'])
+  {
+    $user_access = !empty($_POST['users']) ? '"'.implode(',', $_POST['users']).'"' : '"admin"';
+  }
 
   if (empty($page['errors']))
   {
@@ -105,6 +105,7 @@ Language: ".$_POST['lang']."
 
   $edited_page['title'] = stripslashes($_POST['title']);
   $edited_page['permalink'] = $_POST['permalink'];
+  $edited_page['lang'] = $_POST['lang'];
   $edited_page['content'] = stripslashes($_POST['ap_content']);
   $edited_page['groups'] = !empty($_POST['groups']) ? trim($group_access, '"') : '';
   $edited_page['users'] = !empty($_POST['users']) ? trim($user_access, '"') :  '';
@@ -138,15 +139,18 @@ if ($conf['additional_pages']['group_perm'])
 // Selection des utilisateurs
 if ($conf['additional_pages']['user_perm'])
 {
-  if (isset($_GET['edit']))
-	  $selected_users = isset($edited_page['users']) ? explode(',', $edited_page['users']) : array();
-  else
-    $selected_users = array('guest', 'generic', 'normal');
+  $selected_users = array('guest', 'generic', 'normal');
+  if (isset($_GET['edit']) and isset($edited_page['users']))
+  {
+    $selected_users = explode(',', $edited_page['users']);
+  }
 
 	$template->assign('user_perm', array(
-    'GUEST' => (in_array('guest', $selected_users) ? 'checked="checked"' : ''),
-		'GENERIC' => (in_array('generic', $selected_users) ? 'checked="checked"' : ''),
-		'NORMAL' => (in_array('normal', $selected_users) ? 'checked="checked"' : '')));
+      'GUEST' => in_array('guest', $selected_users) ? 'checked="checked"' : '',
+      'GENERIC' => in_array('generic', $selected_users) ? 'checked="checked"' : '',
+      'NORMAL' => in_array('normal', $selected_users) ? 'checked="checked"' : ''
+    )
+  );
 }
 
 // Chargement des données pour l'édition

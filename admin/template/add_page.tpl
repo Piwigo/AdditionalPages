@@ -1,3 +1,4 @@
+{known_script id="jquery" src=$ROOT_URL|@cat:"themes/default/js/jquery.packed.js"}
 {html_head}{literal}
 <script type="text/javascript">
 function GereChkbox(conteneur, a_faire) {

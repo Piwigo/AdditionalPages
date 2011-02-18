@@ -4,6 +4,9 @@ if (!defined('PHPWG_ROOT_PATH')) die('Hacking attempt!');
 
 global $prefixeTable, $conf;
 
+load_conf_from_db('param = "additional_pages"');
+$old_conf = explode ("," , $conf['additional_pages']);
+
 $query = 'ALTER TABLE ' . $prefixeTable . 'additionalpages
 CHANGE `id` `id` SMALLINT( 5 ) UNSIGNED NOT NULL AUTO_INCREMENT ,
 CHANGE `pos` `pos` SMALLINT( 5 ) NULL DEFAULT NULL ,
@@ -27,17 +30,17 @@ while ($row = mysql_fetch_assoc($result))
   $authorized_users = 'NULL';
   $authorized_groups = 'NULL';
 
-  if (strpos($title , '/user_id='))
+  if ($old_conf[7] == 'on' and strpos($title , '/user_id='))
   {
     $array = explode('/user_id=' , $title);
     $title = $array[0];
-    $authorized_users = '"'.$array[1].'"';
+    $authorized_users = !empty($array[1]) ? '"'.$array[1].'"' : '"admin"';
   }
-  if (strpos($title , '/group_id='))
+  if ($old_conf[6] == 'on' and strpos($title , '/group_id='))
   {
     $array = explode('/group_id=' , $title);
     $title = $array[0];
-    $authorized_groups = '"'.$array[1].'"';
+    $authorized_groups = !empty($array[1]) ? '"'.$array[1].'"' : 'NULL';
   }
 
   $position = $row['pos'];
@@ -59,9 +62,6 @@ WHERE id = '.$row['id'].'
 ;';
   pwg_query($query);
 }
-
-load_conf_from_db('param = "additional_pages"');
-$old_conf = explode ("," , $conf['additional_pages']);
 
 if ($old_conf[1] == 'off')
 {
