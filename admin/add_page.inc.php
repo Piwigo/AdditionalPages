@@ -35,7 +35,7 @@ WHERE permalink = "'.$permalink.'"
     $ids = array_from_query($query, 'id');
     if (!empty($ids))
     {
-      array_push($page['errors'], sprintf(l10n('Permalink %s is already used by additional page %s'), $permalink, $ids[0]));
+      array_push($page['errors'], sprintf(l10n('ap_permalink_already_used'), $permalink, $ids[0]));
     }
     $permalink = '"'.$permalink.'"';
   }

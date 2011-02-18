@@ -21,28 +21,28 @@ var Chckbox = document.getElementById(conteneur).firstChild;
 <form method="post" action="" class="properties"  ENCTYPE="multipart/form-data">
 	<table>
 		<tr>
-			<td align="right">{'ap_page_name'|@translate} &nbsp;&nbsp;</td>
-			<td><input type="text" size="60" maxlength="255" value="{if isset($NAME)}{$NAME}{/if}" name="title"/></td>
+			<td align="right"><label for="title">{'ap_page_name'|@translate}</label> &nbsp;&nbsp;</td>
+			<td><input type="text" size="60" maxlength="255" value="{if isset($NAME)}{$NAME}{/if}" name="title" id="title"/></td>
 		</tr>
 		<tr>
-			<td align="right">{'Permalink'|@translate} &nbsp;&nbsp;</td>
-			<td><input type="text" size="60" value="{if isset($PERMALINK)}{$PERMALINK}{/if}" name="permalink"/></td>
+			<td align="right"><label for="permalink">{'Permalink'|@translate}</label> &nbsp;&nbsp;</td>
+			<td><input type="text" size="60" value="{if isset($PERMALINK)}{$PERMALINK}{/if}" name="permalink" id="permalink"/></td>
 		</tr>
 		<tr>
-			<td align="right">{'ap_page_lang'|@translate} &nbsp;&nbsp;</td>
+			<td align="right"><label for="lang">{'ap_page_lang'|@translate}</label> &nbsp;&nbsp;</td>
 			<td>
-        {html_options name=lang options=$lang.OPTIONS selected=$lang.SELECTED}
+        {html_options name=lang id=lang options=$lang.OPTIONS selected=$lang.SELECTED}
 			</td>
 		</tr>
     <tr><td>&nbsp;</td></tr>
 		<tr>
-			<td align="right">{'ap_set_as_homepage'|@translate} &nbsp;&nbsp;</td>
-			<td><input type="checkbox" name="homepage" {if isset($HOMEPAGE) and $HOMEPAGE}checked="checked"{/if}"/>
+			<td align="right"><label for="homepage">{'ap_set_as_homepage'|@translate}</label> &nbsp;&nbsp;</td>
+			<td><input type="checkbox" name="homepage" id="homepage" {if isset($HOMEPAGE) and $HOMEPAGE}checked="checked"{/if}"/>
       &nbsp; <i>{'ap_homepage_tip'|@translate}</i></td>
 		</tr>
 		<tr>
-			<td align="right">{'ap_standalone_page'|@translate} &nbsp;&nbsp;</td>
-			<td><input type="checkbox" name="standalone" {if isset($STANDALONE) and $STANDALONE}checked="checked"{/if}"/>
+			<td align="right"><label for="standalone">{'ap_standalone_page'|@translate}</label> &nbsp;&nbsp;</td>
+			<td><input type="checkbox" name="standalone" id="standalone" {if isset($STANDALONE) and $STANDALONE}checked="checked"{/if}"/>
       &nbsp; <i>{'ap_standalone_tip'|@translate}</i></td>
 		</tr>
 
