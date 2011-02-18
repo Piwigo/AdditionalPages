@@ -18,7 +18,7 @@ pwg_query($query);
 $query = '
 SELECT id, pos, title, lang
 FROM '.$prefixeTable.'additionalpages
-ORDER BY pos ASC, id ASC
+ORDER BY pos ASC
 ;';
 $result = pwg_query($query);
 while ($row = mysql_fetch_assoc($result))
@@ -42,7 +42,7 @@ while ($row = mysql_fetch_assoc($result))
 
   $position = $row['pos'];
   if ($row['pos'] === '0')
-    $position = '-1';
+    $position = '-100';
   elseif (empty($row['pos']))
     $position = '0';
 
@@ -60,7 +60,20 @@ WHERE id = '.$row['id'].'
   pwg_query($query);
 }
 
+load_conf_from_db('param = "additional_pages"');
 $old_conf = explode ("," , $conf['additional_pages']);
+
+if ($old_conf[1] == 'off')
+{
+  $mb_conf = @unserialize($conf['blk_menubar']);
+  if (!isset($mb_conf['mbAdditionalPages']))
+  {
+    $last = @abs(end($mb_conf));
+    $mb_conf['mbAdditionalPages'] = $last + 50;
+  }
+  $mb_conf['mbAdditionalPages'] = -1 * abs($mb_conf['mbAdditionalPages']);
+  conf_update_param('blk_menubar', pwg_db_real_escape_string(serialize($mb_conf)));
+}
 
 $new_conf = array(
   'show_home' => @($old_conf[2] == 'on'),
@@ -80,11 +93,6 @@ foreach($languages as $language)
 
 $conf['additional_pages'] = $new_conf;
 
-$query = '
-UPDATE '.CONFIG_TABLE.'
-SET value = "'.addslashes(serialize($new_conf)).'"
-WHERE param = "additional_pages"
-;';
-pwg_query($query);
+conf_update_param('additional_pages', pwg_db_real_escape_string(serialize($new_conf)));
 
 ?>

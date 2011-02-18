@@ -82,7 +82,7 @@ VALUES ('.($position+1).' , '.$language.' , "'.$_POST['title'].'" , "'.$_POST['a
     if (isset($_POST['homepage']) xor $conf['additional_pages']['homepage'] == $edited_page['id'])
     {
       $conf['additional_pages']['homepage'] = isset($_POST['homepage']) ? $edited_page['id'] : null;
-      pwg_query('UPDATE '.CONFIG_TABLE.' SET value = "'.addslashes(serialize($conf['additional_pages'])).'" WHERE param = "additional_pages";');
+      conf_update_param('additional_pages', pwg_db_real_escape_string(serialize($conf['additional_pages'])));
     }
 
     // Enregistrement du fichier de sauvegarde

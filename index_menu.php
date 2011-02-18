@@ -64,8 +64,13 @@ ORDER BY pos ASC, id ASC
           (!$conf['additional_pages']['group_perm'] or empty($row['groups']) or !empty($authorized_groups)) and
           (!$conf['additional_pages']['user_perm'] or empty($row['users']) or in_array($user['status'], $authorized_users))))
         {
+          $url = make_index_url();
+          if ($row['id'] != $conf['additional_pages']['homepage'])
+          {
+            $url .= '/page/'.(isset($row['permalink']) ? $row['permalink'] : $row['id']);
+          }
           array_push($data, array(
-            'URL' => make_index_url().'/page/'.(isset($row['permalink']) ? $row['permalink'] : $row['id']),
+            'URL' => $url,
             'LABEL' => $row['title']));
         }
         unset($authorized_groups);

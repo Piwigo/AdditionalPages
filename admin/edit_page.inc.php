@@ -15,7 +15,7 @@ if (isset($_REQUEST['delete']) and isset($_GET['edit']))
   if ($conf['additional_pages']['homepage'] == $_GET['edit'])
   {
     $conf['additional_pages']['homepage'] = null;
-    pwg_query('UPDATE '.CONFIG_TABLE.' SET value = "'.addslashes(serialize($conf['additional_pages'])).'" WHERE param = "additional_pages";');
+    conf_update_param('additional_pages', pwg_db_real_escape_string(serialize($conf['additional_pages'])));
   }
   redirect($my_base_url.'&page_deleted=');
 }

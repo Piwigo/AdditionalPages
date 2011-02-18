@@ -17,7 +17,7 @@ content LONGTEXT NOT NULL ,
 users VARCHAR( 255 ) NULL DEFAULT NULL ,
 groups VARCHAR( 255 ) NULL DEFAULT NULL ,
 permalink VARCHAR( 64 ) NULL DEFAULT NULL ,
-standalone ENUM( "true", "false" ) NOT NULL DEFAULT "false"
+standalone ENUM( "true", "false" ) NOT NULL DEFAULT "false" ,
 PRIMARY KEY (id) ,
 INDEX (pos) ,
 INDEX (lang))
@@ -34,8 +34,9 @@ DEFAULT CHARACTER SET utf8;';
       'user_perm' => false,
       'homepage' => null,
     );
+
     $query = 'INSERT INTO ' . CONFIG_TABLE . ' (param,value,comment)
-VALUES ("additional_pages" , "'.addslashes(serialize($config)).'" , "Additional Pages config configuration");';
+VALUES ("additional_pages" , "'.pwg_db_real_escape_string(serialize($config)).'" , "Additional Pages config configuration");';
     pwg_query($query);
   }
 }

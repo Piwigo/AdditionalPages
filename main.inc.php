@@ -33,9 +33,9 @@ function section_init_additional_page()
 {
   global $tokens, $conf, $page;
 
-  $page['is_homepage'] = (count($tokens) == 1 and empty($tokens[0]));
+  $page['ap_homepage'] = (count($tokens) == 1 and empty($tokens[0]));
 
-  if (($tokens[0] == 'page' and !empty($tokens[1])) or ($page['is_homepage'] and !is_null($conf['additional_pages']['homepage'])))
+  if (($tokens[0] == 'page' and !empty($tokens[1])) or ($page['ap_homepage'] and !is_null($conf['additional_pages']['homepage'])))
     include(AP_PATH . 'additional_page.php');
 
   if ($tokens[0] == 'additional_page' and !empty($tokens[1]))

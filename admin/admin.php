@@ -14,13 +14,11 @@ LIMIT 1
 ;';
 $page_exist = array_from_query($query, 'id');
 
-if (!isset($_GET['tab']))
+$page['tab'] = isset($_GET['tab']) ? $_GET['tab'] : 'manage';
+
+if (!$page_exist and $page['tab'] == 'manage')
 {
-  $page['tab'] = $page_exist ? 'manage' : 'add_page';
-}
-else
-{
-  $page['tab'] = $_GET['tab'];
+  redirect($my_base_url.'&amp;tab=add_page');
 }
 
 include(AP_PATH.'admin/'.$page['tab'].'.inc.php');
