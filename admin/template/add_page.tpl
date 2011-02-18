@@ -1,4 +1,4 @@
-{literal}
+{html_head}{literal}
 <script type="text/javascript">
 function GereChkbox(conteneur, a_faire) {
 var blnEtat=null;
@@ -12,8 +12,20 @@ var Chckbox = document.getElementById(conteneur).firstChild;
 		Chckbox = Chckbox.nextSibling;
 	}
 }
+
+jQuery().ready( function () {
+  jQuery('#title').focusout(function () {
+    if (jQuery('#permalink').val() == '' && auto_permalink)
+      jQuery.post("plugins/AdditionalPages/admin/ajax.php", { str: this.value }, function(data) {
+        jQuery('#permalink').val(data);
+        auto_permalink = false;
+      });
+  });
+});
+
+var auto_permalink = true;
 </script>
-{/literal}
+{/literal}{/html_head}
 
 <div class="titrePage">
 	<h2>{$AP_TITLE}</h2>
@@ -94,5 +106,4 @@ var Chckbox = document.getElementById(conteneur).firstChild;
 		{/if}
 		</tr>
 </table>
-
 </form>

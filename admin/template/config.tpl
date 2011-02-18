@@ -1,3 +1,31 @@
+{html_head}
+<script type="text/javascript">
+jQuery().ready( function () {ldelim}
+  jQuery("#show_menu").click( function() {ldelim}
+    if (this.checked) {ldelim}
+      jQuery('#menu_name').show();
+    }
+    else {ldelim}
+      jQuery('#menu_name').hide();
+    }
+  });
+  jQuery('select[name="lang_desc_select"]').change(function () {ldelim}
+    jQuery('[id^="menu_lang"]').hide();
+    jQuery("#menu_lang_"+this.options[this.selectedIndex].value).show();
+  });
+  jQuery('[id^="menu_lang_"]').keyup(function () {ldelim}
+    arr = jQuery(this).attr("id").split("menu_lang_");
+    id = arr[1];
+    opt = jQuery('select[name="lang_desc_select"] option[id="opt_'+id+'"]');
+    if (this.value != '')
+      opt.html(opt.html().replace("\u2718", "\u2714"));
+    else
+      opt.html(opt.html().replace("\u2714", "\u2718"));
+  });
+});
+</script>
+{/html_head}
+
 <div class="titrePage">
 	<h2>Additional Pages - {'Configuration'|@translate}</h2>
 </div>
@@ -39,7 +67,7 @@
       </label>
     </li>
 
-    <li id="menu_name" style="display:none;">
+    <li id="menu_name" {if !isset($SHOW_MENU)}style="display:none;{/if}">
       <span class="property">{'ap_menu_name'|@translate} :
         <select name="lang_desc_select" style="margin-left:30px;">
           {foreach from=$language item=lang}
@@ -47,7 +75,7 @@
           {/foreach}
         </select>
         {foreach from=$language item=lang}
-          <input type="text" size="50" name="menu_lang[{$lang.LANGUAGE_CODE}]" id="menu_lang_{$lang.LANGUAGE_CODE}" value="{$lang.VALUE}" style="display:none; margin-left:10px;">
+          <input type="text" size="50" name="menu_lang[{$lang.LANGUAGE_CODE}]" id="menu_lang_{$lang.LANGUAGE_CODE}" value="{$lang.VALUE}" style="{if $lang.LANGUAGE_CODE != 'default'}display:none; {/if}margin-left:10px;">
         {/foreach}
       </span>
     </li>
@@ -55,54 +83,3 @@
 </fieldset>
 	<p><input class="submit" type="submit" value="{'Submit'|@translate}" name="submit"/></p>
 </form>
-
-<script type="text/javascript">
-var languages = new Array();
-var filled = new Array;
-{foreach from=$language item=lang}
-languages["{$lang.LANGUAGE_CODE}"] = "{$lang.LANGUAGE_NAME}";
-if ($('input[id=menu_lang_{$lang.LANGUAGE_CODE}]').val() != '')
-  filled.push("{$lang.LANGUAGE_CODE}");
-{/foreach}
-
-jQuery().ready( function () {ldelim}
-  jQuery("#show_menu").click( function() {ldelim}
-    if (this.checked) {ldelim}
-      jQuery('#menu_name').show();
-    }
-    else {ldelim}
-      jQuery('#menu_name').hide();
-    }
-  });
-  $('select[name="lang_desc_select"]').change(function () {ldelim}
-    $('[id^="menu_lang"]').hide();
-    $("#menu_lang_"+this.options[this.selectedIndex].value).show();
-  });
-  $('[id^="menu_lang_"]').keyup(function () {ldelim}
-    arr = $(this).attr("id").split("menu_lang_");
-    id = arr[1];
-    opt = $('select[name="lang_desc_select"] option[id="opt_'+id+'"]');
-    if (this.value != '') {ldelim}
-      opt.html(opt.html().replace("\u2718", "\u2714"));
-      add = true;
-      for (i in filled) {ldelim}
-        if (filled[i] == id) add = false;
-      }
-      if (add) {ldelim}
-        filled.push(id);
-      }
-    }
-    else {ldelim}
-      for (i in filled) {ldelim}
-        if (filled[i] == id) filled.splice(i, 1);
-      }
-      opt.html(opt.html().replace("\u2714", "\u2718"));
-    }
-  });
-});
-
-jQuery('#menu_lang_default').show();
-if (jQuery("input[name='show_menu']").attr('checked')) {ldelim}
-  jQuery('#menu_name').show();
-}
-</script>
