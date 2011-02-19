@@ -43,7 +43,6 @@ $lang['ap_set_as_homepage'] = 'Définir comme page d\'accueil';
 $lang['ap_standalone_page'] = 'Page autonome';
 $lang['ap_homepage_tip'] = 'Remplace la page d\'accueil de votre galerie';
 $lang['ap_standalone_tip'] = 'La page requiert une structure HTML complète';
-$lang['ap_standalone_tip'] = 'Page require full HTML structure';
 $lang['ap_permalink_already_used'] = 'Le lien permanent %s est déja utilisé par la page %s';
 
 ?>
