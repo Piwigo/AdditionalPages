@@ -1,4 +1,5 @@
 <?php
+
 $lang['ap_add_page'] = 'Lägg till en sida';
 
 $lang['ap_create'] = 'Skapa ny extern sida';
@@ -37,5 +38,11 @@ $lang['ap_user_perm'] = 'av användaren typ';
 $lang['ap_parse_bbcode'] = 'konvertera sidor skrivna med BBCode';
 $lang['ap_convert_bbcode_ok'] = 'Konvertering verkstäld ©.';
 
+$lang['ap_edit_page'] = 'Redigera en sida';
+$lang['ap_set_as_homepage'] = 'Ange som startsida';
+$lang['ap_standalone_page'] = 'Fristående sida';
+$lang['ap_homepage_tip'] = 'Ersätt startsidan för ditt galleri';
+$lang['ap_standalone_tip'] = 'Sidan kräver full HTML struktur';
+$lang['ap_permalink_already_used'] = 'Permalänk %s används redan av sidan %s';
 
 ?>
