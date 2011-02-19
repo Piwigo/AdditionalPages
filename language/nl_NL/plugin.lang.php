@@ -38,4 +38,11 @@ $lang['ap_user_perm'] = 'op gebruiker type';
 $lang['ap_parse_bbcode'] = 'Converteer pagina\'s geschreven met BBCode';
 $lang['ap_convert_bbcode_ok'] = 'Conversie actief.'; 
 
+$lang['ap_edit_page'] = 'Wijzig een pagina';
+$lang['ap_set_as_homepage'] = 'Definieer deze pagina als Startpagina';
+$lang['ap_standalone_page'] = 'Losstaande pagina';
+$lang['ap_homepage_tip'] = 'Verander de Startpagina van uw galerie';
+$lang['ap_standalone_tip'] = 'Deze pagina dient een volledige HTML-structuur te hebben';
+$lang['ap_permalink_already_used'] = 'De permalink %s wordt al gebruikt door pagina %s';
+
 ?>
