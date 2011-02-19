@@ -36,7 +36,7 @@ $lang['ap_perm'] = 'Activate authorization management:';
 $lang['ap_group_perm'] = 'by groups';
 $lang['ap_user_perm'] = 'by user type';
 $lang['ap_parse_bbcode'] = 'Convert pages written with BBCode';
-$lang['ap_convert_bbcode_ok'] = 'Conversion effectuée.';
+$lang['ap_convert_bbcode_ok'] = 'Conversion successfully performed';
 
 $lang['ap_edit_page'] = 'Edit a page';
 $lang['ap_set_as_homepage'] = 'Set as Homepage';
