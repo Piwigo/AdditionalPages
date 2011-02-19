@@ -18,8 +18,8 @@ define('ADD_PAGES_TABLE' , $prefixeTable . 'additionalpages');
 
 $conf['additional_pages'] = @unserialize($conf['additional_pages']);
 
-if ($conf['additional_pages'] === false)
-  include(AP_PATH.'admin/upgrade_from_21.php');
+if (!isset($conf['additional_pages']['level_perm']))
+  include(AP_PATH.'admin/upgrade.inc.php');
 
 function additional_pages_admin_menu($menu)
 {
@@ -42,9 +42,57 @@ function section_init_additional_page()
     redirect(make_index_url().'/page/'.$tokens[1]);
 }
 
-include(AP_PATH . 'index_menu.php');
+function register_ap_menubar_blocks($menu_ref_arr)
+{
+  $menu = & $menu_ref_arr[0];
+  if ($menu->get_id() != 'menubar') return;
+  $menu->register_block( new RegisteredBlock( 'mbAdditionalPages', 'Additional Pages', 'P@t'));
+}
+
+function ap_apply($menu_ref_arr)
+{
+  global $template, $conf, $user;
+
+  $menu = & $menu_ref_arr[0];
+  
+  if ( ($block = $menu->get_block( 'mbAdditionalPages' ) ) != null )
+  {
+    $query = 'SELECT DISTINCT id, title, permalink, GROUP_CONCAT(groups)
+FROM ' . ADD_PAGES_TABLE . '
+LEFT JOIN ' . USER_GROUP_TABLE . '
+  ON user_id = '.$user['id'].'
+WHERE (lang = "' . $user['language'] . '" OR lang IS NULL)
+  AND (users IS NULL OR users LIKE "%'.$user['status'].'%")
+  AND (groups IS NULL OR groups REGEXP CONCAT("(^|,)",group_id,"(,|$)"))
+  AND level <= '.$user['level'].'
+  AND pos >= 0
+ORDER BY pos ASC
+;';
+    $result = pwg_query($query);
+    $data = array();
+    while ($row = pwg_db_fetch_assoc($result))
+    {
+      $url = make_index_url().'/page/'.(isset($row['permalink']) ? $row['permalink'] : $row['id']);
+      array_push($data, array('URL' => $url, 'LABEL' => $row['title']));
+    }
+
+    if (!empty($data))
+    {
+      $title = isset($conf['additional_pages']['languages'][$user['language']]) ?
+        $conf['additional_pages']['languages'][$user['language']] :
+        @$conf['additional_pages']['languages']['default'];
+
+      $template->set_template_dir(AP_PATH.'template/');
+      $block->set_title($title);
+      $block->template = 'menubar_additional_pages.tpl';
+      $block->data = $data;
+    }
+  }
+}
 
 add_event_handler('get_admin_plugin_menu_links', 'additional_pages_admin_menu');
 add_event_handler('loc_end_section_init', 'section_init_additional_page');
+add_event_handler('blockmanager_register_blocks', 'register_ap_menubar_blocks');
+add_event_handler('blockmanager_apply', 'ap_apply');
 
 ?>

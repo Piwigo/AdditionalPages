@@ -44,5 +44,6 @@ $lang['ap_standalone_page'] = 'Bağımsız Bir Sayfa';
 $lang['ap_homepage_tip'] = 'Galerinizin Anasayfası ile değiştir';
 $lang['ap_standalone_tip'] = 'Sayfa tam HTML yapısı gerektirir';
 $lang['ap_permalink_already_used'] = 'Kalıcı bağlantı %s zaten sayfa %s tarafından kullanılıyor';
+/*TODO*/$lang['ap_level_perm'] = 'by privacy level';
 
 ?>

@@ -1,19 +1,6 @@
 {known_script id="jquery" src=$ROOT_URL|@cat:"themes/default/js/jquery.packed.js"}
 {html_head}{literal}
 <script type="text/javascript">
-function GereChkbox(conteneur, a_faire) {
-var blnEtat=null;
-var Chckbox = document.getElementById(conteneur).firstChild;
-	while (Chckbox!=null) {
-		if (Chckbox.nodeName=="INPUT")
-			if (Chckbox.getAttribute("type")=="checkbox") {
-				blnEtat = (a_faire=='0') ? false : (a_faire=='1') ? true : (document.getElementById(Chckbox.getAttribute("id")).checked) ? false : true;
-				document.getElementById(Chckbox.getAttribute("id")).checked=blnEtat;
-			}
-		Chckbox = Chckbox.nextSibling;
-	}
-}
-
 jQuery().ready( function () {
   jQuery('#title').focusout(function () {
     if (jQuery('#permalink').val() == '' && auto_permalink)
@@ -23,74 +10,95 @@ jQuery().ready( function () {
       });
   });
 });
-
 var auto_permalink = true;
 </script>
+<style type="text/css">
+#mainConf { margin:0; }
+.groups { margin-top:15px; }
+.groups input { margin-right:5px; }
+.groups label { margin-right:10px; display: inline-block; overflow: hidden; white-space: nowrap; line-height:1.3em;}
+.groups div { float:right; width:74%; line-height:1.3em;}
+</style>
 {/literal}{/html_head}
 
 <div class="titrePage">
 	<h2>{$AP_TITLE}</h2>
 </div>
-<form method="post" action="" class="properties"  ENCTYPE="multipart/form-data">
-	<table>
-		<tr>
-			<td align="right"><label for="title">{'ap_page_name'|@translate}</label> &nbsp;&nbsp;</td>
-			<td><input type="text" size="60" maxlength="255" value="{if isset($NAME)}{$NAME}{/if}" name="title" id="title"/></td>
-		</tr>
-		<tr>
-			<td align="right"><label for="permalink">{'Permalink'|@translate}</label> &nbsp;&nbsp;</td>
-			<td><input type="text" size="60" value="{if isset($PERMALINK)}{$PERMALINK}{/if}" name="permalink" id="permalink"/></td>
-		</tr>
-		<tr>
-			<td align="right"><label for="lang">{'ap_page_lang'|@translate}</label> &nbsp;&nbsp;</td>
-			<td>
-        {html_options name=lang id=lang options=$lang.OPTIONS selected=$lang.SELECTED}
-			</td>
-		</tr>
-    <tr><td>&nbsp;</td></tr>
-		<tr>
-			<td align="right"><label for="homepage">{'ap_set_as_homepage'|@translate}</label> &nbsp;&nbsp;</td>
-			<td><input type="checkbox" name="homepage" id="homepage" {if isset($HOMEPAGE) and $HOMEPAGE}checked="checked"{/if}"/>
-      &nbsp; <i>{'ap_homepage_tip'|@translate}</i></td>
-		</tr>
-		<tr>
-			<td align="right"><label for="standalone">{'ap_standalone_page'|@translate}</label> &nbsp;&nbsp;</td>
-			<td><input type="checkbox" name="standalone" id="standalone" {if isset($STANDALONE) and $STANDALONE}checked="checked"{/if}"/>
-      &nbsp; <i>{'ap_standalone_tip'|@translate}</i></td>
-		</tr>
+<form method="post" action="" class="properties" id="configContent" ENCTYPE="multipart/form-data">
+<fieldset id="mainConf">
+  <legend></legend>
+	<ul>
+    <li>
+      <span class="property">
+        <label for="title">{'ap_page_name'|@translate}</label>
+      </span>
+      <input type="text" size="60" maxlength="255" value="{if isset($NAME)}{$NAME}{/if}" name="title" id="title"/>
+    </li>
 
-		{if isset($user_perm)}
-		<tr>
-			<td colspan="2"><hr></td>
-		</tr>
-		<tr>
-			<td align="right">{'ap_authorized_users'|@translate} &nbsp;&nbsp;</td>
-			<td>
-				<div id="users">
-				<input type="checkbox" name="users[]" id="guest" value="guest" {$user_perm.GUEST}><label>&nbsp;{'user_status_guest'|@translate}</label>
-				<input type="checkbox" name="users[]" id="generic" value="generic" {$user_perm.GENERIC}><label>&nbsp;{'user_status_generic'|@translate}</label>
-				<input type="checkbox" name="users[]" id="normal" value="normal" {$user_perm.NORMAL}><label>&nbsp;{'user_status_normal'|@translate}</label>
-				<input type="checkbox" name="users[]" id="admin" value="admin" checked="checked" disabled onclick="return false;"><label>&nbsp;{'user_status_admin'|@translate}</label>
-				</div>
-			</td>
-        </tr>
+    <li>
+      <span class="property">
+        <label for="permalink">{'Permalink'|@translate}</label>
+      </span>
+      <input type="text" size="60" value="{if isset($PERMALINK)}{$PERMALINK}{/if}" name="permalink" id="permalink"/>
+    </li>
+
+    <li>
+      <span class="property">
+        <label for="lang">{'ap_page_lang'|@translate}</label>
+      </span>
+      {html_options name=lang id=lang options=$lang.OPTIONS selected=$lang.SELECTED}
+    </li>
+
+    <li style="margin-top:15px;">
+      <span class="property">
+        <label for="homepage">{'ap_set_as_homepage'|@translate}</label>
+      </span>
+      <input type="checkbox" name="homepage" id="homepage" {if isset($HOMEPAGE) and $HOMEPAGE}checked="checked"{/if}/>
+      <i>{'ap_homepage_tip'|@translate}</i>
+    </li>
+
+    <li>
+      <span class="property">
+        <label for="standalone">{'ap_standalone_page'|@translate}</label>
+      </span>
+      <input type="checkbox" name="standalone" id="standalone" {if isset($STANDALONE) and $STANDALONE}checked="checked"{/if}/>
+      <i>{'ap_standalone_tip'|@translate}</i>
+    </li>
+
+    {if isset($level_perm)}
+    <li style="margin-top:15px;">
+      <span class="property">
+        <label for="privacy">{'Privacy level'|@translate}</label>
+      </span>
+      <select name="level" size="1">{html_options options=$level_perm selected=$level_selected id=privacy}</select>
+    </li>
     {/if}
 
-		{if !empty($GROUPSELECTION)}
-		<tr>
-			<td colspan="2"><hr></td>
-		</tr>
-		<tr>
-			<td align="right">{'ap_authorized_group'|@translate} &nbsp;&nbsp;</td>
-			<td>{$GROUPSELECTION}</td>
-        </tr>
-        <tr>
-        	<td></td>
-			<td><a href="javascript:GereChkbox('groups','1');">{'ap_select_all'|@translate}</a> / <a href="javascript:GereChkbox('groups','0');">{'ap_unselect_all'|@translate}</a>
-			<i>&nbsp;&nbsp; {'ap_guest'|@translate}</i></td>
-        </tr>
+    {if isset($users)}
+    <li class="groups" style="margin-top:15px;">
+      <span class="property">
+        <label for="users">{'ap_authorized_users'|@translate}</label>
+      </span>
+      {html_checkboxes options=$users selected=$selected_users name=users}
+    </li>
     {/if}
-</table>
+
+    {if isset($groups)}
+    <li class="groups" style="margin-top:15px;">
+      <span class="property">
+        <label for="groups">{'ap_authorized_group'|@translate}</label>
+      </span>
+      <div>{html_checkboxes options=$groups selected=$selected_groups name=groups}</div>
+    </li>
+    <li class="groups">
+      <div>
+        <a href="#" onClick="jQuery('input[name^=\'groups\']').attr('checked', 'checked');return false;">{'ap_select_all'|@translate}</a> /
+        <a href="#" onClick="jQuery('input[name^=\'groups\']').attr('checked', '');return false;">{'ap_unselect_all'|@translate}</a>
+      </div>
+    </li>
+    {/if}
+</ul>
+</fieldset>
 <table style="width:95%;">
 		<tr>
 			<td colspan="2" align="center"><br>

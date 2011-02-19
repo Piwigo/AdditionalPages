@@ -4,10 +4,19 @@ if (!defined('PHPWG_ROOT_PATH')) die('Hacking attempt!');
 
 if (!isset($edited_page))
 {
-  $edited_page = array();
-  $edited_page['id'] = 0;
-  $edited_page['homepage'] = false;
   $page_title = l10n('ap_create');
+  $default_user = get_default_user_info(true);
+  $edited_page = array(
+    'id'         => 0,
+    'title'      => '',
+    'permalink'  => '',
+    'homepage'   => false,
+    'standalone' => false,
+    'level'      => $default_user['level'],
+    'users'      => array('guest', 'generic', 'normal', 'admin', 'webmaster'),
+    'groups'     => array(),
+    'content'    => '',
+  );
 }
 
 // Enregistrement
@@ -46,7 +55,7 @@ WHERE permalink = "'.$permalink.'"
   $user_access = 'NULL';
   if ($conf['additional_pages']['user_perm'])
   {
-    $user_access = !empty($_POST['users']) ? '"'.implode(',', $_POST['users']).'"' : '"admin"';
+    $user_access = !empty($_POST['users']) ? '"'.implode(',', $_POST['users']).'"' : '""';
   }
 
   if (empty($page['errors']))
@@ -60,6 +69,7 @@ SET lang = '.$language.',
   content = "'.$_POST['ap_content'].'",
   users = '.$user_access.',
   groups = '.$group_access.',
+  level = '.$_POST['level'].',
   permalink = '.$permalink.',
   standalone = '.$standalone.'
 WHERE id = '.$edited_page['id'] .'
@@ -70,10 +80,20 @@ WHERE id = '.$edited_page['id'] .'
     {
       $query = 'SELECT MAX(ABS(pos)) AS pos FROM ' . ADD_PAGES_TABLE . ';';
       list($position) = array_from_query($query, 'pos');
-      
+
       $query = '
-INSERT INTO ' . ADD_PAGES_TABLE . ' ( pos , lang , title , content , users , groups , permalink, standalone)
-VALUES ('.($position+1).' , '.$language.' , "'.$_POST['title'].'" , "'.$_POST['ap_content'].'" , '.$user_access.' , '.$group_access.' , '.$permalink.' , '.$standalone.');';
+INSERT INTO '.ADD_PAGES_TABLE.' ( pos , lang , title , content , users , groups , level , permalink, standalone)
+VALUES (
+  '.($position+1).',
+  '.$language.',
+  "'.$_POST['title'].'",
+  "'.$_POST['ap_content'].'",
+  '.$user_access.',
+  '.$group_access.',
+  '.$_POST['level'].',
+  '.$permalink.',
+  '.$standalone.'
+);';
       pwg_query($query);
       $edited_page['id'] = mysql_insert_id();
     }
@@ -89,11 +109,7 @@ VALUES ('.($position+1).' , '.$language.' , "'.$_POST['title'].'" , "'.$_POST['a
     mkgetdir($conf['local_data_dir'], MKGETDIR_DEFAULT&~MKGETDIR_DIE_ON_ERROR);
     mkgetdir($conf['local_data_dir'].'/additional_pages_backup', MKGETDIR_DEFAULT&~MKGETDIR_DIE_ON_ERROR);
     $sav_file = @fopen($conf['local_data_dir'].'/additional_pages_backup/' . $edited_page['id'] . '.txt', "w");
-    @fwrite($sav_file, "Title: ".$_POST['title']."
-Permalink: ".$_POST['permalink']."
-Language: ".$_POST['lang']."
-
-" . $_POST['ap_content']);
+    @fwrite($sav_file, "Title: ".$_POST['title']."\nPermalink: ".$_POST['permalink']."\nLanguage: ".$_POST['lang']."\n\n" . $_POST['ap_content']);
     @fclose($sav_file);
 
     if (isset($_GET['redirect']))
@@ -104,11 +120,12 @@ Language: ".$_POST['lang']."
   }
 
   $edited_page['title'] = stripslashes($_POST['title']);
-  $edited_page['permalink'] = $_POST['permalink'];
+  $edited_page['permalink'] = stripslashes($_POST['permalink']);
   $edited_page['lang'] = $_POST['lang'];
   $edited_page['content'] = stripslashes($_POST['ap_content']);
-  $edited_page['groups'] = !empty($_POST['groups']) ? trim($group_access, '"') : '';
-  $edited_page['users'] = !empty($_POST['users']) ? trim($user_access, '"') :  '';
+  $edited_page['groups'] = !empty($_POST['groups']) ? $_POST['groups'] : array();
+  $edited_page['users'] = !empty($_POST['users']) ? $_POST['users'] :  array();
+  $edited_page['level'] = $_POST['level'];
   $edited_page['homepage'] = isset($_POST['homepage']);
   $edited_page['standalone'] = isset($_POST['standalone']);
 }
@@ -128,44 +145,61 @@ $template->assign('lang', array(
   'OPTIONS' => $options,
   'SELECTED' => $selected));
 
-// Selection des groupes
+// Groups options
 if ($conf['additional_pages']['group_perm'])
 {
-	include_once(AP_PATH . 'admin/functions_groups.php');
-  $groups = !empty($edited_page['groups']) ? explode(',', $edited_page['groups']) : array();
-	$template->assign('GROUPSELECTION', get_html_groups_selection(get_all_groups(), 'groups', $groups));
-}
-
-// Selection des utilisateurs
-if ($conf['additional_pages']['user_perm'])
-{
-  $selected_users = array('guest', 'generic', 'normal');
-  if (isset($_GET['edit']) and isset($edited_page['users']))
+	$query = 'SELECT id, name FROM '.GROUPS_TABLE.' ORDER BY name ASC;';
+  $result = pwg_query($query);
+  $groups = array();
+  while ($row = pwg_db_fetch_assoc($result))
   {
-    $selected_users = explode(',', $edited_page['users']);
+    $groups[$row['id']] = $row['name'];
   }
-
-	$template->assign('user_perm', array(
-      'GUEST' => in_array('guest', $selected_users) ? 'checked="checked"' : '',
-      'GENERIC' => in_array('generic', $selected_users) ? 'checked="checked"' : '',
-      'NORMAL' => in_array('normal', $selected_users) ? 'checked="checked"' : ''
+  $template->assign(array(
+    'groups' => $groups,
+    'selected_groups' => $edited_page['groups'],
     )
   );
 }
 
-// Chargement des données pour l'édition
-if ($page['tab'] == 'edit_page')
+// Users options
+if ($conf['additional_pages']['user_perm'])
 {
+  $users_id = array('guest', 'generic', 'normal', 'admin', 'webmaster');
+  $users = array();
+  foreach ($users_id as $id)
+  {
+    $users[$id] = l10n('user_status_'.$id);
+  }
   $template->assign(array(
-    'NAME' => $edited_page['title'],
-    'PERMALINK' => $edited_page['permalink'],
-    'HOMEPAGE' => $edited_page['homepage'],
-    'STANDALONE' => $edited_page['standalone'],
-    'CONTENT' => $edited_page['content']));
+    'users' => $users,
+    'selected_users' => $edited_page['users'],
+    )
+  );
 }
 
-// Parametrage du template
-$template->assign('AP_TITLE', $page_title);
+// User level options
+if ($conf['additional_pages']['level_perm'])
+{
+  foreach ($conf['available_permission_levels'] as $level)
+  {
+    $level_options[$level] = l10n(sprintf('Level %d', $level));
+  }
+  $template->assign(array(
+    'level_perm' => $level_options,
+    'level_selected' => $edited_page['level']
+    )
+  );
+}
+
+// template output
+$template->assign(array(
+  'AP_TITLE' => $page_title,
+  'NAME' => $edited_page['title'],
+  'PERMALINK' => $edited_page['permalink'],
+  'HOMEPAGE' => $edited_page['homepage'],
+  'STANDALONE' => $edited_page['standalone'],
+  'CONTENT' => $edited_page['content']));
 
 $template->set_filename('plugin_admin_content', dirname(__FILE__) . '/template/add_page.tpl');
 $template->assign_var_from_handle('ADMIN_CONTENT', 'plugin_admin_content');

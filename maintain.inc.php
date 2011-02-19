@@ -16,6 +16,7 @@ title VARCHAR( 255 ) NOT NULL ,
 content LONGTEXT NOT NULL ,
 users VARCHAR( 255 ) NULL DEFAULT NULL ,
 groups VARCHAR( 255 ) NULL DEFAULT NULL ,
+level TINYINT( 3 ) UNSIGNED NOT NULL DEFAULT "0" ,
 permalink VARCHAR( 64 ) NULL DEFAULT NULL ,
 standalone ENUM( "true", "false" ) NOT NULL DEFAULT "false" ,
 PRIMARY KEY (id) ,
@@ -30,6 +31,7 @@ DEFAULT CHARACTER SET utf8;';
     $config = array(
       'languages' => array('default' => 'Additional Pages'),
       'show_home' => true,
+      'level_perm' => false,
       'group_perm' => false,
       'user_perm' => false,
       'homepage' => null,
@@ -55,14 +57,6 @@ function plugin_activate()
     $type = strtr($type , array(')' => ',\'additional_page\')'));
     pwg_query('ALTER TABLE ' . HISTORY_TABLE . ' CHANGE section section ' . $type . ' DEFAULT NULL');
   }
-  
-  // Check if upgrade is needed
-  $query = 'SHOW FULL COLUMNS FROM ' . $prefixeTable . 'additionalpages;';
-  $result = array_from_query($query, 'Collation');
-  if (strpos($result[4], 'utf8') === false)
-  {
-    upgrade_ap_from_17();
-  }
 }
 
 function plugin_uninstall()
@@ -74,19 +68,6 @@ function plugin_uninstall()
 
 	$q = 'DELETE FROM ' . CONFIG_TABLE . ' WHERE param="additional_pages" LIMIT 1;';
   pwg_query($q);
-}
-
-function upgrade_ap_from_17()
-{
-  global $prefixeTable;
-
-  $query = 'ALTER TABLE ' . $prefixeTable . 'additionalpages
-MODIFY COLUMN lang varchar(255) CHARACTER SET utf8 NOT NULL,
-MODIFY COLUMN title varchar(255) CHARACTER SET utf8 NOT NULL,
-MODIFY COLUMN text longtext CHARACTER SET utf8 NOT NULL,
-DEFAULT CHARACTER SET utf8;';
-
-  pwg_query($query);
 }
 
 ?>

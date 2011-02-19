@@ -20,12 +20,14 @@ if (isset($_REQUEST['delete']) and isset($_GET['edit']))
   redirect($my_base_url.'&page_deleted=');
 }
 
-$q = 'SELECT id , lang , title , content , users , groups , permalink, standalone
+$q = 'SELECT id , lang , title , content , users , groups , level , permalink, standalone
 FROM ' . ADD_PAGES_TABLE . '
 WHERE id = '.$_GET['edit'].';';
 
-$edited_page = mysql_fetch_assoc(pwg_query($q));
+$edited_page = pwg_db_fetch_assoc(pwg_query($q));
 $page_title = l10n('ap_modify');
+$edited_page['users'] = !empty($edited_page['users']) ? explode(',', $edited_page['users']) : array();
+$edited_page['groups'] = !empty($edited_page['groups']) ? explode(',', $edited_page['groups']) : array();
 $edited_page['homepage'] = $conf['additional_pages']['homepage'] == $edited_page['id'];
 $edited_page['standalone'] = ($edited_page['standalone'] == 'true');
 

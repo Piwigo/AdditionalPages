@@ -7,20 +7,18 @@ global $template, $user;
 $page['section'] = 'additional_page';
 $identifier = $page['ap_homepage'] ? $conf['additional_pages']['homepage'] : $tokens[1];
 
-load_language('plugin.lang.php', AP_PATH);
-
 if (function_exists('get_extended_desc'))
   add_event_handler('AP_render_content', 'get_extended_desc');
 
-// Récupération des données de la page
-$query = 'SELECT id, title , content, users, groups, permalink, standalone
+// Retrieve page data
+$query = 'SELECT id, title , content, users, groups, level, permalink, standalone
 FROM ' . ADD_PAGES_TABLE . '
 ';
 $query .= is_numeric($identifier) ?
   'WHERE id = '.$identifier.';' :
   'WHERE permalink = "'.$identifier.'";';
 
-$row = mysql_fetch_assoc(pwg_query($query));
+$row = pwg_db_fetch_assoc(pwg_query($query));
 
 if (empty($row))
 {
@@ -46,31 +44,41 @@ $page['additional_page'] = array(
   'standalone' => ($row['standalone'] == 'true')
 );
 
-// Utilisateurs autorisés
-if (!empty($row['users']))
+if (!is_admin() and !$page['ap_homepage'])
 {
-  $authorized_users = explode(',', $row['users']);
-  if (!is_admin() and $conf['additional_pages']['user_perm'] and !in_array($user['status'], $authorized_users))
+  // authorized users
+  if (!empty($row['users']))
   {
-    if ($page['ap_homepage']) return;
-  	page_forbidden(l10n('You are not authorized to access the requested page'));
+    $authorized_users = explode(',', $row['users']);
+    if (!is_admin() and $conf['additional_pages']['user_perm'] and !in_array($user['status'], $authorized_users))
+    {
+      if ($page['ap_homepage']) return;
+      page_forbidden(l10n('You are not authorized to access the requested page'));
+    }
+  }
+
+  // authorized groups
+  if (!empty($row['groups']))
+  {
+    $q = 'SELECT *
+  FROM ' . USER_GROUP_TABLE . '
+  WHERE user_id = ' . $user['id'] . ' AND group_id IN (' . $row['groups'] . ');';
+    $array = mysql_fetch_array(pwg_query($q));
+    if (!is_admin() and $conf['additional_pages']['group_perm'] and empty($array))
+    {
+      if ($page['ap_homepage']) return;
+      page_forbidden(l10n('You are not authorized to access the requested page'));
+    }
+  }
+
+  // authorized level
+  if ($user['level'] < $row['level'])
+  {
+    page_forbidden(l10n('You are not authorized to access the requested page'));
   }
 }
 
-// Groupe autorisé
-if (!empty($row['groups']))
-{
-  $q = 'SELECT *
-FROM ' . USER_GROUP_TABLE . '
-WHERE user_id = ' . $user['id'] . ' AND group_id IN (' . $row['groups'] . ');';
-  $array = mysql_fetch_array(pwg_query($q));
-  if (!is_admin() and $conf['additional_pages']['group_perm'] and empty($array))
-  {
-    if ($page['ap_homepage']) return;
-  	page_forbidden(l10n('You are not authorized to access the requested page'));
-  }
-}
-
+// Display standalone page
 if ($page['additional_page']['standalone'])
 {
   echo $page['additional_page']['content'];

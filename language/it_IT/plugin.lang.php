@@ -44,6 +44,7 @@ $lang['ap_standalone_page'] = 'Pagina standalone';
 $lang['ap_homepage_tip'] = 'Sostituisci la home page della tua galleria';
 $lang['ap_standalone_tip'] = 'La pagina richiede la completa struttura HTML';
 $lang['ap_permalink_already_used'] = 'Permalink %s è già utilizzato da pagina %s';
+/*TODO*/$lang['ap_level_perm'] = 'by privacy level';
 
 
 ?>

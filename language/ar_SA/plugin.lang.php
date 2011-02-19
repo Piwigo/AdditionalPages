@@ -37,4 +37,13 @@ $lang['ap_group_perm'] = 'حسب المجموعات';
 $lang['ap_user_perm'] = 'حسب نوع المستخدم';
 $lang['ap_parse_bbcode'] = 'حول الصفحات المكتوبة ب BBcode';
 $lang['ap_convert_bbcode_ok'] = 'التحويل تم.';
+
+/*TODO*/$lang['ap_edit_page'] = 'Edit a page';
+/*TODO*/$lang['ap_set_as_homepage'] = 'Set as Homepage';
+/*TODO*/$lang['ap_standalone_page'] = 'Standalone Page';
+/*TODO*/$lang['ap_homepage_tip'] = 'Replace your gallery\'s homepage';
+/*TODO*/$lang['ap_standalone_tip'] = 'Page require full HTML structure';
+/*TODO*/$lang['ap_permalink_already_used'] = 'Permalink %s is already used by page %s';
+/*TODO*/$lang['ap_level_perm'] = 'by privacy level';
+
 ?>

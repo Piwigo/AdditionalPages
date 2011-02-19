@@ -35,6 +35,13 @@ jQuery().ready( function () {ldelim}
 <fieldset id="indexDisplayConf">
   <legend>{'ap_perm'|@translate}</legend>
   <ul>
+      <li>
+      <label>
+        <span class="property">{'ap_level_perm'|@translate}</span>
+        <input type="checkbox" name="level_perm" id="level_perm" value="on" {if $ap_conf.level_perm}checked="checked"{/if}/>
+      </label>
+    </li>
+
     <li>
       <label>
         <span class="property">{'ap_user_perm'|@translate}</span>

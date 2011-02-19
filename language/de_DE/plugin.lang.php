@@ -44,5 +44,6 @@ $lang['ap_convert_bbcode_ok'] = 'Konvertierung abgeschlossen.';
 /*TODO*/$lang['ap_homepage_tip'] = 'Replace your gallery\'s homepage';
 /*TODO*/$lang['ap_standalone_tip'] = 'Page require full HTML structure';
 /*TODO*/$lang['ap_permalink_already_used'] = 'Permalink %s is already used by page %s';
+/*TODO*/$lang['ap_level_perm'] = 'by privacy level';
 
 ?>
