@@ -19,7 +19,7 @@ if (!isset($edited_page))
   );
 }
 
-// Enregistrement
+// Submit form
 if (isset($_POST['save']))
 {
   if (empty($_POST['title']))
@@ -105,13 +105,14 @@ VALUES (
       conf_update_param('additional_pages', pwg_db_real_escape_string(serialize($conf['additional_pages'])));
     }
 
-    // Enregistrement du fichier de sauvegarde
+    // Backup file
     mkgetdir($conf['local_data_dir'], MKGETDIR_DEFAULT&~MKGETDIR_DIE_ON_ERROR);
-    mkgetdir($conf['local_data_dir'].'/additional_pages_backup', MKGETDIR_DEFAULT&~MKGETDIR_DIE_ON_ERROR);
+    mkgetdir($conf['local_data_dir'].'/additional_pages_backup', MKGETDIR_PROTECT_HTACCESS&~MKGETDIR_DIE_ON_ERROR);
     $sav_file = @fopen($conf['local_data_dir'].'/additional_pages_backup/' . $edited_page['id'] . '.txt', "w");
     @fwrite($sav_file, "Title: ".$_POST['title']."\nPermalink: ".$_POST['permalink']."\nLanguage: ".$_POST['lang']."\n\n" . $_POST['ap_content']);
     @fclose($sav_file);
 
+    // Redirect to admin pannel or additional page
     if (isset($_GET['redirect']))
     {
       redirect(make_index_url() . '/page/' . $edited_page['id']);
@@ -130,7 +131,7 @@ VALUES (
   $edited_page['standalone'] = isset($_POST['standalone']);
 }
 
-// Selection des langues
+// Language options
 $options['ALL'] = l10n('ap_all_lang');
 $selected = 'ALL';
 foreach (get_languages() as $language_code => $language_name)

@@ -93,7 +93,8 @@ var auto_permalink = true;
     <li class="groups">
       <div>
         <a href="#" onClick="jQuery('input[name^=\'groups\']').attr('checked', 'checked');return false;">{'ap_select_all'|@translate}</a> /
-        <a href="#" onClick="jQuery('input[name^=\'groups\']').attr('checked', '');return false;">{'ap_unselect_all'|@translate}</a>
+        <a href="#" onClick="jQuery('input[name^=\'groups\']').attr('checked', '');return false;">{'ap_unselect_all'|@translate}</a> &nbsp; 
+        <i>{'ap_guest'|@translate}</i>
       </div>
     </li>
     {/if}
@@ -111,7 +112,7 @@ var auto_permalink = true;
 		<td colspan="2" align="center"><br>
 		<input class="submit" type="submit" value="{'ap_save'|@translate}" name="save">
 		{if isset($delete)}
-		<input class="submit" type="submit" value="{'ap_delete'|@translate}" name="delete" onclick="return confirm('Are you sure?'|@translate);"/>
+		<input class="submit" type="submit" value="{'ap_delete'|@translate}" name="delete" onclick="return confirm('{'Are you sure?'|@translate}');"/>
 		{/if}
 		</tr>
 </table>

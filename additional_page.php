@@ -4,7 +4,6 @@ if (!defined('PHPWG_ROOT_PATH')) die('Hacking attempt!');
 
 global $template, $user;
 
-$page['section'] = 'additional_page';
 $identifier = $page['ap_homepage'] ? $conf['additional_pages']['homepage'] : $tokens[1];
 
 if (function_exists('get_extended_desc'))
@@ -20,37 +19,33 @@ $query .= is_numeric($identifier) ?
 
 $row = pwg_db_fetch_assoc(pwg_query($query));
 
+// Page not found
 if (empty($row))
 {
   if ($page['ap_homepage']) return;
   page_not_found('Requested page does not exist');
 }
 
+// Redirect with permalink if exist
 if (is_numeric($identifier) and !empty($row['permalink']) and !$page['ap_homepage'])
 {
   redirect(make_index_url().'/page/' . $row['permalink']);
 }
 
-if (!$page['ap_homepage'] and $row['id'] == $conf['additional_pages']['homepage'])
+// Access controls
+if (!is_admin() or (!is_admin() xor $page['ap_homepage']))
 {
-  redirect(make_index_url());
-}
+  // authorized level
+  if ($user['level'] < $row['level'])
+  {
+    page_forbidden(l10n('You are not authorized to access the requested page'));
+  }
 
-$page['additional_page'] = array(
-  'id' => $row['id'],
-  'permalink' => @$row['permalink'],
-  'title' => trigger_event('AP_render_content', $row['title']),
-  'content' => trigger_event('AP_render_content', $row['content']),
-  'standalone' => ($row['standalone'] == 'true')
-);
-
-if (!is_admin() and !$page['ap_homepage'])
-{
   // authorized users
-  if (!empty($row['users']))
+  if (isset($row['users']))
   {
     $authorized_users = explode(',', $row['users']);
-    if (!is_admin() and $conf['additional_pages']['user_perm'] and !in_array($user['status'], $authorized_users))
+    if (!in_array($user['status'], $authorized_users))
     {
       if ($page['ap_homepage']) return;
       page_forbidden(l10n('You are not authorized to access the requested page'));
@@ -60,30 +55,36 @@ if (!is_admin() and !$page['ap_homepage'])
   // authorized groups
   if (!empty($row['groups']))
   {
-    $q = 'SELECT *
-  FROM ' . USER_GROUP_TABLE . '
-  WHERE user_id = ' . $user['id'] . ' AND group_id IN (' . $row['groups'] . ');';
-    $array = mysql_fetch_array(pwg_query($q));
-    if (!is_admin() and $conf['additional_pages']['group_perm'] and empty($array))
+    $query = 'SELECT group_id
+FROM ' . USER_GROUP_TABLE . '
+WHERE user_id = ' . $user['id'] . '
+  AND group_id IN (' . $row['groups'] . ')
+;';
+    $groups = array_from_query($query, 'group_id');
+    if (empty($groups))
     {
       if ($page['ap_homepage']) return;
       page_forbidden(l10n('You are not authorized to access the requested page'));
     }
   }
-
-  // authorized level
-  if ($user['level'] < $row['level'])
-  {
-    page_forbidden(l10n('You are not authorized to access the requested page'));
-  }
 }
 
 // Display standalone page
-if ($page['additional_page']['standalone'])
+if ($row['standalone'] == 'true')
 {
-  echo $page['additional_page']['content'];
+  echo $row['content'];
   exit;
 }
+
+// Page initilization
+$page['section'] = 'additional_page';
+
+$page['additional_page'] = array(
+  'id' => $row['id'],
+  'permalink' => @$row['permalink'],
+  'title' => trigger_event('AP_render_content', $row['title']),
+  'content' => trigger_event('AP_render_content', $row['content']),
+);
 
 add_event_handler('loc_end_index', 'ap_set_index');
 

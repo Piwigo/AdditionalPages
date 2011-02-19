@@ -18,9 +18,11 @@ define('ADD_PAGES_TABLE' , $prefixeTable . 'additionalpages');
 
 $conf['additional_pages'] = @unserialize($conf['additional_pages']);
 
+// Need upgrade?
 if (!isset($conf['additional_pages']['level_perm']))
   include(AP_PATH.'admin/upgrade.inc.php');
 
+// Admin menu
 function additional_pages_admin_menu($menu)
 {
     array_push($menu, array(
@@ -29,6 +31,7 @@ function additional_pages_admin_menu($menu)
     return $menu;
 }
 
+// Section init
 function section_init_additional_page()
 {
   global $tokens, $conf, $page;
@@ -42,6 +45,7 @@ function section_init_additional_page()
     redirect(make_index_url().'/page/'.$tokens[1]);
 }
 
+// Menubar
 function register_ap_menubar_blocks($menu_ref_arr)
 {
   $menu = & $menu_ref_arr[0];
@@ -57,11 +61,11 @@ function ap_apply($menu_ref_arr)
   
   if ( ($block = $menu->get_block( 'mbAdditionalPages' ) ) != null )
   {
-    $query = 'SELECT DISTINCT id, title, permalink, GROUP_CONCAT(groups)
+    $query = 'SELECT DISTINCT id, title, permalink
 FROM ' . ADD_PAGES_TABLE . '
 LEFT JOIN ' . USER_GROUP_TABLE . '
   ON user_id = '.$user['id'].'
-WHERE (lang = "' . $user['language'] . '" OR lang IS NULL)
+WHERE (lang IS NULL OR lang = "'.$user['language'].'")
   AND (users IS NULL OR users LIKE "%'.$user['status'].'%")
   AND (groups IS NULL OR groups REGEXP CONCAT("(^|,)",group_id,"(,|$)"))
   AND level <= '.$user['level'].'
