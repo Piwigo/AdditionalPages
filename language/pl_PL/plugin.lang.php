@@ -38,11 +38,11 @@ $lang['ap_user_perm'] = 'użytkownikami';
 $lang['ap_parse_bbcode'] = 'Konwertuj strony pisane przy użyciu BBCode';
 $lang['ap_convert_bbcode_ok'] = 'Konwersja aktywna.';
 
-/*TODO*/$lang['ap_edit_page'] = 'Edit a page';
-/*TODO*/$lang['ap_set_as_homepage'] = 'Set as Homepage';
-/*TODO*/$lang['ap_standalone_page'] = 'Standalone Page';
-/*TODO*/$lang['ap_homepage_tip'] = 'Replace your gallery\'s homepage';
-/*TODO*/$lang['ap_standalone_tip'] = 'Page require full HTML structure';
-/*TODO*/$lang['ap_permalink_already_used'] = 'Permalink %s is already used by page %s';
+$lang['ap_edit_page'] = 'Edytuj stronę';
+$lang['ap_set_as_homepage'] = 'Ustaw jako stronę domową';
+$lang['ap_standalone_page'] = 'Samodzielna strona';
+$lang['ap_homepage_tip'] = 'Zastąp stronę domową swojej galerii';
+$lang['ap_standalone_tip'] = 'Strona wymaga pełnej struktury HTML';
+$lang['ap_permalink_already_used'] = 'Link permanentny %s jest już używane przez stronę %s';
 
 ?>
