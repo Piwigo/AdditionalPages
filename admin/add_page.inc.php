@@ -58,6 +58,8 @@ WHERE permalink = "'.$permalink.'"
     $user_access = !empty($_POST['users']) ? '"'.implode(',', $_POST['users']).'"' : '""';
   }
 
+  $level_access = !empty($_POST['level']) ? $_POST['level'] : 'NULL';
+
   if (empty($page['errors']))
   {
     if ($page['tab'] == 'edit_page')
@@ -69,7 +71,7 @@ SET lang = '.$language.',
   content = "'.$_POST['ap_content'].'",
   users = '.$user_access.',
   groups = '.$group_access.',
-  level = '.$_POST['level'].',
+  level = '.$level_access.',
   permalink = '.$permalink.',
   standalone = '.$standalone.'
 WHERE id = '.$edited_page['id'] .'
@@ -90,7 +92,7 @@ VALUES (
   "'.$_POST['ap_content'].'",
   '.$user_access.',
   '.$group_access.',
-  '.$_POST['level'].',
+  '.$level_access.',
   '.$permalink.',
   '.$standalone.'
 );';
