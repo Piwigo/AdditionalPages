@@ -44,6 +44,6 @@ $lang['ap_standalone_page'] = 'Fristående sida';
 $lang['ap_homepage_tip'] = 'Ersätt startsidan för ditt galleri';
 $lang['ap_standalone_tip'] = 'Sidan kräver full HTML struktur';
 $lang['ap_permalink_already_used'] = 'Permalänk %s används redan av sidan %s';
-/*TODO*/$lang['ap_level_perm'] = 'by privacy level';
+$lang['ap_level_perm'] = 'enligt säkerhets nivå';
 
 ?>
