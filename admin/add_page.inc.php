@@ -55,7 +55,7 @@ WHERE permalink = "'.$permalink.'"
   $standalone = isset($_POST['standalone']) ? '"true"' : '"false"';
 
   $user_access = 'NULL';
-  if ($conf['additional_pages']['user_perm'])
+  if ($conf['AP']['user_perm'])
   {
     $user_access = !empty($_POST['users']) ? '"'.implode(',', $_POST['users']).'"' : '""';
   }
@@ -103,10 +103,10 @@ VALUES (
     }
 
     // Homepage
-    if (isset($_POST['homepage']) xor $conf['additional_pages']['homepage'] == $edited_page['id'])
+    if (isset($_POST['homepage']) xor $conf['AP']['homepage'] == $edited_page['id'])
     {
-      $conf['additional_pages']['homepage'] = isset($_POST['homepage']) ? $edited_page['id'] : null;
-      conf_update_param('additional_pages', pwg_db_real_escape_string(serialize($conf['additional_pages'])));
+      $conf['AP']['homepage'] = isset($_POST['homepage']) ? $edited_page['id'] : null;
+      conf_update_param('additional_pages', pwg_db_real_escape_string(serialize($conf['AP'])));
     }
 
     // Backup file
@@ -151,7 +151,7 @@ $template->assign('lang', array(
   'SELECTED' => $selected));
 
 // Groups options
-if ($conf['additional_pages']['group_perm'])
+if ($conf['AP']['group_perm'])
 {
 	$query = 'SELECT id, name FROM '.GROUPS_TABLE.' ORDER BY name ASC;';
   $result = pwg_query($query);
@@ -168,7 +168,7 @@ if ($conf['additional_pages']['group_perm'])
 }
 
 // Users options
-if ($conf['additional_pages']['user_perm'])
+if ($conf['AP']['user_perm'])
 {
   $users_id = array('guest', 'generic', 'normal', 'admin', 'webmaster');
   $users = array();
@@ -184,7 +184,7 @@ if ($conf['additional_pages']['user_perm'])
 }
 
 // User level options
-if ($conf['additional_pages']['level_perm'])
+if ($conf['AP']['level_perm'])
 {
   foreach ($conf['available_permission_levels'] as $level)
   {
@@ -200,11 +200,13 @@ if ($conf['additional_pages']['level_perm'])
 // template output
 $template->assign(array(
   'AP_TITLE' => $page_title,
-  'NAME' => $edited_page['title'],
-  'PERMALINK' => $edited_page['permalink'],
+  'NAME' => htmlspecialchars($edited_page['title']),
+  'PERMALINK' => htmlspecialchars($edited_page['permalink']),
   'HOMEPAGE' => $edited_page['homepage'],
   'STANDALONE' => $edited_page['standalone'],
-  'CONTENT' => $edited_page['content']));
+  'CONTENT' => htmlspecialchars($edited_page['content'])
+  )
+);
 
 $template->set_filename('plugin_admin_content', dirname(__FILE__) . '/template/add_page.tpl');
 $template->assign_var_from_handle('ADMIN_CONTENT', 'plugin_admin_content');

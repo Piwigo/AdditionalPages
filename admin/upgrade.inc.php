@@ -17,7 +17,7 @@ DEFAULT CHARACTER SET utf8;';
   pwg_query($query);
 }
 
-if ($conf['additional_pages'] === false)
+if ($conf['AP'] === false)
 {
   load_conf_from_db('param = "additional_pages"');
   $old_conf = explode ("," , $conf['additional_pages']);
@@ -61,7 +61,7 @@ ORDER BY pos ASC
 
     $position = $row['pos'];
     if ($row['pos'] === '0')
-      $position = '-100';
+      $position = '-1000';
     elseif (empty($row['pos']))
       $position = '0';
 
@@ -69,7 +69,7 @@ ORDER BY pos ASC
 
     $query = '
 UPDATE '.$prefixeTable.'additionalpages
-SET title = "'.addslashes($title).'",
+SET title = "'.pwg_db_real_escape_string($title).'",
     pos = '.$position.',
     lang = '.$language.',
     users = '.$authorized_users.',
@@ -107,12 +107,12 @@ WHERE id = '.$row['id'].'
     else $new_conf['languages'][$array[0]] = $array[1];
   }
 
-  $conf['additional_pages'] = $new_conf;
+  $conf['AP'] = $new_conf;
 
   conf_update_param('additional_pages', pwg_db_real_escape_string(serialize($new_conf)));
 }
 
-if (!isset($conf['additional_pages']['level_perm']))
+if (!isset($conf['AP']['level_perm']))
 {
   $query = '
 ALTER TABLE ' . $prefixeTable . 'additionalpages
@@ -127,9 +127,9 @@ WHERE users IS NOT NULL
 ;';
   pwg_query($query);
 
-  $conf['additional_pages']['level_perm'] = false;
+  $conf['AP']['level_perm'] = false;
 
-  conf_update_param('additional_pages', pwg_db_real_escape_string(serialize($conf['additional_pages'])));
+  conf_update_param('additional_pages', pwg_db_real_escape_string(serialize($conf['AP'])));
 }
 
 ?>

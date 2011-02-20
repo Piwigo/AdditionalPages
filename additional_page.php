@@ -4,7 +4,7 @@ if (!defined('PHPWG_ROOT_PATH')) die('Hacking attempt!');
 
 global $template, $user;
 
-$identifier = $page['ap_homepage'] ? $conf['additional_pages']['homepage'] : $tokens[1];
+$identifier = $page['ap_homepage'] ? $conf['AP']['homepage'] : $tokens[1];
 
 if (function_exists('get_extended_desc'))
   add_event_handler('AP_render_content', 'get_extended_desc');
@@ -98,7 +98,7 @@ function ap_set_index()
     )
   );
 
-  if ($conf['additional_pages']['show_home'] and !$page['ap_homepage'])
+  if ($conf['AP']['show_home'] and !$page['ap_homepage'])
   {
     $template->assign('PLUGIN_INDEX_ACTIONS' , '
       <li><a href="'.make_index_url().'" title="' . l10n('return to homepage') . '">

@@ -38,7 +38,7 @@ DEFAULT CHARACTER SET utf8;';
     );
 
     $query = 'INSERT INTO ' . CONFIG_TABLE . ' (param,value,comment)
-VALUES ("additional_pages" , "'.pwg_db_real_escape_string(serialize($config)).'" , "Additional Pages config configuration");';
+VALUES ("additional_pages" , "'.pwg_db_real_escape_string(serialize($config)).'" , "Additional Pages configuration");';
     pwg_query($query);
   }
 }

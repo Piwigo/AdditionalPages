@@ -16,10 +16,10 @@ define('AP_DIR' , basename(dirname(__FILE__)));
 define('AP_PATH' , PHPWG_PLUGINS_PATH . AP_DIR . '/');
 define('ADD_PAGES_TABLE' , $prefixeTable . 'additionalpages');
 
-$conf['additional_pages'] = @unserialize($conf['additional_pages']);
+$conf['AP'] = @unserialize($conf['additional_pages']);
 
 // Need upgrade?
-if (!isset($conf['additional_pages']['level_perm']))
+if (!isset($conf['AP']['level_perm']))
   include(AP_PATH.'admin/upgrade.inc.php');
 
 // Admin menu
@@ -38,7 +38,7 @@ function section_init_additional_page()
 
   $page['ap_homepage'] = (count($tokens) == 1 and empty($tokens[0]));
 
-  if (($tokens[0] == 'page' and !empty($tokens[1])) or ($page['ap_homepage'] and !is_null($conf['additional_pages']['homepage'])))
+  if (($tokens[0] == 'page' and !empty($tokens[1])) or ($page['ap_homepage'] and !is_null($conf['AP']['homepage'])))
     include(AP_PATH . 'additional_page.php');
 
   if ($tokens[0] == 'additional_page' and !empty($tokens[1]))
@@ -82,9 +82,9 @@ ORDER BY pos ASC
 
     if (!empty($data))
     {
-      $title = isset($conf['additional_pages']['languages'][$user['language']]) ?
-        $conf['additional_pages']['languages'][$user['language']] :
-        @$conf['additional_pages']['languages']['default'];
+      $title = isset($conf['AP']['languages'][$user['language']]) ?
+        $conf['AP']['languages'][$user['language']] :
+        @$conf['AP']['languages']['default'];
 
       $template->set_template_dir(AP_PATH.'template/');
       $block->set_title($title);
