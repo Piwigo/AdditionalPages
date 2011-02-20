@@ -44,6 +44,6 @@ $lang['ap_standalone_page'] = 'Автономная страница';
 $lang['ap_homepage_tip'] = 'Заменить гтавную траницу галереи';
 $lang['ap_standalone_tip'] = 'Для страницы требуется полный код HTML';
 $lang['ap_permalink_already_used'] = 'Постоянная ссылка %s уже используется страницей %s';
-/*TODO*/$lang['ap_level_perm'] = 'by privacy level';
+$lang['ap_level_perm'] = 'по уровню доступа';
 
 ?>
