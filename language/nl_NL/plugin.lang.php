@@ -44,6 +44,6 @@ $lang['ap_standalone_page'] = 'Losstaande pagina';
 $lang['ap_homepage_tip'] = 'Verander de Startpagina van uw galerie';
 $lang['ap_standalone_tip'] = 'Deze pagina dient een volledige HTML-structuur te hebben';
 $lang['ap_permalink_already_used'] = 'De permalink %s wordt al gebruikt door pagina %s';
-/*TODO*/$lang['ap_level_perm'] = 'by privacy level';
+$lang['ap_level_perm'] = 'op privacy nivo';
 
 ?>
