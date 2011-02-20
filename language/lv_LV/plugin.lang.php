@@ -38,12 +38,12 @@ $lang['ap_user_perm'] = 'pēc lietotāju tipa';
 $lang['ap_parse_bbcode'] = 'Konvertēt BBCode kodā rakstītās lapas';
 $lang['ap_convert_bbcode_ok'] = 'Konvertācija veiksmīga.';
 
-/*TODO*/$lang['ap_edit_page'] = 'Edit a page';
-/*TODO*/$lang['ap_set_as_homepage'] = 'Set as Homepage';
-/*TODO*/$lang['ap_standalone_page'] = 'Standalone Page';
-/*TODO*/$lang['ap_homepage_tip'] = 'Replace your gallery\'s homepage';
-/*TODO*/$lang['ap_standalone_tip'] = 'Page require full HTML structure';
-/*TODO*/$lang['ap_permalink_already_used'] = 'Permalink %s is already used by page %s';
+$lang['ap_edit_page'] = 'Rediģēt lapu';
+$lang['ap_set_as_homepage'] = 'Iestatīt kā Mājaslapu';
+$lang['ap_standalone_page'] = 'Patstāvīga lapa';
+$lang['ap_homepage_tip'] = 'Nomainīt jūsu galerijas mājaslapu';
+$lang['ap_standalone_tip'] = 'Lapai nepieciešama HTML struktūra';
+$lang['ap_permalink_already_used'] = 'Pastāvīgo saiti %s jau lieto %s lapa';
 /*TODO*/$lang['ap_level_perm'] = 'by privacy level';
 
 ?>
