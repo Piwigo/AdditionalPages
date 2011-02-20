@@ -44,6 +44,6 @@ $lang['ap_standalone_page'] = 'Página autonoma';
 $lang['ap_homepage_tip'] = 'Sustituye la página principal de tú Galería';
 $lang['ap_standalone_tip'] = 'La página requiere una estructura completa HTML';
 $lang['ap_permalink_already_used'] = 'El enlace permanente% s ya está siendo utilizado por la página% s';
-/*TODO*/$lang['ap_level_perm'] = 'by privacy level';
+$lang['ap_level_perm'] = 'por nivel de confidencialidad';
 
 ?>
