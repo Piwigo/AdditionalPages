@@ -2,10 +2,12 @@
 
 if (!defined('PHPWG_ROOT_PATH')) die('Hacking attempt!');
 
+$default_user = get_default_user_info(true);
+
 if (!isset($edited_page))
 {
   $page_title = l10n('ap_create');
-  $default_user = get_default_user_info(true);
+
   $edited_page = array(
     'id'         => 0,
     'title'      => '',
@@ -58,7 +60,7 @@ WHERE permalink = "'.$permalink.'"
     $user_access = !empty($_POST['users']) ? '"'.implode(',', $_POST['users']).'"' : '""';
   }
 
-  $level_access = !empty($_POST['level']) ? $_POST['level'] : 'NULL';
+  $level_access = !empty($_POST['level']) ? $_POST['level'] : $default_user['level'];
 
   if (empty($page['errors']))
   {
@@ -97,7 +99,7 @@ VALUES (
   '.$standalone.'
 );';
       pwg_query($query);
-      $edited_page['id'] = mysql_insert_id();
+      $edited_page['id'] = pwg_db_insert_id(ADD_PAGES_TABLE, 'id');
     }
 
     // Homepage
@@ -128,7 +130,7 @@ VALUES (
   $edited_page['content'] = stripslashes($_POST['ap_content']);
   $edited_page['groups'] = !empty($_POST['groups']) ? $_POST['groups'] : array();
   $edited_page['users'] = !empty($_POST['users']) ? $_POST['users'] :  array();
-  $edited_page['level'] = $_POST['level'];
+  $edited_page['level'] = !empty($_POST['level']) ? $_POST['level'] :  $default_user['level'];
   $edited_page['homepage'] = isset($_POST['homepage']);
   $edited_page['standalone'] = isset($_POST['standalone']);
 }
