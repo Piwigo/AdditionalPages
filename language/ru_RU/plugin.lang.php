@@ -38,12 +38,12 @@ $lang['ap_user_perm'] = 'для типов пользователей';
 $lang['ap_parse_bbcode'] = 'Конвертировать страницы с BBCode';
 $lang['ap_convert_bbcode_ok'] = 'Конвертирование выполнено';
 
-/*TODO*/$lang['ap_edit_page'] = 'Edit a page';
-/*TODO*/$lang['ap_set_as_homepage'] = 'Set as Homepage';
-/*TODO*/$lang['ap_standalone_page'] = 'Standalone Page';
-/*TODO*/$lang['ap_homepage_tip'] = 'Replace your gallery\'s homepage';
-/*TODO*/$lang['ap_standalone_tip'] = 'Page require full HTML structure';
-/*TODO*/$lang['ap_permalink_already_used'] = 'Permalink %s is already used by page %s';
+$lang['ap_edit_page'] = 'Редактировать страницу';
+$lang['ap_set_as_homepage'] = 'Сделать домашней страницей';
+$lang['ap_standalone_page'] = 'Автономная страница';
+$lang['ap_homepage_tip'] = 'Заменить гтавную траницу галереи';
+$lang['ap_standalone_tip'] = 'Для страницы требуется полный код HTML';
+$lang['ap_permalink_already_used'] = 'Постоянная ссылка %s уже используется страницей %s';
 /*TODO*/$lang['ap_level_perm'] = 'by privacy level';
 
 ?>
