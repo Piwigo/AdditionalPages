@@ -44,6 +44,6 @@ $lang['ap_standalone_page'] = 'Patstāvīga lapa';
 $lang['ap_homepage_tip'] = 'Nomainīt jūsu galerijas mājaslapu';
 $lang['ap_standalone_tip'] = 'Lapai nepieciešama HTML struktūra';
 $lang['ap_permalink_already_used'] = 'Pastāvīgo saiti %s jau lieto %s lapa';
-/*TODO*/$lang['ap_level_perm'] = 'by privacy level';
+$lang['ap_level_perm'] = 'ar konfidencialitātes līmeni';
 
 ?>
