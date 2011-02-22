@@ -68,14 +68,16 @@ jQuery().ready( function () {ldelim}
       </label>
     </li>
 
+    {if !$AMM_INSTALLED}
     <li>
       <label>
         <span class="property">{'ap_show_menu'|@translate}</span>
-        <input type="checkbox" name="show_menu" id="show_menu" value="on" {if isset($SHOW_MENU)}checked="checked"{/if}/>
+        <input type="checkbox" name="show_menu" id="show_menu" value="on" {if $SHOW_MENU}checked="checked"{/if}/>
       </label>
     </li>
+    {/if}
 
-    <li id="menu_name" {if !isset($SHOW_MENU)}style="display:none;{/if}">
+    <li id="menu_name" {if !$AMM_INSTALLED and !$SHOW_MENU}style="display:none;{/if}">
       <span class="property">{'ap_menu_name'|@translate} :
         <select name="lang_desc_select" style="margin-left:30px;">
           {foreach from=$language item=lang}
@@ -87,6 +89,12 @@ jQuery().ready( function () {ldelim}
         {/foreach}
       </span>
     </li>
+
+    {if $AMM_INSTALLED}
+    <li style="margin-top:40px;">
+      <span class="property"><a href="{$AMM_URI}">{'g002_setmenu_nfo'|@translate}</a></span>
+    </li>
+    {/if}
   </ul>
 </fieldset>
 	<p><input class="submit" type="submit" value="{'Submit'|@translate}" name="submit"/></p>

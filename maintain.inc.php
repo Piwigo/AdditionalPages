@@ -22,8 +22,12 @@ standalone ENUM( "true", "false" ) NOT NULL DEFAULT "false" ,
 PRIMARY KEY (id) ,
 INDEX (pos) ,
 INDEX (lang))
-DEFAULT CHARACTER SET utf8;';
-    pwg_query($query);
+DEFAULT CHARACTER SET utf8';
+    if ('mysql' == $conf['dblayer'])
+    {
+      $query .= ' ENGINE=MYISAM';
+    }
+    pwg_query($query.';');
   }
 
   if (!isset($conf['additional_pages']))

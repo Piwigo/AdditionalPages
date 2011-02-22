@@ -22,6 +22,13 @@ $conf['AP'] = @unserialize($conf['additional_pages']);
 if (!isset($conf['AP']['level_perm']))
   include(AP_PATH.'admin/upgrade.inc.php');
 
+// Unset $conf['random_index_redirect'] if homepage is defined
+if (!empty($conf['random_index_redirect']) and !is_null($conf['AP']['homepage']))
+{
+  $conf['ap_random_index_redirect'] = $conf['random_index_redirect'];
+  $conf['random_index_redirect'] = array();
+}
+
 // Admin menu
 function additional_pages_admin_menu($menu)
 {

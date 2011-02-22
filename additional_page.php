@@ -2,6 +2,28 @@
 
 if (!defined('PHPWG_ROOT_PATH')) die('Hacking attempt!');
 
+function check_random_index_redirect()
+{
+  global $conf;
+
+  if (!empty($conf['ap_random_index_redirect']))
+  {
+    $random_index_redirect = array();
+    foreach ($conf['ap_random_index_redirect'] as $random_url => $random_url_condition)
+    {
+      if (empty($random_url_condition) or eval($random_url_condition))
+      {
+        $random_index_redirect[] = $random_url;
+      }
+    }
+    if (!empty($random_index_redirect))
+    {
+      redirect($random_index_redirect[mt_rand(0, count($random_index_redirect)-1)]);
+    }
+  }
+  return true;
+}
+
 global $template, $user;
 
 $identifier = $page['ap_homepage'] ? $conf['AP']['homepage'] : $tokens[1];
@@ -38,6 +60,7 @@ if (!is_admin() or (!is_admin() xor $page['ap_homepage']))
   // authorized level
   if ($user['level'] < $row['level'])
   {
+    if ($page['ap_homepage'] and check_random_index_redirect()) return;
     page_forbidden(l10n('You are not authorized to access the requested page'));
   }
 
@@ -47,7 +70,7 @@ if (!is_admin() or (!is_admin() xor $page['ap_homepage']))
     $authorized_users = explode(',', $row['users']);
     if (!in_array($user['status'], $authorized_users))
     {
-      if ($page['ap_homepage']) return;
+      if ($page['ap_homepage'] and check_random_index_redirect()) return;
       page_forbidden(l10n('You are not authorized to access the requested page'));
     }
   }
@@ -63,7 +86,7 @@ WHERE user_id = ' . $user['id'] . '
     $groups = array_from_query($query, 'group_id');
     if (empty($groups))
     {
-      if ($page['ap_homepage']) return;
+      if ($page['ap_homepage'] and check_random_index_redirect()) return;
       page_forbidden(l10n('You are not authorized to access the requested page'));
     }
   }
