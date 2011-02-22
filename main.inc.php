@@ -19,7 +19,7 @@ define('ADD_PAGES_TABLE' , $prefixeTable . 'additionalpages');
 $conf['AP'] = @unserialize($conf['additional_pages']);
 
 // Need upgrade?
-if (!isset($conf['AP']['level_perm']))
+if (!isset($conf['AP']['language_perm']))
   include(AP_PATH.'admin/upgrade.inc.php');
 
 // Unset $conf['random_index_redirect'] if homepage is defined
@@ -42,6 +42,12 @@ function additional_pages_admin_menu($menu)
 function section_init_additional_page()
 {
   global $tokens, $conf, $page;
+
+  if (defined('EXTENDED_DESC_PATH'))
+  {
+    add_event_handler('AP_render_content', 'get_extended_desc');
+    add_event_handler('AP_render_title', 'get_user_language_desc');
+  }
 
   $page['ap_homepage'] = (count($tokens) == 1 and empty($tokens[0]));
 
@@ -84,7 +90,7 @@ ORDER BY pos ASC
     while ($row = pwg_db_fetch_assoc($result))
     {
       $url = make_index_url().'/page/'.(isset($row['permalink']) ? $row['permalink'] : $row['id']);
-      array_push($data, array('URL' => $url, 'LABEL' => $row['title']));
+      array_push($data, array('URL' => $url, 'LABEL' => trigger_event('AP_render_title', $row['title'])));
     }
 
     if (!empty($data))

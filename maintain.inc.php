@@ -38,6 +38,7 @@ DEFAULT CHARACTER SET utf8';
       'level_perm' => false,
       'group_perm' => false,
       'user_perm' => false,
+      'language_perm' => false,
       'homepage' => null,
     );
 

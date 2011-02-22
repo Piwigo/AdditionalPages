@@ -132,4 +132,18 @@ WHERE users IS NOT NULL
   conf_update_param('additional_pages', pwg_db_real_escape_string(serialize($conf['AP'])));
 }
 
+if (!isset($conf['AP']['language_perm']))
+{
+  $query = '
+SELECT id
+FROM '.$prefixeTable.'additionalpages
+WHERE lang IS NOT NULL
+;';
+  $ids = array_from_query($query, 'id');
+
+  $conf['AP']['language_perm'] = !empty($ids);
+
+  conf_update_param('additional_pages', pwg_db_real_escape_string(serialize($conf['AP'])));  
+}
+
 ?>

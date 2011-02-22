@@ -45,5 +45,6 @@ $lang['ap_convert_bbcode_ok'] = 'Převod proběhl v pořádku.';
 /*TODO*/$lang['ap_standalone_tip'] = 'Page require full HTML structure';
 /*TODO*/$lang['ap_permalink_already_used'] = 'Permalink %s is already used by page %s';
 /*TODO*/$lang['ap_level_perm'] = 'by privacy level';
+/*TODO*/$lang['ap_language_perm'] = 'by language';
 
 ?>

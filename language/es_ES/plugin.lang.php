@@ -45,5 +45,6 @@ $lang['ap_homepage_tip'] = 'Sustituye la página principal de tú Galería';
 $lang['ap_standalone_tip'] = 'La página requiere una estructura completa HTML';
 $lang['ap_permalink_already_used'] = 'El enlace permanente% s ya está siendo utilizado por la página% s';
 $lang['ap_level_perm'] = 'por nivel de confidencialidad';
+/*TODO*/$lang['ap_language_perm'] = 'by language';
 
 ?>

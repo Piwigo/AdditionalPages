@@ -42,12 +42,14 @@ var auto_permalink = true;
       <input type="text" size="60" value="{if isset($PERMALINK)}{$PERMALINK}{/if}" name="permalink" id="permalink"/>
     </li>
 
+    {if isset($lang)}
     <li>
       <span class="property">
         <label for="lang">{'ap_page_lang'|@translate}</label>
       </span>
-      {html_options name=lang id=lang options=$lang.OPTIONS selected=$lang.SELECTED}
+      {html_options name=lang id=lang options=$lang selected=$selected_lang}
     </li>
+    {/if}
 
     <li style="margin-top:15px;">
       <span class="property">

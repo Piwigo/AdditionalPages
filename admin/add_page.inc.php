@@ -12,6 +12,7 @@ if (!isset($edited_page))
     'id'         => 0,
     'title'      => '',
     'permalink'  => '',
+    'lang'       => 'ALL',
     'homepage'   => false,
     'standalone' => false,
     'level'      => $default_user['level'],
@@ -50,7 +51,7 @@ WHERE permalink = "'.$permalink.'"
     $permalink = 'NULL';
   }
 
-  $language = $_POST['lang'] != 'ALL' ? '"'.$_POST['lang'].'"' : 'NULL';
+  $language = (empty($_POST['lang']) or $_POST['lang'] == 'ALL') ? 'NULL' : '"'.$_POST['lang'].'"';
   $group_access = !empty($_POST['groups']) ? '"'.implode(',', $_POST['groups']).'"' : 'NULL';
   $standalone = isset($_POST['standalone']) ? '"true"' : '"false"';
 
@@ -113,7 +114,7 @@ VALUES (
     mkgetdir($conf['local_data_dir'], MKGETDIR_DEFAULT&~MKGETDIR_DIE_ON_ERROR);
     mkgetdir($conf['local_data_dir'].'/additional_pages_backup', MKGETDIR_PROTECT_HTACCESS&~MKGETDIR_DIE_ON_ERROR);
     $sav_file = @fopen($conf['local_data_dir'].'/additional_pages_backup/' . $edited_page['id'] . '.txt', "w");
-    @fwrite($sav_file, "Title: ".$_POST['title']."\nPermalink: ".$_POST['permalink']."\nLanguage: ".$_POST['lang']."\n\n" . $_POST['ap_content']);
+    @fwrite($sav_file, "Title: ".stripslashes($_POST['title'])."\nPermalink: ".stripslashes($_POST['permalink'])."\n\n".stripslashes($_POST['ap_content']));
     @fclose($sav_file);
 
     // Redirect to admin pannel or additional page
@@ -126,8 +127,8 @@ VALUES (
 
   $edited_page['title'] = stripslashes($_POST['title']);
   $edited_page['permalink'] = stripslashes($_POST['permalink']);
-  $edited_page['lang'] = $_POST['lang'];
   $edited_page['content'] = stripslashes($_POST['ap_content']);
+  $edited_page['lang'] = !empty($_POST['lang']) ? $_POST['lang'] : 'ALL';
   $edited_page['groups'] = !empty($_POST['groups']) ? $_POST['groups'] : array();
   $edited_page['users'] = !empty($_POST['users']) ? $_POST['users'] :  array();
   $edited_page['level'] = !empty($_POST['level']) ? $_POST['level'] :  $default_user['level'];
@@ -136,19 +137,20 @@ VALUES (
 }
 
 // Language options
-$options['ALL'] = l10n('ap_all_lang');
-$selected = 'ALL';
-foreach (get_languages() as $language_code => $language_name)
+if ($conf['AP']['language_perm'])
 {
-  $options[$language_code] = $language_name;
-  if (isset($edited_page['lang']) and $edited_page['lang'] == $language_code)
+  $languages = get_languages();
+  $options = array('ALL' => l10n('ap_all_lang'));
+  foreach ($languages as $language_code => $language_name)
   {
-    $selected = $language_code;
+    $options[$language_code] = $language_name;
   }
+  $template->assign(array(
+    'lang' => $options,
+    'selected_lang' => $edited_page['lang'],
+    )
+  );
 }
-$template->assign('lang', array(
-  'OPTIONS' => $options,
-  'SELECTED' => $selected));
 
 // Groups options
 if ($conf['AP']['group_perm'])

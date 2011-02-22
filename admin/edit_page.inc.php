@@ -33,7 +33,7 @@ $edited_page = pwg_db_fetch_assoc(pwg_query($query));
 $edited_page['users'] = !empty($edited_page['users']) ? explode(',', $edited_page['users']) : array();
 $edited_page['groups'] = !empty($edited_page['groups']) ? explode(',', $edited_page['groups']) : array();
 $edited_page['homepage'] = $conf['AP']['homepage'] == $edited_page['id'];
-$edited_page['standalone'] = ($edited_page['standalone'] == 'true');
+$edited_page['standalone'] = $edited_page['standalone'] == 'true';
 
 $template->assign('delete', true);
 $page_title = l10n('ap_modify');

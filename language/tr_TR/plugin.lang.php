@@ -45,5 +45,6 @@ $lang['ap_homepage_tip'] = 'Galerinizin Anasayfası ile değiştir';
 $lang['ap_standalone_tip'] = 'Sayfa tam HTML yapısı gerektirir';
 $lang['ap_permalink_already_used'] = 'Kalıcı bağlantı %s zaten sayfa %s tarafından kullanılıyor';
 $lang['ap_level_perm'] = 'gizlilik seviyesine göre';
+/*TODO*/$lang['ap_language_perm'] = 'by language';
 
 ?>

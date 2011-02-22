@@ -55,6 +55,13 @@ jQuery().ready( function () {ldelim}
         <input type="checkbox" name="group_perm" id="group_perm" value="on" {if $ap_conf.group_perm}checked="checked"{/if}/>
       </label>
     </li>
+
+    <li>
+      <label>
+        <span class="property">{'ap_language_perm'|@translate}</span>
+        <input type="checkbox" name="language_perm" id="language_perm" value="on" {if $ap_conf.language_perm}checked="checked"{/if}/>
+      </label>
+    </li>
   </ul>
 </fieldset>
 

@@ -28,11 +28,8 @@ global $template, $user;
 
 $identifier = $page['ap_homepage'] ? $conf['AP']['homepage'] : $tokens[1];
 
-if (function_exists('get_extended_desc'))
-  add_event_handler('AP_render_content', 'get_extended_desc');
-
 // Retrieve page data
-$query = 'SELECT id, title , content, users, groups, level, permalink, standalone
+$query = 'SELECT id, title, lang, content, users, groups, level, permalink, standalone
 FROM ' . ADD_PAGES_TABLE . '
 ';
 $query .= is_numeric($identifier) ?
@@ -57,11 +54,18 @@ if (is_numeric($identifier) and !empty($row['permalink']) and !$page['ap_homepag
 // Access controls
 if (!is_admin() or (!is_admin() xor $page['ap_homepage']))
 {
+  // authorized language
+  if (!empty($row['lang']) and $row['lang'] != $user['language'])
+  {
+    if ($page['ap_homepage'] and check_random_index_redirect()) return;
+    page_forbidden(l10n('You are not authorized to access the requested page'), make_index_url());
+  }
+
   // authorized level
   if ($user['level'] < $row['level'])
   {
     if ($page['ap_homepage'] and check_random_index_redirect()) return;
-    page_forbidden(l10n('You are not authorized to access the requested page'));
+    page_forbidden(l10n('You are not authorized to access the requested page'), make_index_url());
   }
 
   // authorized users
@@ -71,7 +75,7 @@ if (!is_admin() or (!is_admin() xor $page['ap_homepage']))
     if (!in_array($user['status'], $authorized_users))
     {
       if ($page['ap_homepage'] and check_random_index_redirect()) return;
-      page_forbidden(l10n('You are not authorized to access the requested page'));
+      page_forbidden(l10n('You are not authorized to access the requested page'), make_index_url());
     }
   }
 
@@ -87,7 +91,7 @@ WHERE user_id = ' . $user['id'] . '
     if (empty($groups))
     {
       if ($page['ap_homepage'] and check_random_index_redirect()) return;
-      page_forbidden(l10n('You are not authorized to access the requested page'));
+      page_forbidden(l10n('You are not authorized to access the requested page'), make_index_url());
     }
   }
 }
@@ -105,7 +109,7 @@ $page['section'] = 'additional_page';
 $page['additional_page'] = array(
   'id' => $row['id'],
   'permalink' => @$row['permalink'],
-  'title' => trigger_event('AP_render_content', $row['title']),
+  'title' => trigger_event('AP_render_title', $row['title']),
   'content' => trigger_event('AP_render_content', $row['content']),
 );
 

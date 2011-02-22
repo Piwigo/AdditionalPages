@@ -45,5 +45,6 @@ $lang['ap_homepage_tip'] = 'Prepísať domácu stránku galérie';
 $lang['ap_standalone_tip'] = 'Stránka vyžaduje plnú HTML štruktúru';
 $lang['ap_permalink_already_used'] = 'Trvalý link %s je stále používaný stránkou %s'; 
 $lang['ap_level_perm'] = 'pri súkromnej úrovni';
+/*TODO*/$lang['ap_language_perm'] = 'by language';
 
 ?>
