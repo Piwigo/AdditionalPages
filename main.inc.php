@@ -61,9 +61,18 @@ function section_init_additional_page()
 // Menubar
 function register_ap_menubar_blocks($menu_ref_arr)
 {
+  global $conf, $user;
+
   $menu = & $menu_ref_arr[0];
   if ($menu->get_id() != 'menubar') return;
-  $menu->register_block( new RegisteredBlock( 'mbAdditionalPages', 'Additional Pages', 'P@t'));
+
+  $conf['AP']['block_title'] = isset($conf['AP']['languages'][$user['language']]) ?
+    $conf['AP']['languages'][$user['language']] : @$conf['AP']['languages']['default'];
+
+  if (empty($conf['AP']['block_title']))
+    $conf['AP']['block_title'] = 'Additional Pages';
+
+  $menu->register_block( new RegisteredBlock( 'mbAdditionalPages', $conf['AP']['block_title'], 'Additional Pages'));
 }
 
 function ap_apply($menu_ref_arr)
@@ -95,12 +104,8 @@ ORDER BY pos ASC
 
     if (!empty($data))
     {
-      $title = isset($conf['AP']['languages'][$user['language']]) ?
-        $conf['AP']['languages'][$user['language']] :
-        @$conf['AP']['languages']['default'];
-
       $template->set_template_dir(AP_PATH.'template/');
-      $block->set_title($title);
+      $block->set_title($conf['AP']['block_title']);
       $block->template = 'menubar_additional_pages.tpl';
       $block->data = $data;
     }
