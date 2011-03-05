@@ -2,8 +2,6 @@
 
 if (!defined('PHPWG_ROOT_PATH')) die('Hacking attempt!');
 
-$default_user = get_default_user_info(true);
-
 if (!isset($edited_page))
 {
   $page_title = l10n('ap_create');
@@ -15,7 +13,7 @@ if (!isset($edited_page))
     'lang'       => 'ALL',
     'homepage'   => false,
     'standalone' => false,
-    'level'      => $default_user['level'],
+    'level'      => 0,
     'users'      => array('guest', 'generic', 'normal', 'admin', 'webmaster'),
     'groups'     => array(),
     'content'    => '',
@@ -61,7 +59,7 @@ WHERE permalink = "'.$permalink.'"
     $user_access = !empty($_POST['users']) ? '"'.implode(',', $_POST['users']).'"' : '""';
   }
 
-  $level_access = !empty($_POST['level']) ? $_POST['level'] : $default_user['level'];
+  $level_access = !empty($_POST['level']) ? $_POST['level'] : 0;
 
   if (empty($page['errors']))
   {
@@ -131,7 +129,7 @@ VALUES (
   $edited_page['lang'] = !empty($_POST['lang']) ? $_POST['lang'] : 'ALL';
   $edited_page['groups'] = !empty($_POST['groups']) ? $_POST['groups'] : array();
   $edited_page['users'] = !empty($_POST['users']) ? $_POST['users'] :  array();
-  $edited_page['level'] = !empty($_POST['level']) ? $_POST['level'] :  $default_user['level'];
+  $edited_page['level'] = !empty($_POST['level']) ? $_POST['level'] :  0;
   $edited_page['homepage'] = isset($_POST['homepage']);
   $edited_page['standalone'] = isset($_POST['standalone']);
 }
