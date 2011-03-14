@@ -48,7 +48,7 @@ if (empty($row))
 // Redirect with permalink if exist
 if (is_numeric($identifier) and !empty($row['permalink']) and !$page['ap_homepage'])
 {
-  redirect(make_index_url().'/page/' . $row['permalink']);
+  redirect(make_index_url(array('section'=>'page')).'/'.$row['permalink']);
 }
 
 // Access controls

@@ -55,7 +55,7 @@ function section_init_additional_page()
     include(AP_PATH . 'additional_page.php');
 
   if ($tokens[0] == 'additional_page' and !empty($tokens[1]))
-    redirect(make_index_url().'/page/'.$tokens[1]);
+    redirect(make_index_url(array('section'=>'page')).'/'.$tokens[1]);
 }
 
 // Menubar
@@ -98,7 +98,7 @@ ORDER BY pos ASC
     $data = array();
     while ($row = pwg_db_fetch_assoc($result))
     {
-      $url = make_index_url().'/page/'.(isset($row['permalink']) ? $row['permalink'] : $row['id']);
+      $url = make_index_url(array('section'=>'page')).'/'.(isset($row['permalink']) ? $row['permalink'] : $row['id']);
       array_push($data, array('URL' => $url, 'LABEL' => trigger_event('AP_render_title', $row['title'])));
     }
 

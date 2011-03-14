@@ -1,6 +1,4 @@
-{known_script id="jquery" src=$ROOT_URL|@cat:"themes/default/js/jquery.packed.js"}
-{html_head}{literal}
-<script type="text/javascript">
+{footer_script require='jquery'}{literal}
 jQuery().ready( function () {
   jQuery('#title').focusout(function () {
     if (jQuery('#permalink').val() == '' && auto_permalink)
@@ -11,7 +9,8 @@ jQuery().ready( function () {
   });
 });
 var auto_permalink = true;
-</script>
+{/literal}{/footer_script}
+{html_head}{literal}
 <style type="text/css">
 #mainConf { margin:0; }
 .groups { margin-top:15px; }

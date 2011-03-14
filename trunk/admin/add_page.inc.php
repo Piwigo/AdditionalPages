@@ -118,7 +118,7 @@ VALUES (
     // Redirect to admin pannel or additional page
     if (isset($_GET['redirect']))
     {
-      redirect(make_index_url() . '/page/' . $edited_page['id']);
+      redirect(make_index_url(array('section'=>'page')).'/'.$edited_page['id']);
     }
     redirect($my_base_url.'&page_saved=');
   }

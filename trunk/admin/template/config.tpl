@@ -1,20 +1,18 @@
-{known_script id="jquery" src=$ROOT_URL|@cat:"themes/default/js/jquery.packed.js"}
-{html_head}
-<script type="text/javascript">
-jQuery().ready( function () {ldelim}
-  jQuery("#show_menu").click( function() {ldelim}
-    if (this.checked) {ldelim}
+{footer_script}{literal}
+jQuery().ready( function () {
+  jQuery("#show_menu").click( function() {
+    if (this.checked) {
       jQuery('#menu_name').show();
     }
-    else {ldelim}
+    else {
       jQuery('#menu_name').hide();
     }
   });
-  jQuery('select[name="lang_desc_select"]').change(function () {ldelim}
+  jQuery('select[name="lang_desc_select"]').change(function () {
     jQuery('[id^="menu_lang"]').hide();
     jQuery("#menu_lang_"+this.options[this.selectedIndex].value).show();
   });
-  jQuery('[id^="menu_lang_"]').keyup(function () {ldelim}
+  jQuery('[id^="menu_lang_"]').keyup(function () {
     arr = jQuery(this).attr("id").split("menu_lang_");
     id = arr[1];
     opt = jQuery('select[name="lang_desc_select"] option[id="opt_'+id+'"]');
@@ -24,8 +22,7 @@ jQuery().ready( function () {ldelim}
       opt.html(opt.html().replace("\u2714", "\u2718"));
   });
 });
-</script>
-{/html_head}
+{/literal}{/footer_script}
 
 <div class="titrePage">
 	<h2>Additional Pages - {'Configuration'|@translate}</h2>
