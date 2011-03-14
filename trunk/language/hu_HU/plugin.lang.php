@@ -38,13 +38,13 @@ $lang['ap_user_perm'] = 'felhasználók';
 $lang['ap_parse_bbcode'] = 'BBCode konvertálása';
 $lang['ap_convert_bbcode_ok'] = 'Konvertálás kész.';
 
-/*TODO*/$lang['ap_edit_page'] = 'Edit a page';
-/*TODO*/$lang['ap_set_as_homepage'] = 'Set as Homepage';
-/*TODO*/$lang['ap_standalone_page'] = 'Standalone Page';
-/*TODO*/$lang['ap_homepage_tip'] = 'Replace your gallery\'s homepage';
-/*TODO*/$lang['ap_standalone_tip'] = 'Page require full HTML structure';
-/*TODO*/$lang['ap_permalink_already_used'] = 'Permalink %s is already used by page %s';
-/*TODO*/$lang['ap_level_perm'] = 'by privacy level';
-/*TODO*/$lang['ap_language_perm'] = 'by language';
+$lang['ap_edit_page'] = 'Oldal módosítása';
+$lang['ap_set_as_homepage'] = 'Legyen ez a nyitó oldal';
+$lang['ap_standalone_page'] = 'Önálló oldal';
+$lang['ap_homepage_tip'] = 'Lecseréli a galéria nyitó oldalát';
+$lang['ap_standalone_tip'] = 'Az oldal teljes HTML felépítésére szükség van';
+$lang['ap_permalink_already_used'] = 'A(z) %s közvetlen linket már használja a(z) %s oldal.';
+$lang['ap_level_perm'] = 'hozzáférési szint';
+$lang['ap_language_perm'] = 'nyelv';
 
-?>
+?> 
