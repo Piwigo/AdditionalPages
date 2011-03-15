@@ -134,7 +134,7 @@ function ap_set_index()
   }
   if (is_admin())
   {
-    $template->assign('U_EDIT', PHPWG_ROOT_PATH.'admin.php?page=plugin&amp;section='.AP_DIR.'%2Fadmin%2Fadmin.php&amp;tab=edit_page&amp;edit='.$page['additional_page']['id'].'&amp;redirect=true');
+    $template->assign('U_EDIT', get_root_url().'admin.php?page=plugin-'.AP_DIR.'-edit_page&amp;edit='.$page['additional_page']['id'].'&amp;redirect=true');
   }
   $template->clear_assign(array('U_MODE_POSTED', 'U_MODE_CREATED'));
 }

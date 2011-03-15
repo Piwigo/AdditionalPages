@@ -34,7 +34,9 @@ function additional_pages_admin_menu($menu)
 {
     array_push($menu, array(
       'NAME' => 'Additional Pages',
-      'URL' => get_admin_plugin_menu_link(AP_PATH . 'admin/admin.php')));
+      'URL' => get_root_url().'admin.php?page=plugin-'.AP_DIR,
+      )
+    );
     return $menu;
 }
 
