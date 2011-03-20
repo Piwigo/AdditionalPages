@@ -45,6 +45,6 @@ $lang['ap_homepage_tip'] = 'Erstatt ditt galleris hjemmeside';
 $lang['ap_standalone_tip'] = 'Side krever full HTML struktur';
 $lang['ap_permalink_already_used'] = 'Permalink %s er allerede I bruk av side %s';
 $lang['ap_level_perm'] = 'av privat nivå';
-/*TODO*/$lang['ap_language_perm'] = 'by language';
+$lang['ap_language_perm'] = 'på språk';
 
 ?>
