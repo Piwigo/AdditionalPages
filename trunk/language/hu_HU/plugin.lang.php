@@ -47,4 +47,4 @@ $lang['ap_permalink_already_used'] = 'A(z) %s közvetlen linket már használja 
 $lang['ap_level_perm'] = 'hozzáférési szint';
 $lang['ap_language_perm'] = 'nyelv';
 
-?> 
+?>
