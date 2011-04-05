@@ -38,13 +38,13 @@ $lang['ap_user_perm'] = 'حسب نوع المستخدم';
 $lang['ap_parse_bbcode'] = 'حول الصفحات المكتوبة ب BBcode';
 $lang['ap_convert_bbcode_ok'] = 'التحويل تم.';
 
-/*TODO*/$lang['ap_edit_page'] = 'Edit a page';
-/*TODO*/$lang['ap_set_as_homepage'] = 'Set as Homepage';
-/*TODO*/$lang['ap_standalone_page'] = 'Standalone Page';
-/*TODO*/$lang['ap_homepage_tip'] = 'Replace your gallery\'s homepage';
-/*TODO*/$lang['ap_standalone_tip'] = 'Page require full HTML structure';
-/*TODO*/$lang['ap_permalink_already_used'] = 'Permalink %s is already used by page %s';
-/*TODO*/$lang['ap_level_perm'] = 'by privacy level';
-/*TODO*/$lang['ap_language_perm'] = 'by language';
+$lang['ap_edit_page'] = 'تعديل صفحة';
+$lang['ap_set_as_homepage'] = 'اجعلها صفحة الموقع الرئيسية';
+$lang['ap_standalone_page'] = 'صفحة مستقلة';
+$lang['ap_homepage_tip'] = 'بدل صفحة المعرض الرئيسية';
+$lang['ap_standalone_tip'] = 'الصفحة تحتاج الى قواعد HTML';
+$lang['ap_permalink_already_used'] = 'الرابط الدائم %s مستخدم فعليا من الصفحة %s';
+$lang['ap_level_perm'] = 'بواسطة مستوى الخصوصية';
+$lang['ap_language_perm'] = 'بواسطة اللغة';
 
 ?>
