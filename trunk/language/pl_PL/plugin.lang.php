@@ -45,6 +45,6 @@ $lang['ap_homepage_tip'] = 'Zastąp stronę domową swojej galerii';
 $lang['ap_standalone_tip'] = 'Strona wymaga pełnej struktury HTML';
 $lang['ap_permalink_already_used'] = 'Link permanentny %s jest już używane przez stronę %s';
 $lang['ap_level_perm'] = 'po poziomie prywatności';
-/*TODO*/$lang['ap_language_perm'] = 'by language';
+$lang['ap_language_perm'] = 'po języku';
 
 ?>
