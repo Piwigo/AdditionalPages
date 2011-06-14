@@ -3,8 +3,8 @@
 $lang['ap_add_page'] = 'Aggiungere una pagina';
 
 $lang['ap_create'] = 'Creare una nuova pagina addizionale';
-$lang['ap_deleted_page'] = 'Pagina soppressa';
-$lang['ap_no_name'] = 'Dovete indicare un nome.';
+$lang['ap_deleted_page'] = 'Pagina cancellata';
+$lang['ap_no_name'] = 'Dovete indicare un nome';
 $lang['ap_saved_page'] = 'Pagina registrata';
 $lang['ap_modify'] = 'Modificare la pagina addizionale';
 $lang['ap_all_lang'] = 'Tutte';
@@ -38,10 +38,10 @@ $lang['ap_user_perm'] = 'per tipo d\'utente';
 $lang['ap_parse_bbcode'] = 'Convertire le pagini già scritte con BBCode';
 $lang['ap_convert_bbcode_ok'] = 'Conversione effettuata';
 
-$lang['ap_edit_page'] = 'Modifica una pagina';
-$lang['ap_set_as_homepage'] = 'Imposta la Homepage';
+$lang['ap_edit_page'] = 'Modificare una pagina';
+$lang['ap_set_as_homepage'] = 'Impostare la pagina come Homepage';
 $lang['ap_standalone_page'] = 'Pagina standalone';
-$lang['ap_homepage_tip'] = 'Sostituisci la Homepage della tua galleria';
+$lang['ap_homepage_tip'] = 'Sostituisce la Homepage della vostra galleria';
 $lang['ap_standalone_tip'] = 'La pagina richiede una struttura HTML completa';
 $lang['ap_permalink_already_used'] = 'Il permalink %s è già utilizzato dalla pagina %s';
 $lang['ap_level_perm'] = 'per livello di privacy';
