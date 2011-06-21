@@ -38,13 +38,13 @@ $lang['ap_user_perm'] = 'Benutzern';
 $lang['ap_parse_bbcode'] = 'Seiten mit BBCode konvertieren';
 $lang['ap_convert_bbcode_ok'] = 'Konvertierung abgeschlossen.';
 
-/*TODO*/$lang['ap_edit_page'] = 'Edit a page';
-/*TODO*/$lang['ap_set_as_homepage'] = 'Set as Homepage';
-/*TODO*/$lang['ap_standalone_page'] = 'Standalone Page';
-/*TODO*/$lang['ap_homepage_tip'] = 'Replace your gallery\'s homepage';
-/*TODO*/$lang['ap_standalone_tip'] = 'Page require full HTML structure';
-/*TODO*/$lang['ap_permalink_already_used'] = 'Permalink %s is already used by page %s';
-/*TODO*/$lang['ap_level_perm'] = 'by privacy level';
-/*TODO*/$lang['ap_language_perm'] = 'by language';
+$lang['ap_edit_page'] = 'Eine Seite editieren';
+$lang['ap_set_as_homepage'] = 'Als Homepage setzen';
+$lang['ap_standalone_page'] = 'Einzelne Seite';
+$lang['ap_homepage_tip'] = 'Die Homepage der Gallerie ersetzen';
+$lang['ap_standalone_tip'] = 'Die Seite benötigt eine vollständige HTML Struktur';
+$lang['ap_permalink_already_used'] = 'Permalink %s wird bereits von der Seite %s benutzt';
+$lang['ap_level_perm'] = 'nach Ebene der Privatsphäre';
+$lang['ap_language_perm'] = 'nach Sprache';
 
 ?>
