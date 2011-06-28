@@ -45,6 +45,6 @@ $lang['ap_homepage_tip'] = 'Nomainīt jūsu galerijas mājaslapu';
 $lang['ap_standalone_tip'] = 'Lapai nepieciešama HTML struktūra';
 $lang['ap_permalink_already_used'] = 'Pastāvīgo saiti %s jau lieto %s lapa';
 $lang['ap_level_perm'] = 'ar konfidencialitātes līmeni';
-/*TODO*/$lang['ap_language_perm'] = 'by language';
+$lang['ap_language_perm'] = 'pēc valodas';
 
 ?>
