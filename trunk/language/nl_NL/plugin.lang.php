@@ -45,6 +45,6 @@ $lang['ap_homepage_tip'] = 'Verander de Startpagina van uw galerie';
 $lang['ap_standalone_tip'] = 'Deze pagina dient een volledige HTML-structuur te hebben';
 $lang['ap_permalink_already_used'] = 'De permalink %s wordt al gebruikt door pagina %s';
 $lang['ap_level_perm'] = 'op privacy nivo';
-/*TODO*/$lang['ap_language_perm'] = 'by language';
+$lang['ap_language_perm'] = 'door taal';
 
 ?>
