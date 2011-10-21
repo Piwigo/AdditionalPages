@@ -40,16 +40,20 @@ function additional_pages_admin_menu($menu)
     return $menu;
 }
 
-// Section init
-function section_init_additional_page()
+// common
+function ap_common_init()
 {
-  global $tokens, $conf, $page;
-
   if (defined('EXTENDED_DESC_PATH'))
   {
     add_event_handler('AP_render_content', 'get_extended_desc');
     add_event_handler('AP_render_title', 'get_user_language_desc');
   }
+}
+
+// Section init
+function section_init_additional_page()
+{
+  global $tokens, $conf, $page;
 
   $page['ap_homepage'] = (count($tokens) == 1 and empty($tokens[0]));
 
@@ -127,6 +131,7 @@ ORDER BY pos ASC
 }
 
 add_event_handler('get_admin_plugin_menu_links', 'additional_pages_admin_menu');
+add_event_handler('init', 'ap_common_init');
 add_event_handler('loc_end_section_init', 'section_init_additional_page');
 add_event_handler('blockmanager_register_blocks', 'register_ap_menubar_blocks');
 add_event_handler('blockmanager_apply', 'ap_apply');
