@@ -66,13 +66,14 @@ function plugin_activate()
 
 function plugin_uninstall()
 {
-  global $prefixeTable;
+  global $prefixeTable, $conf;
 
 	$q = 'DROP TABLE ' . $prefixeTable . 'additionalpages;';
   pwg_query($q);
 
 	$q = 'DELETE FROM ' . CONFIG_TABLE . ' WHERE param="additional_pages" LIMIT 1;';
   pwg_query($q);
+  unset($conf['additional_pages']);
 }
 
 ?>
