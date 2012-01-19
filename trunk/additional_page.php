@@ -119,23 +119,23 @@ function ap_set_index()
 {
   global $template, $page, $conf;
 
-  $template->assign(array(
-    'TITLE' => $page['additional_page']['title'],
-    'PLUGIN_INDEX_CONTENT_BEGIN' => $page['additional_page']['content'],
-    )
-  );
-
-  if ($conf['AP']['show_home'] and !$page['ap_homepage'])
-  {
-    $template->assign('PLUGIN_INDEX_ACTIONS' , '
-      <li><a href="'.make_index_url().'" title="' . l10n('return to homepage') . '">
-        <img src="' . $template->get_themeconf('icon_dir') . '/home.png" class="button" alt="' . l10n('home') . '"/></a>
-      </li>');
-  }
   if (is_admin())
   {
     $template->assign('U_EDIT', get_root_url().'admin.php?page=plugin-'.AP_DIR.'-edit_page&amp;edit='.$page['additional_page']['id'].'&amp;redirect=true');
   }
+
+  $title = $page['additional_page']['title'];
+  if ($conf['AP']['show_home'] and !$page['ap_homepage'])
+  {
+    $title = '<a href="'.get_gallery_home_url().'">'.l10n('Home').'</a>'.$conf['level_separator'].$title;
+  }
+
+  $template->assign(array(
+    'TITLE' => $title,
+    'PLUGIN_INDEX_CONTENT_BEGIN' => $page['additional_page']['content'],
+    )
+  );
+  
   $template->clear_assign(array('U_MODE_POSTED', 'U_MODE_CREATED'));
 }
 
