@@ -60,4 +60,5 @@ $lang['ap_standalone_page'] = 'Samostalna strana';
 $lang['ap_standalone_tip'] = 'Strana zahteva potpunu HTML strukturu';
 $lang['ap_unselect_all'] = 'Poništi odabir';
 $lang['ap_user_perm'] = 'po tipu korisnika';
+$lang['ap_pos0'] = 'ne prikazuj stranu na meniju';
 ?>
