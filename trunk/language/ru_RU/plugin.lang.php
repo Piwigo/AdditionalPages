@@ -41,10 +41,10 @@ $lang['ap_convert_bbcode_ok'] = 'Конвертирование выполнен
 $lang['ap_edit_page'] = 'Редактировать страницу';
 $lang['ap_set_as_homepage'] = 'Сделать домашней страницей';
 $lang['ap_standalone_page'] = 'Автономная страница';
-$lang['ap_homepage_tip'] = 'Заменить гтавную траницу галереи';
+$lang['ap_homepage_tip'] = 'Заменить главную страницу галереи';
 $lang['ap_standalone_tip'] = 'Для страницы требуется полный код HTML';
 $lang['ap_permalink_already_used'] = 'Постоянная ссылка %s уже используется страницей %s';
 $lang['ap_level_perm'] = 'по уровню доступа';
-/*TODO*/$lang['ap_language_perm'] = 'by language';
+$lang['ap_language_perm'] = 'по языку';
 
 ?>
