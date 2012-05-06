@@ -58,4 +58,7 @@ $lang['ap_standalone_page'] = 'Αυτόνομη Σελίδα';
 $lang['ap_standalone_tip'] = 'Η Σελίδα απαιτεί πλήρη υποστήριξη δομής HTML';
 $lang['ap_unselect_all'] = 'Αποεπιλογή όλων';
 $lang['ap_user_perm'] = 'από τον τύπο χρήστη';
+$lang['ap_language_perm'] = 'κατά γλώσσα';
+$lang['ap_level_perm'] = 'από το επίπεδο ιδιωτικότητας';
+$lang['ap_show_home'] = 'Εμφάνιση του κουμπιού "πίσω στην αρχική" στις πρόσθετες σελίδες';
 ?>
