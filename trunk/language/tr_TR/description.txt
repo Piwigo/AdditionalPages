@@ -1,1 +1,1 @@
-Menüye ek sayfalar ekleyin.
+Menü çubuğuna ek sayfalar ekleyin.

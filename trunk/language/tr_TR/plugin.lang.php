@@ -1,8 +1,8 @@
 <?php
 
-$lang['ap_add_page'] = 'Sayfa ekleme';
+$lang['ap_add_page'] = 'Bir sayfa ekle';
 
-$lang['ap_create'] = 'Yeni ek sayfa oluşturma';
+$lang['ap_create'] = 'Yeni ek sayfa oluştur';
 $lang['ap_deleted_page'] = 'Sayfa silindi';
 $lang['ap_no_name'] = 'Ad alanını doldurmadınız.';
 $lang['ap_saved_page'] = 'Sayfa kaydedildi';
@@ -17,7 +17,7 @@ $lang['ap_page_lang'] = 'Dil';
 $lang['ap_default_language'] = 'Varsayılan';
 $lang['ap_page_pos'] = 'Pozisyon';
 $lang['ap_authorized_group'] = 'Yetkili gruplar';
-$lang['ap_authorized_users'] = 'Yetkili gkullanıcılar';
+$lang['ap_authorized_users'] = 'Yetkili kullanıcılar';
 $lang['ap_select_all'] = 'Hepsini Seç';
 $lang['ap_unselect_all'] = 'Seçimleri Kaldır';
 $lang['ap_guest'] = '(genel sayfa için boş bırakın)';
@@ -41,10 +41,10 @@ $lang['ap_convert_bbcode_ok'] = 'Dönüşüm başarıyla gerçekleştirildi';
 $lang['ap_edit_page'] = 'Bir sayfa düzenle';
 $lang['ap_set_as_homepage'] = 'Anasayfa Yap';
 $lang['ap_standalone_page'] = 'Bağımsız Bir Sayfa';
-$lang['ap_homepage_tip'] = 'Galerinizin Anasayfası ile değiştir';
+$lang['ap_homepage_tip'] = 'Galerinizin ana sayfasını değiştirin';
 $lang['ap_standalone_tip'] = 'Sayfa tam HTML yapısı gerektirir';
 $lang['ap_permalink_already_used'] = 'Kalıcı bağlantı %s zaten sayfa %s tarafından kullanılıyor';
 $lang['ap_level_perm'] = 'gizlilik seviyesine göre';
-/*TODO*/$lang['ap_language_perm'] = 'by language';
+$lang['ap_language_perm'] = 'dile göre';
 
 ?>
