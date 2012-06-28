@@ -15,6 +15,7 @@ global $prefixeTable, $conf;
 define('AP_DIR' , basename(dirname(__FILE__)));
 define('AP_PATH' , PHPWG_PLUGINS_PATH . AP_DIR . '/');
 define('ADD_PAGES_TABLE' , $prefixeTable . 'additionalpages');
+define('AP_DISTRIBUED', AP_PATH . 'distribued/');
 
 $conf['AP'] = @unserialize($conf['additional_pages']);
 

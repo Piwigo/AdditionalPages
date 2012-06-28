@@ -20,6 +20,21 @@ if (!isset($edited_page))
   );
 }
 
+// load template
+if (isset($_GET['load_template']))
+{
+  if (file_exists(AP_DISTRIBUED . $_GET['load_template']))
+  {
+    $distribued = load_ap_template($_GET['load_template'], true);
+  }
+  else
+  {
+    $distribued = trigger_event('load_ap_template', array(), $_GET['load_template']);
+  }
+  $edited_page = array_merge($edited_page, $distribued);
+  $template->assign('template_selected', $_GET['load_template']);
+}
+
 // Submit form
 if (isset($_POST['save']))
 {
@@ -197,6 +212,26 @@ if ($conf['AP']['level_perm'])
   );
 }
 
+// Available templates
+if (!isset($_GET['edit']))
+{
+  $distribued = array();
+  $dh = opendir(AP_DISTRIBUED);
+  if ($dh)
+  {
+    while (($dir = readdir($dh)) !== false)
+    {
+      if ( is_dir(AP_DISTRIBUED.$dir) and $dir!='.' and $dir!='..' )
+      {
+        array_push($distribued, load_ap_template($dir, false));
+      }
+    }
+    closedir($dh);
+  }
+  $distribued = trigger_event('load_ap_templates_list', $distribued); // external plugins can add templates
+  $template->assign('TEMPLATES', $distribued);
+}
+
 // template output
 $template->assign(array(
   'AP_TITLE' => $page_title,
@@ -210,5 +245,40 @@ $template->assign(array(
 
 $template->set_filename('plugin_admin_content', dirname(__FILE__) . '/template/add_page.tpl');
 $template->assign_var_from_handle('ADMIN_CONTENT', 'plugin_admin_content');
+
+
+function load_ap_template($dir, $with_content=true)
+{
+  $path = AP_DISTRIBUED . $dir . '/';
+  
+  // default template
+  $template_conf = array(
+    'name'       => $dir,
+    'title'      => '',
+    'permalink'  => '',
+    'lang'       => 'ALL',
+    'homepage'   => false,
+    'standalone' => false,
+    'level'      => 0,
+    'users'      => array('guest', 'generic', 'normal', 'admin', 'webmaster'),
+    'groups'     => array(),
+    'content'    => '',
+  );
+  
+  // load config
+  if (file_exists($path.'config.php'))
+  {
+    include($path.'config.php');
+  }
+  
+  // load content
+  if ( $with_content and file_exists($path.'content.tpl') )
+  {
+    $template_conf['content'] = file_get_contents($path.'content.tpl');
+  }
+  
+  $template_conf['tpl_id'] = $dir;
+  return $template_conf;
+}
 
 ?>

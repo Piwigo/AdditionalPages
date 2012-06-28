@@ -7,6 +7,23 @@ jQuery().ready( function () {
         auto_permalink = false;
       });
   });
+  
+  var content_changed = false;
+  jQuery("#ap_content").change(function() {
+    content_changed = true;
+  });
+  
+  jQuery("#template").change(function() {
+    if ($(this).val() != '-1') {
+{/literal}
+      if (content_changed == false || confirm("{'The content of the page changed, are your sure you wan\'t to quit without saving?'|@translate|escape:javascript}")) {ldelim}
+        window.location.href = "admin.php?page=plugin-AdditionalPages-add_page&load_template="+ $(this).val();
+      } else {ldelim}
+        $(this).val('-1');
+      }
+{literal}
+    }
+  });
 });
 var auto_permalink = true;
 {/literal}{/footer_script}
@@ -27,6 +44,20 @@ var auto_permalink = true;
 <fieldset id="mainConf">
   <legend></legend>
 	<ul>
+    {if $TEMPLATES}
+    <li>
+      <span class="property">
+        <label for="template">{'Load a page model'|@translate}</label>
+      </span>
+      <select name="template" id="template">
+        <option value="-1">---------</option>
+        {foreach from=$TEMPLATES item=tpl}
+        <option value="{$tpl.tpl_id}" {if $template_selected==$tpl.tpl_id}selected="selected"{/if}>{$tpl.name}</option>
+        {/foreach}
+      </select>
+    </li>
+    {/if}
+    
     <li>
       <span class="property">
         <label for="title">{'ap_page_name'|@translate}</label>
