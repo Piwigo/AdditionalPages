@@ -47,4 +47,6 @@ $lang['ap_permalink_already_used'] = 'Kalıcı bağlantı %s zaten sayfa %s tara
 $lang['ap_level_perm'] = 'gizlilik seviyesine göre';
 $lang['ap_language_perm'] = 'dile göre';
 
+$lang['Load a page model'] = 'Bir sayfa modeli yükleyin';
+$lang['The content of the page changed, are your sure you wan\'t to quit without saving?'] = 'Sayfa içeriği değişti, kaydetmeden çıkmak istediğinize emin misiniz ?';
 ?>
