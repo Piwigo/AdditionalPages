@@ -221,7 +221,7 @@ if (!isset($_GET['edit']))
   {
     while (($dir = readdir($dh)) !== false)
     {
-      if ( is_dir(AP_DISTRIBUED.$dir) and $dir!='.' and $dir!='..' )
+      if ( is_dir(AP_DISTRIBUED.$dir) and $dir!='.' and $dir!='..' and $dir!='.svn' )
       {
         array_push($distribued, load_ap_template($dir, false));
       }

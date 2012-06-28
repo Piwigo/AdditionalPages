@@ -4,15 +4,15 @@
 .content {max-width:1120px; margin:0 auto 10px auto !important;}
 .Online {display:none;}
  
-.myHomePage_photo {text-align: center; margin:50px 0 20px 0}
-.myHomePage_photo a img {border-width:2px; border-style:solid;}
+.myHomePage_photo {text-align: center; margin:50px 0 20px 0;}
+.myHomePage_photo a img {border-width:2px; border-style:solid; border-color:#666;}
 .myHomePage_links {letter-spacing:2px; text-align:center; margin-bottom:0; font-weight:bold;}
 .myHomePage_name {margin-top:30px; letter-spacing:2px; text-align:center;}
 </style>
  
 <div id="myHomePage">
   <div class="myHomePage_photo">
-    <a href="index.php?/categories"><img src="[photo 1234 L]"></a>
+    <a href="index.php?/categories">[photo=12345;L;false]</a>
   </div>
  
   <div class="myHomePage_links">
