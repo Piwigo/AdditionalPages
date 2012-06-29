@@ -47,4 +47,6 @@ $lang['ap_permalink_already_used'] = 'Постоянная ссылка %s уж�
 $lang['ap_level_perm'] = 'по уровню доступа';
 $lang['ap_language_perm'] = 'по языку';
 
+$lang['Load a page model'] = 'Загрузить модель страницы';
+$lang['The content of the page changed, are your sure you wan\'t to quit without saving?'] = 'Содержимое страницы изменено. Вы уверены, что хотите выйти без сохранения?';
 ?>
