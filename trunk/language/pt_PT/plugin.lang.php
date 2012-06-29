@@ -48,4 +48,6 @@ $lang['ap_permalink_already_used'] = 'Permalink %/ já está sendo usado pela p�
 $lang['ap_level_perm'] = 'Por nível privado';
 $lang['ap_language_perm'] = 'Por idioma';
 
+$lang['Load a page model'] = 'Carregar um modelo de página  ';
+$lang['The content of the page changed, are your sure you wan\'t to quit without saving?'] = 'O conteúdo da página mudou, tem certeza de querer sáir sem Salvar ?';
 ?>
