@@ -61,4 +61,6 @@ $lang['ap_standalone_page'] = 'Единична страница';
 $lang['ap_standalone_tip'] = 'Страница изискваща пълна HTML структура ';
 $lang['ap_unselect_all'] = 'Отмени избраните';
 $lang['ap_user_perm'] = 'по вид потребител';
+$lang['Load a page model'] = 'Избиране на вид страница';
+$lang['The content of the page changed, are your sure you wan\'t to quit without saving?'] = 'Съдържанието на страницата е променено, но не е записано. Сигурен ли сте, че искате да напуснете страницата?';
 ?>
