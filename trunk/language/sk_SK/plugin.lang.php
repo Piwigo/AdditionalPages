@@ -47,4 +47,6 @@ $lang['ap_permalink_already_used'] = 'Trvalý link %s je stále používaný str
 $lang['ap_level_perm'] = 'pri súkromnej úrovni';
 $lang['ap_language_perm'] = 'po jazyku';
 
+$lang['Load a page model'] = 'Nahrať model stránky';
+$lang['The content of the page changed, are your sure you wan\'t to quit without saving?'] = 'Obsah stránky bol zmenený, skutočne chcete opustiť stránku bez uloženia?';
 ?>
