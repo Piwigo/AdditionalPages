@@ -47,4 +47,6 @@ $lang['ap_permalink_already_used'] = 'Pastāvīgo saiti %s jau lieto %s lapa';
 $lang['ap_level_perm'] = 'ar konfidencialitātes līmeni';
 $lang['ap_language_perm'] = 'pēc valodas';
 
+$lang['Load a page model'] = 'Ielādēt lapas modeli';
+$lang['The content of the page changed, are your sure you wan\'t to quit without saving?'] = 'Lapas saturs ir izmainīts, vai vēlaties iziet bez saglabāšanas?';
 ?>
