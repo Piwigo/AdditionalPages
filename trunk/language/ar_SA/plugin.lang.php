@@ -47,4 +47,6 @@ $lang['ap_permalink_already_used'] = 'الرابط الدائم %s مستخدم 
 $lang['ap_level_perm'] = 'بواسطة مستوى الخصوصية';
 $lang['ap_language_perm'] = 'بواسطة اللغة';
 
+$lang['Load a page model'] = 'تحميل موديل';
+$lang['The content of the page changed, are your sure you wan\'t to quit without saving?'] = 'هناك تغيرات في الصفحة , هل أنت متأكد من اغلاق الصفحة دون حفظ ؟';
 ?>
