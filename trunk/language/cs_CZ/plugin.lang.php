@@ -47,4 +47,6 @@ $lang['ap_permalink_already_used'] = 'Tento Permanentní odkaz %s je už použí
 $lang['ap_level_perm'] = 'podle úrovně ochrany osobních údajů';
 $lang['ap_language_perm'] = 'podle jazyka';
 
+$lang['Load a page model'] = 'Nahraj model stránky.';
+$lang['The content of the page changed, are your sure you wan\'t to quit without saving?'] = 'Obsah této strámky byl změněn, jste si jistý odejít bez uložení změn?';
 ?>
