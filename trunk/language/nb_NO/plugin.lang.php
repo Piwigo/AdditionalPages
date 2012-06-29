@@ -47,4 +47,6 @@ $lang['ap_permalink_already_used'] = 'Permalink %s er allerede I bruk av side %s
 $lang['ap_level_perm'] = 'av privat nivå';
 $lang['ap_language_perm'] = 'på språk';
 
+$lang['Load a page model'] = 'Last en sidemodell';
+$lang['The content of the page changed, are your sure you wan\'t to quit without saving?'] = 'Innholdet på siden har blitt endret, er du sikker på at du vil avslutte uten å lagre?';
 ?>
