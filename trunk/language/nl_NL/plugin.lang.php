@@ -47,4 +47,6 @@ $lang['ap_permalink_already_used'] = 'De permalink %s wordt al gebruikt door pag
 $lang['ap_level_perm'] = 'op privacy nivo';
 $lang['ap_language_perm'] = 'door taal';
 
+$lang['Load a page model'] = 'Laad een paginamodel';
+$lang['The content of the page changed, are your sure you wan\'t to quit without saving?'] = 'De pagina is gewijzigd, weet je zeker dat je deze niet wilt opslaan?';
 ?>
