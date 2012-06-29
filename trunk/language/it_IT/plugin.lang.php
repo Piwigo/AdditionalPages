@@ -47,4 +47,6 @@ $lang['ap_permalink_already_used'] = 'Il permalink %s è già utilizzato dalla p
 $lang['ap_level_perm'] = 'per livello di privacy';
 $lang['ap_language_perm'] = 'per lingua';
 
+$lang['Load a page model'] = 'Caricare un modello di pagina';
+$lang['The content of the page changed, are your sure you wan\'t to quit without saving?'] = 'Il contenuto della pagina è cambiato, sei sicuro di voler uscire senza salvare?';
 ?>
