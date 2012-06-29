@@ -12,7 +12,7 @@
  
 <div id="myHomePage">
   <div class="myHomePage_photo">
-    <a href="index.php?/categories">[photo=12345;L;false]</a>
+    <a href="index.php?/categories">[photo id=12345 size=L link=no]</a>
   </div>
  
   <div class="myHomePage_links">
