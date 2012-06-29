@@ -47,4 +47,6 @@ $lang['ap_permalink_already_used'] = 'El enlace permanente% s ya está siendo ut
 $lang['ap_level_perm'] = 'por nivel de confidencialidad';
 /*TODO*/$lang['ap_language_perm'] = 'by language';
 
+$lang['Load a page model'] = 'Cargar una página modelo';
+$lang['The content of the page changed, are your sure you wan\'t to quit without saving?'] = 'Se ha cambiado el contenido de la página, ¿está seguro que desea salir sin guardar?';
 ?>
