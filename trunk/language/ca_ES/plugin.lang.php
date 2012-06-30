@@ -61,4 +61,6 @@ $lang['ap_standalone_page'] = 'Pàgina independent';
 $lang['ap_standalone_tip'] = 'La pàgina requereix una estructura HTML completa';
 $lang['ap_unselect_all'] = 'Deselecciona-ho tot';
 $lang['ap_user_perm'] = 'per tipus d\'usuari';
+$lang['Load a page model'] = 'Carregar una pàgina model';
+$lang['The content of the page changed, are your sure you wan\'t to quit without saving?'] = 'El contingut de la pàgina ha canviat. Estàs segur que vols sortir sense desar els canvis?';
 ?>
