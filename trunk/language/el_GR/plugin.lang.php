@@ -61,4 +61,6 @@ $lang['ap_user_perm'] = 'από τον τύπο χρήστη';
 $lang['ap_language_perm'] = 'κατά γλώσσα';
 $lang['ap_level_perm'] = 'από το επίπεδο ιδιωτικότητας';
 $lang['ap_show_home'] = 'Εμφάνιση του κουμπιού "πίσω στην αρχική" στις πρόσθετες σελίδες';
+$lang['Load a page model'] = 'Φορτώστε μια σελίδα μοντέλο ';
+$lang['The content of the page changed, are your sure you wan\'t to quit without saving?'] = 'Το περιεχόμενο της σελίδας άλλαξε, είστε βέβαιος ότι θέλετε να κλείσετε χωρίς να αποθηκεύσετε;';
 ?>
