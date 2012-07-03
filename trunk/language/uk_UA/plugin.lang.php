@@ -61,4 +61,6 @@ $lang['ap_standalone_page'] = 'Автономна сторінка';
 $lang['ap_standalone_tip'] = 'Сторінка вимагає повної HTML структури';
 $lang['ap_unselect_all'] = 'Скасувати вибір';
 $lang['ap_user_perm'] = 'за типами користувача';
+$lang['Load a page model'] = 'Завантажити сторінку моделі';
+$lang['The content of the page changed, are your sure you wan\'t to quit without saving?'] = 'Зміст сторінки змінено, ви впевнені що хочете вийти без збереження?';
 ?>
