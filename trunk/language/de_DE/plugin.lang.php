@@ -47,4 +47,6 @@ $lang['ap_permalink_already_used'] = 'Permalink %s wird bereits von der Seite %s
 $lang['ap_level_perm'] = 'nach Ebene der Privatsphäre';
 $lang['ap_language_perm'] = 'nach Sprache';
 
+$lang['Load a page model'] = 'Lade ein Seiten Modell';
+$lang['The content of the page changed, are your sure you wan\'t to quit without saving?'] = 'Der Inhalt der Seite wurde geändert, sind Sie sicher ohne Speichern weiter zu machen?';
 ?>
