@@ -89,7 +89,7 @@ $template->assign(array(
 if (defined('AMM_VERSION') and version_compare(AMM_VERSION, '3.0.0', '>='))
 {
   load_language('plugin.lang', AMM_PATH);
-  $template->assign('AMM_URI', get_admin_plugin_menu_link(AMM_PATH.'admin/plugin_admin.php'));
+  $template->assign('AMM_URI', get_root_url().'admin.php?page=plugin-AMenuManager');
 }
 
 $template->set_filenames(array('plugin_admin_content' => dirname(__FILE__) . '/template/config.tpl'));
