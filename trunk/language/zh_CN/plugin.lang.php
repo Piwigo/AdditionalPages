@@ -23,8 +23,8 @@
 $lang['ap_add_page'] = '添加页面';
 $lang['ap_all_group'] = '所有';
 $lang['ap_all_lang'] = '所有';
-$lang['ap_authorized_group'] = '权限组';
-$lang['ap_authorized_users'] = '权限用户';
+$lang['ap_authorized_group'] = '授权组';
+$lang['ap_authorized_users'] = '授权用户';
 $lang['ap_config'] = '配置';
 $lang['ap_conf_saved'] = '配置已保存';
 $lang['ap_convert_bbcode_ok'] = '转换成功';
@@ -56,9 +56,11 @@ $lang['ap_select_all'] = '全选';
 $lang['ap_set_as_homepage'] = '设置为主页';
 $lang['ap_show_edit'] = '在菜单中显示编辑链接';
 $lang['ap_show_home'] = '在附加页面显示“返回主页”按钮';
-$lang['ap_show_menu'] = '菜单中显示';
+$lang['ap_show_menu'] = '显示菜单';
 $lang['ap_standalone_page'] = '独立页面';
 $lang['ap_standalone_tip'] = '页面需要有完整的HTML代码结构';
 $lang['ap_unselect_all'] = '全不选';
 $lang['ap_user_perm'] = '按用户类型';
+$lang['Load a page model'] = '加载页面模板';
+$lang['The content of the page changed, are your sure you wan\'t to quit without saving?'] = '页面内容已更改，确定放弃保存而退出编辑？';
 ?>
