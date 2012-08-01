@@ -1,1 +1,2 @@
-Приложения - Български език [BG]
+Plugin Additional Pages - Bulgarian language [BG]
+Translated by turnokopa.
