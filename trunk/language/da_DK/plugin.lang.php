@@ -61,4 +61,6 @@ $lang['ap_standalone_page'] = 'Selvstændig side';
 $lang['ap_standalone_tip'] = 'Siden kræver fuld HTML struktur';
 $lang['ap_unselect_all'] = 'Fravælg alt';
 $lang['ap_user_perm'] = 'efter bruger type';
+$lang['Load a page model'] = 'Hent en side skabelon';
+$lang['The content of the page changed, are your sure you wan\'t to quit without saving?'] = 'Indholdet på siden er ændret, er du sikker på du vil afbryde uden at gemme?';
 ?>
