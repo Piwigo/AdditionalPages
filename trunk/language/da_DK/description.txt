@@ -1,2 +1,2 @@
 Denne plugin giver mulighed for at tilføje supplerende sider til dit galleri.
-Du kan administrere adgang til siderne på basis af gruppe eller bruger status.
+Du kan administrere adgang til siderne på basis af gruppe eller brugerstatus.
