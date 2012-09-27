@@ -3,6 +3,7 @@
 .titrePage {display:none}
 .content {max-width:1120px; margin:0 auto 10px auto !important;}
 .Online {display:none;}
+.content_block {max-width:none;}
  
 .myHomePage_photo {text-align: center; margin:50px 0 20px 0;}
 .myHomePage_photo a img {border-width:2px; border-style:solid; border-color:#666;}
