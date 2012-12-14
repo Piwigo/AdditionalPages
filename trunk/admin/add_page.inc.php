@@ -124,9 +124,9 @@ VALUES (
     }
 
     // Backup file
-    mkgetdir($conf['local_data_dir'], MKGETDIR_DEFAULT&~MKGETDIR_DIE_ON_ERROR);
-    mkgetdir($conf['local_data_dir'].'/additional_pages_backup', MKGETDIR_PROTECT_HTACCESS&~MKGETDIR_DIE_ON_ERROR);
-    $sav_file = @fopen($conf['local_data_dir'].'/additional_pages_backup/' . $edited_page['id'] . '.txt', "w");
+    mkgetdir($conf['data_location'], MKGETDIR_DEFAULT&~MKGETDIR_DIE_ON_ERROR);
+    mkgetdir($conf['data_location'].'/additional_pages_backup', MKGETDIR_PROTECT_HTACCESS&~MKGETDIR_DIE_ON_ERROR);
+    $sav_file = @fopen($conf['data_location'].'/additional_pages_backup/' . $edited_page['id'] . '.txt', "w");
     @fwrite($sav_file, "Title: ".stripslashes($_POST['title'])."\nPermalink: ".stripslashes($_POST['permalink'])."\n\n".stripslashes($_POST['ap_content']));
     @fclose($sav_file);
 

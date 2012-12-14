@@ -36,7 +36,7 @@ if (defined('EXTENDED_DESC_PATH'))
 
 $languages = get_languages();
 
-$query = 'SELECT id, pos, lang, title, standalone
+$query = 'SELECT id, pos, lang, title, standalone, permalink
 FROM '.ADD_PAGES_TABLE.'
 ORDER BY ABS(pos) ASC, id ASC
 ;';

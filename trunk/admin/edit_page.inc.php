@@ -10,8 +10,8 @@ if (!is_numeric($_GET['edit']))
 // Delete
 if (isset($_REQUEST['delete']) and isset($_GET['edit']))
 {
-	pwg_query('DELETE FROM ' . ADD_PAGES_TABLE . ' WHERE id = ' . $_GET['edit'] . ';');
-  @unlink($conf['local_data_dir'].'/additional_pages_backup/' . $_GET['edit'] . '.txt');
+  pwg_query('DELETE FROM ' . ADD_PAGES_TABLE . ' WHERE id = ' . $_GET['edit'] . ';');
+  @unlink($conf['data_location'].'/additional_pages_backup/' . $_GET['edit'] . '.txt');
 
   if ($conf['AP']['homepage'] == $_GET['edit'])
   {
