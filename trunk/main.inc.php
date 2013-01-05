@@ -21,6 +21,7 @@ define('AP_DIR' , basename(dirname(__FILE__)));
 define('AP_PATH' , PHPWG_PLUGINS_PATH . AP_DIR . '/');
 define('ADD_PAGES_TABLE' , $prefixeTable . 'additionalpages');
 define('AP_DISTRIBUED', AP_PATH . 'distribued/');
+define('AP_BACKUP_DIR', PHPWG_ROOT_PATH . $conf['data_location'] . 'additional_pages_backup/');
 
 $conf['AP'] = @unserialize($conf['additional_pages']);
 
