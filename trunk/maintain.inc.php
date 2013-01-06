@@ -6,7 +6,7 @@ function plugin_install()
 
   $query = 'SHOW TABLES LIKE "' . $prefixeTable . 'additionalpages"';
   $result = pwg_query($query);
-  if (!mysql_fetch_row($result))
+  if (!pwg_db_fetch_row($result))
   {
     $query = 'CREATE TABLE ' . $prefixeTable . 'additionalpages (
 id SMALLINT( 5 ) UNSIGNED NOT NULL AUTO_INCREMENT,
@@ -22,11 +22,7 @@ standalone ENUM( "true", "false" ) NOT NULL DEFAULT "false" ,
 PRIMARY KEY (id) ,
 INDEX (pos) ,
 INDEX (lang))
-DEFAULT CHARACTER SET utf8';
-    if ('mysql' == $conf['dblayer'])
-    {
-      $query .= ' ENGINE=MYISAM';
-    }
+DEFAULT CHARACTER SET utf8 ENGINE=MYISAM';
     pwg_query($query.';');
   }
 
@@ -53,7 +49,7 @@ function plugin_activate()
   global $prefixeTable;
 
   $q = pwg_query('SHOW COLUMNS FROM ' . HISTORY_TABLE . ' LIKE "section"');
-  $section = mysql_fetch_array($q);
+  $section = pwg_db_fetch_assoc($q);
   $type = $section['Type'];
 
   // Add additional page section into history table
