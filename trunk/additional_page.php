@@ -113,7 +113,25 @@ $page['additional_page'] = array(
   'content' => trigger_event('AP_render_content', $row['content']),
 );
 
+
+
 add_event_handler('loc_end_index', 'ap_set_index');
+add_event_handler('loc_begin_page_header', 'ap_set_header');
+
+function ap_set_header()
+{
+  global $page, $title;
+  
+  if ($page['ap_homepage'])
+  {
+    $page['body_id'] = 'theHomePage';
+  }
+  else
+  {
+    $page['body_id'] = 'theAdditionalPage';
+    $title = $page['additional_page']['title'];
+  }
+}
 
 function ap_set_index()
 {
