@@ -69,6 +69,18 @@ function section_init_additional_page()
 
   if ($tokens[0] == 'additional_page' and !empty($tokens[1]))
     redirect(make_index_url(array('section'=>'page')).'/'.$tokens[1]);
+    
+  if (!is_null($conf['AP']['homepage']))
+  {
+    $albums_url = make_index_url(array('section' => 'categories'));
+    
+    $page['section_title'] = preg_replace(
+      '#/a>#',
+      '/a>'.$conf['level_separator'].'<a href="'.$albums_url.'">'.l10n('Albums').'</a>',
+      $page['section_title'],
+      1 // only replace the first occurence of "a/>"
+      );
+  }
 }
 
 // Menubar
