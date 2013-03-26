@@ -47,4 +47,6 @@ $lang['ap_permalink_already_used'] = 'Liên kết cố định %s đã được 
 $lang['ap_level_perm'] = 'theo mức độ riêng tư';
 $lang['ap_language_perm'] = 'theo gói ngôn ngữ';
 
+$lang['Load a page model'] = 'Nạp mẫu trang';
+$lang['The content of the page changed, are your sure you wan\'t to quit without saving?'] = 'Bạn có muốn thoát mà không lưu những thay đổi vừa thực hiện?';
 ?>
