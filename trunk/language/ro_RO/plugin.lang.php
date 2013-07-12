@@ -62,4 +62,5 @@ $lang['ap_language_perm'] = 'după limbă';
 $lang['ap_modify'] = 'Modifică pagina adițională';
 $lang['ap_page_content'] = 'Conținut';
 $lang['ap_page_lang'] = 'Limbă';
+$lang['ap_pos0'] = 'nu arăta legătura pe pagina de meniu';
 ?>
