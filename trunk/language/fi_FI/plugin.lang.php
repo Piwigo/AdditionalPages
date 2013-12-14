@@ -62,4 +62,5 @@ $lang['ap_guest'] = '(jätä tyhjäksi julkista sivua varten)';
 $lang['ap_homepage_tip'] = 'Korvaa gallerian kotisivu';
 $lang['ap_language_perm'] = 'kielittäin';
 $lang['ap_level_perm'] = 'yksityisyystasottain';
+$lang['ap_pos0'] = '0 piilottaaksesi sivun valikosta';
 ?>
