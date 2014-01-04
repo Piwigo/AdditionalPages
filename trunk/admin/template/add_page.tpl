@@ -137,6 +137,7 @@ var auto_permalink = true;
 			<td colspan="2" align="center"><br>
 				<b>{'ap_page_content'|@translate}</b><br>
 				<textarea name="ap_content" id="ap_content" rows="30" cols="50" style="width:100%;">{if isset($CONTENT)}{$CONTENT}{/if}</textarea>
+				{if isset($EXTDESC_BUTTON)}{$EXTDESC_BUTTON}{/if}
       </td>
 		</tr>
 
