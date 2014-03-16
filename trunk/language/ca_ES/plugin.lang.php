@@ -20,7 +20,7 @@
 // | Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, |
 // | USA.                                                                  |
 // +-----------------------------------------------------------------------+
-$lang['ap_all_group'] = 'tot';
+$lang['ap_all_group'] = 'Tot';
 $lang['ap_all_lang'] = 'Tot';
 $lang['ap_page_lang'] = 'Idioma';
 $lang['ap_add_page'] = 'Afegir una pàgina';
