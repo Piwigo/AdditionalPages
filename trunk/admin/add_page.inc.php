@@ -29,7 +29,7 @@ if (isset($_GET['load_template']))
   }
   else
   {
-    $distribued = trigger_event('load_ap_template', array(), $_GET['load_template']);
+    $distribued = trigger_change('load_ap_template', array(), $_GET['load_template']);
   }
   $edited_page = array_merge($edited_page, $distribued);
   $template->assign('template_selected', $_GET['load_template']);
@@ -227,7 +227,7 @@ if (!isset($_GET['edit']))
     }
     closedir($dh);
   }
-  $distribued = trigger_event('load_ap_templates_list', $distribued); // external plugins can add templates
+  $distribued = trigger_change('load_ap_templates_list', $distribued); // external plugins can add templates
   $template->assign('TEMPLATES', $distribued);
 }
 

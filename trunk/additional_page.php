@@ -109,8 +109,8 @@ $page['section'] = 'additional_page';
 $page['additional_page'] = array(
   'id' => $row['id'],
   'permalink' => @$row['permalink'],
-  'title' => trigger_event('AP_render_title', $row['title']),
-  'content' => trigger_event('AP_render_content', $row['content']),
+  'title' => trigger_change('AP_render_title', $row['title']),
+  'content' => trigger_change('AP_render_content', $row['content']),
 );
 
 

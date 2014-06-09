@@ -48,7 +48,7 @@ while ($row = pwg_db_fetch_assoc($result))
   $row['U_EDIT'] = get_root_url().'admin.php?page=plugin-'.AP_DIR.'-edit_page&amp;edit='.$row['id'];
   $row['U_DELETE'] = get_root_url().'admin.php?page=plugin-'.AP_DIR.'-edit_page&amp;edit='.$row['id'].'&amp;delete=';
 
-  $row['title'] = trigger_event('AP_render_title', $row['title']);
+  $row['title'] = trigger_change('AP_render_title', $row['title']);
   $row['language'] = @$languages[$row['lang']];
 
   $template->append('pages', $row);
