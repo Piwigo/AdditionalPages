@@ -1,3 +1,5 @@
+{combine_script id='common' load='footer' path='admin/themes/default/js/common.js'}
+
 {footer_script require='jquery'}{literal}
 jQuery().ready( function () {
   jQuery('#title').focusout(function () {
@@ -82,11 +84,19 @@ form p label {font-weight:normal !important;}
 {/if}
 
   <p>
-    <label><input type="checkbox" name="homepage" id="homepage" {if isset($HOMEPAGE) and $HOMEPAGE}checked="checked"{/if}/> <strong>{'ap_set_as_homepage'|@translate}</strong></label> <i>{'ap_homepage_tip'|@translate}</i>
+    <label class="font-checkbox">
+      <span class="icon-check"></span>
+      <input type="checkbox" name="homepage" id="homepage" {if isset($HOMEPAGE) and $HOMEPAGE}checked="checked"{/if}/> <strong>{'ap_set_as_homepage'|@translate}</strong>
+    </label>
+    <i>{'ap_homepage_tip'|@translate}</i>
   </p>
       
   <p>
-    <label><input type="checkbox" name="standalone" id="standalone" {if isset($STANDALONE) and $STANDALONE}checked="checked"{/if}/> <strong>{'ap_standalone_page'|@translate}</strong></label> <i>{'ap_standalone_tip'|@translate}</i>
+    <label class="font-checkbox">
+      <span class="icon-check"></span>
+      <input type="checkbox" name="standalone" id="standalone" {if isset($STANDALONE) and $STANDALONE}checked="checked"{/if}/> <strong>{'ap_standalone_page'|@translate}</strong>
+    </label>
+    <i>{'ap_standalone_tip'|@translate}</i>
   </p>
 
 {if isset($level_perm)}
