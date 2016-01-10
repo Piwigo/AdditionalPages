@@ -13,6 +13,8 @@
  
 <div id="myHomePage">
   <div class="myHomePage_photo">
+    <!-- Install the "Extended Description" plugin to turn the following into an actual image:
+      http://piwigo.org/ext/extension_view.php?eid=175 -->
     <a href="index.php?/categories">[photo id=12345 size=L link=no]</a>
   </div>
  
