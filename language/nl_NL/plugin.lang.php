@@ -4,7 +4,7 @@ $lang['ap_add_page'] = 'Pagina toevoegen';
 
 $lang['ap_create'] = 'Maak een nieuwe extra pagina';
 $lang['ap_deleted_page'] = 'Pagina verwijderd (<a href="' .PHPWG_ROOT_PATH. '">terug naar home</a>)';
-$lang['ap_no_name'] = 'Je hebt het naam veld niet ingevuld.';
+$lang['ap_no_name'] = 'Je hebt het naamveld niet ingevuld.';
 $lang['ap_saved_page'] = 'Pagina bewaard (<a href="' .PHPWG_ROOT_PATH . 'index.php?/additional_page/%s">bekijk de pagina</a>)';
 $lang['ap_modify'] = 'Bewerk de extra pagina';
 $lang['ap_all_lang'] = 'Alles';
@@ -12,7 +12,7 @@ $lang['ap_all_group'] = 'Alles';
 
 $lang['ap_conf_saved'] = 'Instellingen bewaard.';
 
-$lang['ap_page_name'] = 'Pagina naam';
+$lang['ap_page_name'] = 'Paginanaam';
 $lang['ap_page_lang'] = 'Taal';
 $lang['ap_default_language'] = 'Standaard';
 $lang['ap_page_pos'] = 'Plaats';
@@ -27,26 +27,25 @@ $lang['ap_save'] = 'Bewaar';
 $lang['ap_delete'] = 'Verwijder';
 
 $lang['ap_config'] = 'Configuratie';
-$lang['ap_menu_name'] = 'Menu naam';
-$lang['ap_show_menu'] = 'Toon menu blok';
+$lang['ap_menu_name'] = 'Menunaam';
+$lang['ap_show_menu'] = 'Toon menublok';
 $lang['ap_redirect'] = 'Automatisch doorsturen naar opgeslagen pagina';
-$lang['ap_show_home'] = 'Toon de "naar home" knop op extra pagina\'s';
-$lang['ap_show_edit'] = 'Toon bewerk link in menu blok';
+$lang['ap_show_home'] = 'Toon de "naar startpagina" knop op extra pagina\'s';
+$lang['ap_show_edit'] = 'Toon bewerk link in menublok';
 $lang['ap_perm'] = 'Activeer autorisatie beheer:';
 $lang['ap_group_perm'] = 'op groepen';
-$lang['ap_user_perm'] = 'op gebruiker type';
+$lang['ap_user_perm'] = 'op gebruikertype';
 $lang['ap_parse_bbcode'] = 'Converteer pagina\'s geschreven met BBCode';
 $lang['ap_convert_bbcode_ok'] = 'Conversie actief.'; 
 
 $lang['ap_edit_page'] = 'Wijzig een pagina';
 $lang['ap_set_as_homepage'] = 'Definieer deze pagina als Startpagina';
 $lang['ap_standalone_page'] = 'Losstaande pagina';
-$lang['ap_homepage_tip'] = 'Verander de Startpagina van uw galerie';
+$lang['ap_homepage_tip'] = 'Verander de Startpagina van jouw galerie';
 $lang['ap_standalone_tip'] = 'Deze pagina dient een volledige HTML-structuur te hebben';
 $lang['ap_permalink_already_used'] = 'De permalink %s wordt al gebruikt door pagina %s';
-$lang['ap_level_perm'] = 'op privacy nivo';
-$lang['ap_language_perm'] = 'door taal';
+$lang['ap_level_perm'] = 'op privacy niveau';
+$lang['ap_language_perm'] = 'op taal';
 
 $lang['Load a page model'] = 'Laad een paginamodel';
-$lang['The content of the page changed, are your sure you wan\'t to quit without saving?'] = 'De pagina is gewijzigd, weet je zeker dat je deze niet wilt opslaan?';
-?>
+$lang['The content of the page changed, are your sure you wan\'t to quit without saving?'] = 'De pagina is gewijzigd. Weet je zeker dat je deze niet wilt opslaan?';
