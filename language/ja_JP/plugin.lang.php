@@ -21,7 +21,7 @@
 // | USA.                                                                  |
 // +-----------------------------------------------------------------------+
 $lang['Load a page model'] = 'ページモデルを読み込む';
-$lang['The content of the page changed, are your sure you wan\'t to quit without saving?'] = 'ページのコンテンツが変更されていますが、保存せずに終了したいのですか？';
+$lang['The content of the page changed, are your sure you wan\'t to quit without saving?'] = 'ページのコンテンツが変更されていますが、保存せずに終了してよろしいですか？';
 $lang['ap_group_perm'] = 'グループで';
 $lang['ap_guest'] = '(公開ページのため空にしておく)';
 $lang['ap_language_perm'] = '言語で';
