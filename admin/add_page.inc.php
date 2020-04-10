@@ -167,7 +167,7 @@ if ($conf['AP']['language_perm'])
 // Groups options
 if ($conf['AP']['group_perm'])
 {
-	$query = 'SELECT id, name FROM '.GROUPS_TABLE.' ORDER BY name ASC;';
+	$query = 'SELECT id, name FROM `'.GROUPS_TABLE.'` ORDER BY name ASC;';
   $result = pwg_query($query);
   $groups = array();
   while ($row = pwg_db_fetch_assoc($result))
