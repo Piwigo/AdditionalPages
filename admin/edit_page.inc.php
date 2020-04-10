@@ -24,7 +24,7 @@ if (isset($_REQUEST['delete']) and isset($_GET['edit']))
 
 // Load page data
 $query = '
-SELECT id , lang , title , content , users , groups , level , permalink, standalone
+SELECT id , lang , title , content , users , `groups` , level , permalink, standalone
 FROM ' . ADD_PAGES_TABLE . '
 WHERE id = '.$_GET['edit'].'
 ;';

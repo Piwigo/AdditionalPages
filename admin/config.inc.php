@@ -21,7 +21,7 @@ if (isset($_POST['submit']))
   }
   if ($conf['AP']['group_perm'] and !isset($_POST['group_perm']))
   {
-    pwg_query('UPDATE '.ADD_PAGES_TABLE.' SET groups = NULL;');
+    pwg_query('UPDATE '.ADD_PAGES_TABLE.' SET `groups` = NULL;');
   }
   if ($conf['AP']['language_perm'] and !isset($_POST['language_perm']))
   {

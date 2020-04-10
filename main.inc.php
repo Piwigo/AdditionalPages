@@ -114,7 +114,7 @@ LEFT JOIN ' . USER_GROUP_TABLE . '
   ON user_id = '.$user['id'].'
 WHERE (lang IS NULL OR lang = "'.$user['language'].'")
   AND (users IS NULL OR users LIKE "%'.$user['status'].'%")
-  AND (groups IS NULL OR groups REGEXP CONCAT("(^|,)",group_id,"(,|$)"))
+  AND (`groups` IS NULL OR `groups` REGEXP CONCAT("(^|,)",group_id,"(,|$)"))
   AND level <= '.$user['level'].'
   AND pos >= 0
 ORDER BY pos ASC
