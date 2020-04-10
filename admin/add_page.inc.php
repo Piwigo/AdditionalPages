@@ -86,7 +86,7 @@ SET lang = '.$language.',
   title = "'.$_POST['title'].'",
   content = "'.$_POST['ap_content'].'",
   users = '.$user_access.',
-  groups = '.$group_access.',
+  `groups` = '.$group_access.',
   level = '.$level_access.',
   permalink = '.$permalink.',
   standalone = '.$standalone.'
@@ -100,7 +100,7 @@ WHERE id = '.$edited_page['id'] .'
       list($position) = array_from_query($query, 'pos');
 
       $query = '
-INSERT INTO '.ADD_PAGES_TABLE.' ( pos , lang , title , content , users , groups , level , permalink, standalone)
+INSERT INTO '.ADD_PAGES_TABLE.' ( pos , lang , title , content , users , `groups` , level , permalink, standalone)
 VALUES (
   '.($position+1).',
   '.$language.',

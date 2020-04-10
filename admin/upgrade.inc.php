@@ -73,7 +73,7 @@ SET title = "'.pwg_db_real_escape_string($title).'",
     pos = '.$position.',
     lang = '.$language.',
     users = '.$authorized_users.',
-    groups = '.$authorized_groups.'
+    `groups` = '.$authorized_groups.'
 WHERE id = '.$row['id'].'
 ;';
     pwg_query($query);

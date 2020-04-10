@@ -29,7 +29,7 @@ global $template, $user;
 $identifier = $page['ap_homepage'] ? $conf['AP']['homepage'] : $tokens[1];
 
 // Retrieve page data
-$query = 'SELECT id, title, lang, content, users, groups, level, permalink, standalone
+$query = 'SELECT id, title, lang, content, users, `groups`, level, permalink, standalone
 FROM ' . ADD_PAGES_TABLE . '
 ';
 $query .= is_numeric($identifier) ?
