@@ -63,6 +63,7 @@ function section_init_additional_page()
   global $tokens, $conf, $page;
 
   $page['ap_homepage'] = (count($tokens) == 1 and empty($tokens[0]));
+  $page['is_homepage'] = $page['ap_homepage'];
 
   if (($tokens[0] == 'page' and !empty($tokens[1])) or ($page['ap_homepage'] and !is_null($conf['AP']['homepage'])))
     include(AP_PATH . 'additional_page.php');
