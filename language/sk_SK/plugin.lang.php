@@ -31,10 +31,10 @@ $lang['ap_menu_name'] = 'Názov menu';
 $lang['ap_show_menu'] = 'Zobraziť blokové menu';
 $lang['ap_redirect'] = 'Automatické presmerovanie na uloženú stránku';
 $lang['ap_show_home'] = 'Zobraziť tlačidlo "späť na hlavnú stránku" na prídavných stránkach';
-$lang['ap_show_edit'] = 'Zobraziť upravovací link na blokové menu';
-$lang['ap_perm'] = 'Zapnúť Activate autorizačný manažment:';
-$lang['ap_group_perm'] = 'skupinami';
-$lang['ap_user_perm'] = 'typmi používateľov';
+$lang['ap_show_edit'] = 'V blokovom menu zobraziť odkaz pre úpravy';
+$lang['ap_perm'] = 'Zapnúť autorizačný manažment:';
+$lang['ap_group_perm'] = 'podľa skupín';
+$lang['ap_user_perm'] = 'podľa typu používateľa';
 $lang['ap_parse_bbcode'] = 'Konvertovať stránky napísané v BBCode';
 $lang['ap_convert_bbcode_ok'] = 'Konverzia úspešná.';
 
@@ -44,9 +44,8 @@ $lang['ap_standalone_page'] = 'Nezávislá stránka';
 $lang['ap_homepage_tip'] = 'Prepísať domácu stránku galérie';
 $lang['ap_standalone_tip'] = 'Stránka vyžaduje plnú HTML štruktúru';
 $lang['ap_permalink_already_used'] = 'Trvalý link %s je stále používaný stránkou %s'; 
-$lang['ap_level_perm'] = 'pri súkromnej úrovni';
-$lang['ap_language_perm'] = 'po jazyku';
+$lang['ap_level_perm'] = 'podľa nastavenia súkromia';
+$lang['ap_language_perm'] = 'podľa jazyka';
 
 $lang['Load a page model'] = 'Nahrať model stránky';
 $lang['The content of the page changed, are your sure you wan\'t to quit without saving?'] = 'Obsah stránky bol zmenený, skutočne chcete opustiť stránku bez uloženia?';
-?>
