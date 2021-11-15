@@ -6,6 +6,7 @@ Description: Add additional pages in menubar.
 Plugin URI: http://piwigo.org/ext/extension_view.php?eid=153
 Author: P@t
 Author URI: http://www.gauchon.com
+Has Settings: webmaster
 */
 
 if (!defined('PHPWG_ROOT_PATH')) die('Hacking attempt!');
@@ -34,17 +35,6 @@ if (!empty($conf['random_index_redirect']) and !is_null($conf['AP']['homepage'])
 {
   $conf['ap_random_index_redirect'] = $conf['random_index_redirect'];
   $conf['random_index_redirect'] = array();
-}
-
-// Admin menu
-function additional_pages_admin_menu($menu)
-{
-    array_push($menu, array(
-      'NAME' => 'Additional Pages',
-      'URL' => get_root_url().'admin.php?page=plugin-'.AP_DIR,
-      )
-    );
-    return $menu;
 }
 
 // common
@@ -138,7 +128,6 @@ ORDER BY pos ASC
   }
 }
 
-add_event_handler('get_admin_plugin_menu_links', 'additional_pages_admin_menu');
 add_event_handler('init', 'ap_common_init');
 add_event_handler('loc_end_section_init', 'section_init_additional_page');
 add_event_handler('blockmanager_register_blocks', 'register_ap_menubar_blocks');
