@@ -33,6 +33,8 @@ if (isset($_GET['load_template']))
   }
   $edited_page = array_merge($edited_page, $distribued);
   $template->assign('template_selected', $_GET['load_template']);
+}else{
+	$template->assign('template_selected', '');
 }
 
 // Submit form
@@ -229,6 +231,8 @@ if (!isset($_GET['edit']))
   }
   $distribued = trigger_change('load_ap_templates_list', $distribued); // external plugins can add templates
   $template->assign('TEMPLATES', $distribued);
+}else{
+	$template->assign('TEMPLATES', []);
 }
 
 // template output
