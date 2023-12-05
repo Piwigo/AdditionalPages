@@ -238,11 +238,11 @@ if (!isset($_GET['edit']))
 // template output
 $template->assign(array(
   'AP_TITLE' => $page_title,
-  'NAME' => htmlspecialchars($edited_page['title']),
-  'PERMALINK' => htmlspecialchars($edited_page['permalink']),
+  'NAME' => htmlspecialchars($edited_page['title'] ?? ''),
+  'PERMALINK' => htmlspecialchars($edited_page['permalink'] ?? ''),
   'HOMEPAGE' => $edited_page['homepage'],
   'STANDALONE' => $edited_page['standalone'],
-  'CONTENT' => htmlspecialchars($edited_page['content'])
+  'CONTENT' => htmlspecialchars($edited_page['content'] ?? '')
   )
 );
 
