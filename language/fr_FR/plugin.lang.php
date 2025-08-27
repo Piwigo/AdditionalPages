@@ -2,11 +2,11 @@
 
 $lang['ap_add_page'] = 'Ajouter une page';
 
-$lang['ap_create'] = 'Créer une nouvelle page additionelle';
+$lang['ap_create'] = 'Créer une nouvelle page additionnelle';
 $lang['ap_deleted_page'] = 'Page supprimée';
 $lang['ap_no_name'] = 'Vous n\'avez pas indiqué le nom.';
 $lang['ap_saved_page'] = 'Page enregistrée';
-$lang['ap_modify'] = 'Modifier la page additionelle';
+$lang['ap_modify'] = 'Modifier la page additionnelle';
 $lang['ap_all_lang'] = 'Toutes';
 $lang['ap_all_group'] = 'Tous';
 
@@ -31,8 +31,8 @@ $lang['ap_menu_name'] = 'Nom du menu';
 $lang['ap_show_menu'] = 'Montrer le bloc menu';
 $lang['ap_redirect'] = 'Rediriger automatiquement vers la page enregistrée';
 $lang['ap_show_home'] = 'Montrer le bouton de retour vers l\'accueil sur les pages additionnelles';
-$lang['ap_show_edit'] = 'Montrer le lien d\'édition des pages additionelles dans le bloc menu';
-$lang['ap_perm'] = 'Activer la gestion des droits d\'accès aux pages additionelles:';
+$lang['ap_show_edit'] = 'Montrer le lien d\'édition des pages additionnelles dans le bloc menu';
+$lang['ap_perm'] = 'Activer la gestion des droits d\'accès aux pages additionnelles:';
 $lang['ap_group_perm'] = 'par groupes';
 $lang['ap_user_perm'] = 'par type d\'utilisateurs';
 $lang['ap_parse_bbcode'] = 'Convertir les pages déjà écrites avec le BBCode';
@@ -49,5 +49,3 @@ $lang['ap_language_perm'] = 'par langue';
 
 $lang['Load a page model'] = 'Charger un modèle de page';
 $lang['The content of the page changed, are your sure you wan\'t to quit without saving?'] = 'Le contenu de la page a changé, êtes-vous sûr de vouloir quitter sans sauvegarder ?';
-
-?>
