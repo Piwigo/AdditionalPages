@@ -154,6 +154,14 @@ function ap_set_index()
     )
   );
   
+  if (mobile_theme())
+  {
+    $template->assign(array(
+        'CONTENT' => $page['additional_page']['content'],
+        )
+    );
+  }
+  
   $template->clear_assign(array('U_MODE_POSTED', 'U_MODE_CREATED'));
 }
 

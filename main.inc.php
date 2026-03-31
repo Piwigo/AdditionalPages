@@ -11,11 +11,6 @@ Has Settings: webmaster
 
 if (!defined('PHPWG_ROOT_PATH')) die('Hacking attempt!');
 
-if (mobile_theme())
-{
-  return;
-}
-
 global $prefixeTable, $conf;
 
 define('AP_DIR' , basename(dirname(__FILE__)));
